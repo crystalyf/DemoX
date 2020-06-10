@@ -1,0 +1,75 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="primary0">
+        <item name="colorPrimary">@color/md_red_500</item>
+        <item name="colorPrimaryDark">@color/md_red_700</item>
+    </style>
+
+    <style name="accent0">
+        <item name="colorAccent">@color/md_red_500</item>
+    </style>
+
+    <style name="primary1">
+        <item name="colorPrimary">@color/md_pink_500</item>
+        <item name="colorPrimaryDark">@color/md_pink_700</item>
+    </style>
+
+    <style name="accent1">
+        <item name="colorAccent">@color/md_pink_500</item>
+    </style>
+
+    <style name="primary2">
+        <item name="colorPrimary">@color/md_purple_500</item>
+        <item name="colorPrimaryDark">@color/md_purple_700</item>
+    </style>
+
+    <style name="accent2">
+        <item name="colorAccent">@color/md_purple_500</item>
+    </style>
+
+    <style name="primary3">
+        <item name="colorPrimary">@color/md_deep_purple_500</item>
+        <item name="colorPrimaryDark">@color/md_deep_purple_700</item>
+    </style>
+
+    <style name="accent3">
+        <item name="colorAccent">@color/md_deep_purple_500</item>
+    </style>
+
+    <style name="primary4">
+        <item name="colorPrimary">@color/md_indigo_500</item>
+        <item name="colorPrimaryDark">@color/md_indigo_700</item>
+    </style>
+
+    <style name="accent4">
+        <item name="colorAccent">@color/md_indigo_500</item>
+    </style>
+
+    <style name="primary5">
+        <item name="colorPrimary">@color/md_blue_500</item>
+        <item name="colorPrimaryDark">@color/md_blue_700</item>
+    </style>
+
+    <style name="accent5">
+        <item name="colorAccent">@color/md_blue_500</item>
+    </style>
+
+    <style name="primary9">
+        <item name="colorPrimary">@color/md_green_500</item>
+        <item name="colorPrimaryDark">@color/md_green_700</item>
+    </style>
+
+    <style name="accent9">
+        <item name="colorAccent">@color/md_green_500</item>
+    </style>
+
+
+</resources>
