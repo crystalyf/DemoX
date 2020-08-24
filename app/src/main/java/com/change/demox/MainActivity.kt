@@ -1,0 +1,37 @@
+package com.change.demox
+
+import android.content.Intent
+import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import com.change.demox.themecolor.waytwo.DynamicThemeColorActivity
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
+import kotlinx.android.synthetic.main.activity_main.*
+
+class MainActivity : AppCompatActivity(), View.OnClickListener {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        initView()
+    }
+
+    private fun initView() {
+        btn_dynamic_theme.setOnClickListener(this)
+        btn_lecenses.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.btn_dynamic_theme -> {
+                val intent = Intent(this, DynamicThemeColorActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.btn_lecenses -> {
+                val intent2 = Intent(this, OssLicensesMenuActivity::class.java)
+                startActivity(intent2)
+            }
+            else -> {
+            }
+        }
+    }
+}

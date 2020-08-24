@@ -1,10 +1,11 @@
-package com.change.demox.themecolor.screen;
+package com.change.demox.themecolor.waytwo;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import com.change.demox.R;
 
-public class SecondActivity extends BaseColorfulActivity {
+public class SecondActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

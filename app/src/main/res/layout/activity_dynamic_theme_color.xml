@@ -10,7 +10,7 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="MainActivity"
+        app:title="动态切换主题色"
         app:titleTextColor="?attr/colorPrimary" />
 
     <LinearLayout
@@ -21,19 +21,19 @@
         android:orientation="vertical"
         android:padding="12dp">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_theme1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="theme color 1"
-            android:textAppearance="?android:attr/textAppearanceInverse" />
+            android:textColor="?android:colorPrimary" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_theme2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="theme color 2"
-            android:textAppearance="?android:attr/textAppearanceInverse" />
+            android:textColor="?android:colorPrimary" />
 
         <Button
             android:id="@+id/btn_jump"

@@ -10,6 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".licenses.LicensesActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,8 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".themecolor.screen.DynamicThemeColorActivity" />
-        <activity android:name=".themecolor.screen.SecondActivity" />
+        <activity android:name=".themecolor.wayone.DynamicThemeColorActivity" />
+        <activity android:name=".themecolor.wayone.SecondActivity" />
+        <activity android:name=".themecolor.waytwo.DynamicThemeColorActivity" />
+        <activity android:name=".themecolor.waytwo.SecondActivity" />
     </application>
 
 </manifest>
