@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.change.demox">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
@@ -18,10 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".themecolor.wayone.DynamicThemeColorActivity" />
-        <activity android:name=".themecolor.wayone.SecondActivity" />
         <activity android:name=".themecolor.waytwo.DynamicThemeColorActivity" />
         <activity android:name=".themecolor.waytwo.SecondActivity" />
+        <activity android:name=".ucrop.UcropActivity" />
+        <!-- ucrop 内置Activity -->
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

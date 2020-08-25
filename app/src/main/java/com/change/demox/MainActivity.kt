@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.themecolor.waytwo.DynamicThemeColorActivity
+import com.change.demox.ucrop.UcropActivity
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,8 +17,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun initView() {
+        initClickListener()
+    }
+
+    private fun initClickListener() {
         btn_dynamic_theme.setOnClickListener(this)
         btn_lecenses.setOnClickListener(this)
+        btn_ucrop.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -29,6 +35,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_lecenses -> {
                 val intent2 = Intent(this, OssLicensesMenuActivity::class.java)
                 startActivity(intent2)
+            }
+            R.id.btn_ucrop -> {
+                val intent3 = Intent(this, UcropActivity::class.java)
+                startActivity(intent3)
             }
             else -> {
             }

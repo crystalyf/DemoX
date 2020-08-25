@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ bg_round.xml  連絡網XXX画面
+  ~
+  ~ Created by $Fenrir-xingjunchao on 2019/12/24.
+  ~ Copyright © 2019年 Eole. All rights reserved.
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/colorRed" />
+    <corners android:radius="180dp" />
+</shape>

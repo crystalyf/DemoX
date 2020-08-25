@@ -33,5 +33,12 @@
         <item name="colorAccent">@color/md_green_500</item>
     </style>
 
+    <style name="commonContentTransparent">
+        <item name="android:windowBackground">@color/colorTransparentBackground</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+
 
 </resources>
