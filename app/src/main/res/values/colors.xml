@@ -6,6 +6,8 @@
 
     <color name="colorThemeGreen">#009AA4</color>
     <color name="colorThemeOrange">#E55100</color>
+    <color name="white">#ffffff</color>
+    <color name="transparent">#00000000</color>
 
 
     <!--blue-->
@@ -20,4 +22,7 @@
     <color name="colorTransparentBackground">#a0000000</color>
 
     <color name="colorUcropLogo">#212121</color>
+
+    <color name="color_slide_bg">#19FFFFFF</color>
+    <color name="color_slide_over_bg">#2E2E2E</color>
 </resources>
