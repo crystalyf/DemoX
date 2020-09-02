@@ -2,11 +2,12 @@
 
 
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@android:id/text1"
+    android:id="@+id/text_content"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
     android:singleLine="true"
-    android:textColor="#808080" />
+    android:textColor="@color/colorRed"
+    android:textSize="22dp" />

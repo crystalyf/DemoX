@@ -30,7 +30,7 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".views.SpinnerActivity" />
+        <activity android:name=".views.spinner.SpinnerActivity" />
     </application>
 
 </manifest>

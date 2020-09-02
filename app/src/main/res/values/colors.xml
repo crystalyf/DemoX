@@ -7,6 +7,8 @@
     <color name="colorThemeGreen">#009AA4</color>
     <color name="colorThemeOrange">#E55100</color>
     <color name="white">#ffffff</color>
+    <color name="colorWhite90">#E5FFFFFF</color>
+    <color name="colorBlack">#000000</color>
     <color name="transparent">#00000000</color>
 
 

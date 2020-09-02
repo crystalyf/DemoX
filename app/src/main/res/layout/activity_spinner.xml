@@ -13,6 +13,10 @@
         android:layout_height="40dp"
         android:layout_marginTop="50dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="基于ArrayAdaper的Spinner:"/>
     <Spinner
         android:id="@+id/field_item_spinner_content"
         style="@style/spinner_style"
@@ -20,6 +24,19 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:dropDownWidth="60dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="基于BaseAdaper的自定义Adapter Spinner:"/>
+    <Spinner
+        android:id="@+id/spinner_content_left"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/spinner_selector"
+        android:dropDownWidth="76dp" />
+
 
     <!--dropDownWidth :  下拉列表的宽度  -->
 
