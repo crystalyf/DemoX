@@ -10,10 +10,11 @@
     <com.change.demox.views.widget.SlideView
         android:id="@+id/slide_accept"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:layout_marginTop="50dp" />
 
     <TextView
+        android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="基于ArrayAdaper的Spinner:"/>
@@ -35,6 +36,14 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:background="@drawable/spinner_selector"
+        android:dropDownWidth="76dp" />
+
+
+    <Spinner
+        android:id="@+id/spinner_content_orginal"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:dropDownWidth="76dp" />
 
 

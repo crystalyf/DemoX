@@ -41,11 +41,12 @@ class SlideView : View {
         mPaint.strokeJoin = Paint.Join.ROUND
         mPaint.strokeCap = Paint.Cap.ROUND
 
-        mMargin = 18
-        mSlideBgWidth = 200
-        mSlideBgHeight = 60
-        mSlideBgRadius = 35
-        mTextSize = 14
+        //margin设置成height的一半，是滑动图标能呈圆形的关键
+        mMargin = resources.getDimensionPixelOffset(R.dimen.lock_slide_view_color_margin_start)
+        mSlideBgWidth = resources.getDimensionPixelOffset(R.dimen.lock_slide_view_width)
+        mSlideBgHeight = resources.getDimensionPixelOffset(R.dimen.lock_slide_view_height)
+        mSlideBgRadius = resources.getDimensionPixelOffset(R.dimen.lock_slide_view_radius)
+        mTextSize = resources.getDimensionPixelOffset(R.dimen.lock_slide_view_text_size)
         mBackgroundColor = ContextCompat.getColor(context, R.color.color_slide_bg)
         mSlideColor = ContextCompat.getColor(context, R.color.color_slide_over_bg)
         mTextColor = ContextCompat.getColor(context, R.color.white)

@@ -25,6 +25,6 @@
 
     <color name="colorUcropLogo">#212121</color>
 
-    <color name="color_slide_bg">#19FFFFFF</color>
-    <color name="color_slide_over_bg">#2E2E2E</color>
+    <color name="color_slide_bg">@color/colorRed</color>
+    <color name="color_slide_over_bg">@color/white</color>
 </resources>
