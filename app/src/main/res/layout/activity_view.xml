@@ -11,6 +11,12 @@
         android:id="@+id/btn_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="spinner" />
+        android:text="spinner合集" />
+
+    <Button
+        android:id="@+id/btn_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="recyclerview合集" />
 
 </LinearLayout>
