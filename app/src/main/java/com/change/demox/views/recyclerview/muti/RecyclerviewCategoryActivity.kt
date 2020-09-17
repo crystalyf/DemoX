@@ -1,4 +1,4 @@
-package com.change.demox.views.recyclerview
+package com.change.demox.views.recyclerview.muti
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +11,7 @@ import com.change.demox.views.recyclerview.adapter.WirelessListAdapter
 
 class RecyclerviewCategoryActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: WirelessViewModel
+    private lateinit var viewModel: RecyclerCategoryViewModel
     var listListAdapter: WirelessListAdapter? = null
     private var dataBinding : ActivityRecyclerCateBinding? = null
 
@@ -19,7 +19,7 @@ class RecyclerviewCategoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_recycler_cate)
-        viewModel = ViewModelProviders.of(this).get(WirelessViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(RecyclerCategoryViewModel::class.java)
         initView()
     }
 

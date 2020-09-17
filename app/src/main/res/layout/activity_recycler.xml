@@ -12,4 +12,10 @@
         android:layout_height="wrap_content"
         android:text="静态双（多）子项(item)的RecyclerView" />
 
+    <Button
+        android:id="@+id/btn_ceiling"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="悬浮吸顶效果（多）子项(item)的RecyclerView" />
+
 </LinearLayout>

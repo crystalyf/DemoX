@@ -5,54 +5,60 @@
  * Copyright © 2020年 Kubota-PAD. All rights reserved.
  */
 
-package com.change.demox.views.recyclerview
+package com.change.demox.views.recyclerview.ceiling
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.change.demox.utils.FirstKanaLetterFromRomaji
-import com.change.demox.views.recyclerview.bean.WirelessContactModel
-import com.change.demox.views.recyclerview.bean.WirelessTransformModel
+import com.change.demox.views.recyclerview.ceiling.bean.CeilingItemModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class WirelessViewModel(
+class RecyclerCeilingViewModel(
 ) : ViewModel() {
 
+    val wirelessHeaderList = mutableListOf<String>()
     //转换前
-    val wirelessList = MutableLiveData<MutableList<WirelessContactModel>>()
-
+    val wirelessList = MutableLiveData<MutableList<CeilingItemModel>>()
     //转换后
-    var wirelessTransformList = mutableListOf<WirelessTransformModel>()
+    val wirelessListAfter = mutableListOf<CeilingItemModel>()
 
     fun getData() {
-        val type = object : TypeToken<List<WirelessContactModel>>() {}.type
-        val list = Gson().fromJson<MutableList<WirelessContactModel>>(dataStr, type)
+        val type = object : TypeToken<List<CeilingItemModel>>() {}.type
+        val list = Gson().fromJson<MutableList<CeilingItemModel>>(dataStr, type)
         wirelessList.value = list
     }
 
     /**
      * List<转换前> -> List<转换后></Indexable><T>*/
     fun transform() {
-        var list: MutableList<WirelessTransformModel> = mutableListOf()
-        val map = mutableMapOf<String, MutableList<WirelessTransformModel>>()
+        var count = 0
+        var list: MutableList<CeilingItemModel> ? = null
+        val map = mutableMapOf<String, MutableList<CeilingItemModel>>()
         for (i in wirelessList.value?.indices!!) {
-            val entity = WirelessTransformModel()
-            val item = wirelessList.value!![i]
-            entity.data = item
-            entity.kanaField = getFieldIndexBy(item.kana)
-            if (!map.containsKey(entity.kanaField)) {
+            val entity = wirelessList.value!![i]
+            val kanaField = getFieldIndexBy(entity.kana)
+            if (!map.containsKey(kanaField)) {
+                list  = mutableListOf()
                 //如果map中没这个五十音key,说明一条都没有，list插入一个catgory数据
-                val transformModel = WirelessTransformModel()
-                transformModel.indexTitle = entity.kanaField + "行"
-                list.add(transformModel)
-                map[entity.kanaField] = list
+                count++
+                wirelessHeaderList.add(kanaField+ "行")
+                map[kanaField] = list
             } else {
                 //否则从map找到这个五十音key 对应的list,再插入
-                list = map[entity.kanaField]!!
+                list = map[kanaField]!!
+                count = list[0].tage
             }
             list.add(entity)
+            //把源数据里的tage变量全部重新赋值了，每个category多少个item确定了下来
+            entity.tage = count
         }
-        wirelessTransformList.addAll(list)
+        wirelessListAfter.clear()
+        //変換
+        for ((key, value) in map) {
+            wirelessListAfter.addAll(value)
+        }
     }
 
     /**

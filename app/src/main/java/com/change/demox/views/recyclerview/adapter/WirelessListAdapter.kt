@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.change.demox.R
 import com.change.demox.databinding.ItemWirelessListBinding
 import com.change.demox.databinding.ItemWirelessTitleBinding
-import com.change.demox.views.recyclerview.WirelessViewModel
-import com.change.demox.views.recyclerview.bean.WirelessTransformModel
+import com.change.demox.views.recyclerview.muti.RecyclerCategoryViewModel
+import com.change.demox.views.recyclerview.muti.bean.WirelessTransformModel
 
 
 /**
@@ -19,7 +19,7 @@ import com.change.demox.views.recyclerview.bean.WirelessTransformModel
  * @property list phoneのbook一覧list (from HTTP)
  */
 class WirelessListAdapter(
-        private var viewModel: WirelessViewModel?,
+        private var viewModel: RecyclerCategoryViewModel?,
         private var list: MutableList<WirelessTransformModel>?
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -78,7 +78,7 @@ class WirelessListAdapter(
     class ImageLayoutHolder(private val binding: ItemWirelessListBinding) :
             RecyclerView.ViewHolder(binding.root) {
         fun bind(
-                viewModel: WirelessViewModel?,
+                viewModel: RecyclerCategoryViewModel?,
                 position: Int,
                 list: MutableList<WirelessTransformModel>  //转换后的model
         ) {

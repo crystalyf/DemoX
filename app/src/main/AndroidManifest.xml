@@ -32,7 +32,8 @@
             android:screenOrientation="fullSensor"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".views.spinner.SpinnerActivity" />
-        <activity android:name=".views.recyclerview.RecyclerviewCategoryActivity" />
+        <activity android:name=".views.recyclerview.muti.RecyclerviewCategoryActivity" />
+        <activity android:name=".views.recyclerview.ceiling.RecyclerviewCeilingActivity" />
     </application>
 
 </manifest>
