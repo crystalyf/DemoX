@@ -146,12 +146,12 @@ class RecItemHeadDecpration(private val context: Context) : ItemDecoration() {
             }
             val name = index[if (tag - 1 < 0) 0 else tag - 1]
             var height = Math.max(top, headHeight)
-            if (adapterPosition + 1 < citiList!!.size) {
-                val nextTag = citiList!![adapterPosition + 1].tage
-                if (tag != nextTag) {
-                    height = top
-                }
-            }
+//            if (adapterPosition + 1 < citiList!!.size) {
+//                val nextTag = citiList!![adapterPosition + 1].tage
+//                if (tag != nextTag) {
+//                    height = top
+//                }
+//            }
             paint!!.color = Color.parseColor("#D34415")
             c.drawRect(parentLeft.toFloat(), height - headHeight.toFloat(), parentRight.toFloat(), height.toFloat(), paint!!)
             paint!!.color = Color.BLACK
