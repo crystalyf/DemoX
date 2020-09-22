@@ -16,6 +16,12 @@
         android:id="@+id/btn_ceiling"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="悬浮吸顶效果（多）子项(item)的RecyclerView" />
+        android:text="悬浮吸顶效果1:（多）子项(item)的RecyclerView" />
+
+    <Button
+        android:id="@+id/btn_sticky"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="悬浮吸顶效果2:（多）子项(item)的RecyclerView" />
 
 </LinearLayout>

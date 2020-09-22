@@ -11,6 +11,8 @@ class CeilingItemModel:  Serializable {
 
     var kana: String = ""
 
+    var groupFieldName: String = ""
+
     var group: Int = 0
 
     var tage = -1

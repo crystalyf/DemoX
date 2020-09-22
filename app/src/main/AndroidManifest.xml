@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.recyclerview.RecyclerActivity"></activity>
+        <activity android:name=".views.textview.TextViewActivity"></activity>
+        <activity android:name=".views.recyclerview.RecyclerActivity" />
         <activity android:name=".views.ViewActivity" />
         <activity android:name=".licenses.LicensesActivity" />
         <activity android:name=".MainActivity">
@@ -34,6 +35,7 @@
         <activity android:name=".views.spinner.SpinnerActivity" />
         <activity android:name=".views.recyclerview.muti.RecyclerviewCategoryActivity" />
         <activity android:name=".views.recyclerview.ceiling.RecyclerviewCeilingActivity" />
+        <activity android:name=".views.recyclerview.ceilingTwo.RecyclerviewCeilingTwoActivity" />
     </application>
 
 </manifest>

@@ -6,6 +6,12 @@
     android:orientation="vertical"
     tools:context=".views.ViewActivity">
 
+    <Button
+        android:id="@+id/btn_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="textView 合集" />
+
 
     <Button
         android:id="@+id/btn_spinner"
