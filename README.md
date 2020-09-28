@@ -4,7 +4,7 @@ Demo Android合集
 图片的选择（裁剪）：
 
 
-![img](https://github.com/crystalyf/DemoX/blob/master/uCrop.gif)
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/ucrop.gif)
 
 动态切换主题色：
 
