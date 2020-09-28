@@ -36,6 +36,8 @@
         <activity android:name=".views.recyclerview.muti.RecyclerviewCategoryActivity" />
         <activity android:name=".views.recyclerview.ceiling.RecyclerviewCeilingActivity" />
         <activity android:name=".views.recyclerview.ceilingTwo.RecyclerviewCeilingTwoActivity" />
+        <activity android:name=".views.edittext.EditTextActivity" />
+        <activity android:name=".views.edittext.EditTextAddDeleteActivity" />
     </application>
 
 </manifest>

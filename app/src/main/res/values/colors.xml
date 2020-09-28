@@ -9,6 +9,7 @@
     <color name="white">#ffffff</color>
     <color name="colorWhite90">#E5FFFFFF</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorGray">#585858</color>
     <color name="transparent">#00000000</color>
 
 
@@ -20,6 +21,7 @@
     <color name="md_green_700">#388E3C</color>
     <!--red-->
     <color name="colorRed">#D34415</color>
+    <color name="colorBlue">#2196F3</color>
 
     <color name="colorTransparentBackground">#a0000000</color>
 
@@ -27,4 +29,7 @@
 
     <color name="color_slide_bg">@color/colorRed</color>
     <color name="color_slide_over_bg">@color/white</color>
+
+    <!-- InputEditTextView -->
+    <color name="colorInputEditHint">#3B566B</color>
 </resources>

@@ -5,4 +5,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="slide_text">滑动接听</string>
+    <!-- InputTextView -->
+    <string name="password_is_incorrect_text">您的密码不正确</string>
+    <string name="contact_add_name_tag">姓名</string>
+    <string name="contact_add_phone_tag">电话号</string>
 </resources>
