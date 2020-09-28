@@ -4,13 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
-import com.change.demox.views.recyclerview.RecyclerActivity
-import com.change.demox.views.spinner.SpinnerActivity
-import com.change.demox.views.textview.TextViewActivity
 import kotlinx.android.synthetic.main.activity_edit_text.*
-import kotlinx.android.synthetic.main.activity_view.*
 
-
+/**
+ * EditText控件：
+ *
+ * 1。默认选中状态时，横线，光标是colorPrimary,未选中时横线是灰色
+ * 2。点击屏幕其他位置不会自动取消focus状态，如果需要解除选中状态，需要在onFocusChangeListener去写逻辑
+ *
+ */
 class EditTextActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +23,10 @@ class EditTextActivity : AppCompatActivity() {
     private fun initView() {
         btn_edit_1.setOnClickListener {
             val intent = Intent(this, EditTextAddDeleteActivity::class.java)
+            startActivity(intent)
+        }
+        btn_edit_2.setOnClickListener {
+            val intent = Intent(this, EditTextPasswordActivity::class.java)
             startActivity(intent)
         }
     }

@@ -12,5 +12,11 @@
         android:layout_height="wrap_content"
         android:text="输入时带删除按钮的edittext" />
 
+    <Button
+        android:id="@+id/btn_edit_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="edittext的转换显示" />
+
 
 </LinearLayout>

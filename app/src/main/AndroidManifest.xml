@@ -38,6 +38,7 @@
         <activity android:name=".views.recyclerview.ceilingTwo.RecyclerviewCeilingTwoActivity" />
         <activity android:name=".views.edittext.EditTextActivity" />
         <activity android:name=".views.edittext.EditTextAddDeleteActivity" />
+        <activity android:name=".views.edittext.EditTextPasswordActivity" />
     </application>
 
 </manifest>
