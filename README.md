@@ -29,6 +29,21 @@ Demo Android合集
 
 
 
+带类别的recyclerview(双列表项的recyclerview)：
+
+
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E5%8F%8Citem%E7%9A%84recyclerview.gif)
+
+
+
+
+Recyclerview顶部悬停效果，（跟随消失和覆盖效果）：
+
+
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E9%A1%B6%E9%83%A8%E6%82%AC%E5%81%9C%E8%A6%86%E7%9B%96%E6%95%88%E6%9E%9C.gif)
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E9%A1%B6%E9%83%A8%E6%82%AC%E5%81%9C%E6%95%88%E6%9E%9C%EF%BC%88%E5%90%91%E4%B8%8A%E5%BC%B9%E5%87%BA%EF%BC%89.gif)
+
+
 
 
 
