@@ -5,6 +5,8 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import com.change.demox.R
+import com.change.demox.repository.ITopRepository
+import com.change.demox.repository.TopRepository
 import com.change.demox.utils.SharedPreferences
 
 /**
@@ -17,7 +19,10 @@ class MyApplication : Application(), Application.ActivityLifecycleCallbacks {
     /**
      * データ保存操作の対象
      */
-    private val preferences by lazy { SharedPreferences(applicationContext) }
+    val preferences by lazy { SharedPreferences(applicationContext) }
+
+    val topRepository: ITopRepository
+        get() = TopRepository.instance(this)
 
     override fun onCreate() {
         super.onCreate()

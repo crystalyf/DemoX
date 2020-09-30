@@ -8,6 +8,9 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
+    def STRING = 'String'
+    def API_HOST = 'API_HOST'
+
     defaultConfig {
         applicationId "com.change.demox"
         minSdkVersion 24
@@ -19,11 +22,27 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField STRING, API_HOST, '"https://staticzcjb.weibangong.com/"'
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField STRING, API_HOST, '"https://staticzcjb.weibangong.com/"'
         }
     }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 
     dataBinding {
         enabled = true
@@ -40,6 +59,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -47,12 +67,23 @@ dependencies {
     implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.fragment:fragment-ktx:1.2.5"
 
     implementation 'com.github.yalantis:ucrop:2.2.6'
     implementation "com.github.bumptech.glide:glide:4.11.0"
     annotationProcessor "com.github.bumptech.glide:compiler:4.10.0"
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation "com.google.guava:guava:24.0-android"
+    //retrofit2.0
+    implementation "com.squareup.retrofit2:retrofit:2.8.1"
+    implementation "com.squareup.retrofit2:converter-gson:2.8.1"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.0.0"
+    //协程
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7'
+    //timber
+    implementation "com.jakewharton.timber:timber:4.7.1"
+    // PDF Viewer
+    implementation "com.github.barteksc:android-pdf-viewer:3.2.0-beta.1"
 
 }
 repositories {
