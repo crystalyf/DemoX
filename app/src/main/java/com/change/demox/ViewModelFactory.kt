@@ -7,6 +7,7 @@ import com.change.demox.remote.RetrofitManager
 import com.change.demox.repository.ITopRepository
 import com.change.demox.usecase.PDFBookDocumentUseCase
 import com.change.demox.utils.SharedPreferences
+import com.change.demox.views.bottomsheet.BottomSheetViewModel
 
 class ViewModelFactory constructor(
         private val sharePref: SharedPreferences,
@@ -18,6 +19,8 @@ class ViewModelFactory constructor(
                 when {
                     isAssignableFrom(PDFBookDocumentViewModel::class.java) ->
                         PDFBookDocumentViewModel(PDFBookDocumentUseCase(topRepository))
+                    isAssignableFrom(BottomSheetViewModel::class.java) ->
+                        BottomSheetViewModel()
                     else ->
                         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }

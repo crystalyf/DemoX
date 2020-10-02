@@ -40,6 +40,9 @@
         <activity android:name=".views.edittext.EditTextAddDeleteActivity" />
         <activity android:name=".views.edittext.EditTextPasswordActivity" />
         <activity android:name=".pdf.PdfShowActivity" />
+        <activity android:name=".views.bottomsheet.BottomSheetActivity" />
+        <activity android:name=".views.bottomsheet.infragment.BottomSheetFragmentActivity" />
+        <activity android:name=".views.bottomsheet.BottomSheetRootActivity" />
     </application>
 
 </manifest>

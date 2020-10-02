@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativelayout_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingDefaultResource">
+
+    <com.change.demox.views.bottomsheet.widget.DragLayout
+        android:id="@+id/drawLayout"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/dragView"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_top_radius_white"
+            android:elevation="1dp">
+
+            <View
+                android:layout_width="44dp"
+                android:layout_height="5dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bg_grey_radius" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/frame_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/dragView"
+            android:background="@color/white"
+            android:elevation="10dp"
+            android:padding="1dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_machine_part"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+
+    </com.change.demox.views.bottomsheet.widget.DragLayout>
+</RelativeLayout>
