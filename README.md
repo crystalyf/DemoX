@@ -47,6 +47,16 @@ Recyclerview顶部悬停效果，（跟随消失和覆盖效果）：
 
 
 
+bottomSheet：
+
+
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/bottomsheet.gif)
+
+
+
+
+
+
 
 
 
