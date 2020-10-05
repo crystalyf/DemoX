@@ -35,6 +35,6 @@
         android:id="@+id/btn_bottomsheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="bottom合集" />
+        android:text="bottomSheet合集" />
 
 </LinearLayout>
