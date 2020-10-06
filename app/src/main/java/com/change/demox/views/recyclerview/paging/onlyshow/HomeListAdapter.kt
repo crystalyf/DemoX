@@ -1,4 +1,4 @@
-package com.change.demox.views.recyclerview.paging
+package com.change.demox.views.recyclerview.paging.onlyshow
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.change.demox.databinding.ItemHomeListBinding
-import com.change.demox.views.recyclerview.paging.bean.SampleModel
+import com.change.demox.views.recyclerview.paging.onlyshow.bean.SampleModel
 
 /**
  * 这里父类我们使用到了PagedListAdapter，它是官方基于RecyclerView.Adapter的AsyncPagedListDiffer封装类，

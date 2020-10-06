@@ -1,8 +1,9 @@
-package com.change.demox.views.recyclerview.paging
+package com.change.demox.views.recyclerview.paging.onlyshow
 
 import android.os.Bundle
 import com.change.base.BaseActivity
 import com.change.demox.R
+import com.change.demox.views.recyclerview.paging.onlyshow.PagingFragment
 
 
 class PagingFragmentActivity : BaseActivity() {

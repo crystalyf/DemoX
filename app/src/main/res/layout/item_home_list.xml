@@ -5,11 +5,11 @@
 
         <variable
             name="itemData"
-            type="com.change.demox.views.recyclerview.paging.bean.SampleModel" />
+            type="com.change.demox.views.recyclerview.paging.onlyshow.bean.SampleModel" />
 
         <variable
             name="viewmodel"
-            type="com.change.demox.views.recyclerview.paging.PagingViewModel" />
+            type="com.change.demox.views.recyclerview.paging.onlyshow.PagingViewModel" />
     </data>
 
     <FrameLayout

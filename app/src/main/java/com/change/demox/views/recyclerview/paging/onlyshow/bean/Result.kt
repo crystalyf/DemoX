@@ -1,4 +1,4 @@
-package com.change.demox.views.recyclerview.paging.bean
+package com.change.demox.views.recyclerview.paging.onlyshow.bean
 
 sealed class Result<out R> {
 

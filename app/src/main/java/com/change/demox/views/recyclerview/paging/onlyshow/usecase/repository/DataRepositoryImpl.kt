@@ -5,11 +5,11 @@
  * Copyright © 2019年 Eole. All rights reserved.
  */
 
-package com.change.demox.views.recyclerview.paging.usecase.repository
+package com.change.demox.views.recyclerview.paging.onlyshow.usecase.repository
 
 import android.content.Context
-import com.change.demox.views.recyclerview.paging.bean.Result
-import com.change.demox.views.recyclerview.paging.bean.SampleModel
+import com.change.demox.views.recyclerview.paging.onlyshow.bean.Result
+import com.change.demox.views.recyclerview.paging.onlyshow.bean.SampleModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -56,16 +56,6 @@ class DataRepositoryImpl(
         }
         return result
     }
-
-    private fun markItemAsRead(key: String): Result<*> {
-        val pref = context.getSharedPreferences("pref", Context.MODE_PRIVATE)
-        with(pref.edit()) {
-            putBoolean(key, true)
-            commit()
-        }
-        return Result.Success("Success")
-    }
-
 
     private fun mockCallBackCall(callback: MockCallback) {
         callback.onSuccess(List(50) {

@@ -8,9 +8,9 @@ import com.change.demox.repository.ITopRepository
 import com.change.demox.usecase.PDFBookDocumentUseCase
 import com.change.demox.utils.SharedPreferences
 import com.change.demox.views.bottomsheet.BottomSheetViewModel
-import com.change.demox.views.recyclerview.paging.PagingViewModel
-import com.change.demox.views.recyclerview.paging.usecase.GetPagingHomeDataUseCase
-import com.change.demox.views.recyclerview.paging.usecase.repository.IDataRepository
+import com.change.demox.views.recyclerview.paging.onlyshow.PagingViewModel
+import com.change.demox.views.recyclerview.paging.onlyshow.usecase.GetPagingHomeDataUseCase
+import com.change.demox.views.recyclerview.paging.onlyshow.usecase.repository.IDataRepository
 
 class ViewModelFactory constructor(
         private val sharePref: SharedPreferences,

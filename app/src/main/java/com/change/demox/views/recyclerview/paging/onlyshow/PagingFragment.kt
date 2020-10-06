@@ -1,4 +1,4 @@
-package com.change.demox.views.recyclerview.paging
+package com.change.demox.views.recyclerview.paging.onlyshow
 
 import android.os.Bundle
 import android.view.LayoutInflater

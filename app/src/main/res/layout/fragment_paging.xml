@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.change.demox.views.recyclerview.paging.PagingViewModel" />
+            type="com.change.demox.views.recyclerview.paging.onlyshow.PagingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

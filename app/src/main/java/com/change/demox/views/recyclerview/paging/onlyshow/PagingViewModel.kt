@@ -1,4 +1,4 @@
-package com.change.demox.views.recyclerview.paging
+package com.change.demox.views.recyclerview.paging.onlyshow
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,9 +6,9 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
 import com.change.demox.utils.Event
-import com.change.demox.views.recyclerview.paging.bean.Result
-import com.change.demox.views.recyclerview.paging.bean.SampleModel
-import com.change.demox.views.recyclerview.paging.usecase.GetPagingHomeDataUseCase
+import com.change.demox.views.recyclerview.paging.onlyshow.bean.Result
+import com.change.demox.views.recyclerview.paging.onlyshow.bean.SampleModel
+import com.change.demox.views.recyclerview.paging.onlyshow.usecase.GetPagingHomeDataUseCase
 
 class PagingViewModel(
         private val getHomeDataUseCase: GetPagingHomeDataUseCase

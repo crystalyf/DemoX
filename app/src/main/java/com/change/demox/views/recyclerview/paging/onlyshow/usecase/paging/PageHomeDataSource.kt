@@ -1,10 +1,10 @@
-package com.change.demox.views.recyclerview.paging.usecase.paging
+package com.change.demox.views.recyclerview.paging.onlyshow.usecase.paging
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
-import com.change.demox.views.recyclerview.paging.bean.Result
-import com.change.demox.views.recyclerview.paging.bean.SampleModel
-import com.change.demox.views.recyclerview.paging.usecase.repository.IDataRepository
+import com.change.demox.views.recyclerview.paging.onlyshow.bean.Result
+import com.change.demox.views.recyclerview.paging.onlyshow.bean.SampleModel
+import com.change.demox.views.recyclerview.paging.onlyshow.usecase.repository.IDataRepository
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
