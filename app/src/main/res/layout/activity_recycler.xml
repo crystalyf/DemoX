@@ -24,4 +24,10 @@
         android:layout_height="wrap_content"
         android:text="悬浮吸顶效果2:（多）子项(item)的RecyclerView" />
 
+    <Button
+        android:id="@+id/btn_paging"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="paging 分页加载" />
+
 </LinearLayout>

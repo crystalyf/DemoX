@@ -60,6 +60,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation 'androidx.paging:paging-runtime-ktx:2.1.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -84,6 +85,8 @@ dependencies {
     implementation "com.jakewharton.timber:timber:4.7.1"
     // PDF Viewer
     implementation "com.github.barteksc:android-pdf-viewer:3.2.0-beta.1"
+
+    testImplementation "androidx.paging:paging-common:2.1.2"
 
 }
 repositories {

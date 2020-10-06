@@ -43,6 +43,7 @@
         <activity android:name=".views.bottomsheet.BottomSheetActivity" />
         <activity android:name=".views.bottomsheet.infragment.BottomSheetFragmentActivity" />
         <activity android:name=".views.bottomsheet.BottomSheetRootActivity" />
+        <activity android:name=".views.recyclerview.paging.PagingFragmentActivity" />
     </application>
 
 </manifest>

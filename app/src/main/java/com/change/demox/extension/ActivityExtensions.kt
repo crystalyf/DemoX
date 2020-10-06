@@ -21,8 +21,10 @@ import com.change.demox.utils.SharedPreferences
 fun Activity.getViewModelFactory(): ViewModelFactory {
     val sharePref = SharedPreferences(applicationContext)
     val topRepository = (applicationContext as MyApplication).topRepository
+    val dataRepository = (applicationContext as MyApplication).dataRepository
     return ViewModelFactory.getInstance(
-        sharePref,
-        topRepository,
+            sharePref,
+            topRepository,
+            dataRepository
     )
 }

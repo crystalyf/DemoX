@@ -8,10 +8,14 @@ import com.change.demox.repository.ITopRepository
 import com.change.demox.usecase.PDFBookDocumentUseCase
 import com.change.demox.utils.SharedPreferences
 import com.change.demox.views.bottomsheet.BottomSheetViewModel
+import com.change.demox.views.recyclerview.paging.PagingViewModel
+import com.change.demox.views.recyclerview.paging.usecase.GetPagingHomeDataUseCase
+import com.change.demox.views.recyclerview.paging.usecase.repository.IDataRepository
 
 class ViewModelFactory constructor(
         private val sharePref: SharedPreferences,
         private val topRepository: ITopRepository,
+        private val dataRepository: IDataRepository,
 ) : ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel> create(modelClass: Class<T>) =
@@ -21,11 +25,13 @@ class ViewModelFactory constructor(
                         PDFBookDocumentViewModel(PDFBookDocumentUseCase(topRepository))
                     isAssignableFrom(BottomSheetViewModel::class.java) ->
                         BottomSheetViewModel()
+                    isAssignableFrom(PagingViewModel::class.java) ->
+                        PagingViewModel(GetPagingHomeDataUseCase(dataRepository))
                     else ->
                         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }
             } as T
-    
+
     companion object {
         @Volatile
         var INSTANCE: ViewModelFactory? = null
@@ -33,6 +39,7 @@ class ViewModelFactory constructor(
         fun getInstance(
                 sharePref: SharedPreferences,
                 iTopRepository: ITopRepository,
+                iDataRepository: IDataRepository
         ): ViewModelFactory {
             if (INSTANCE == null) {
                 synchronized(ViewModelFactory::class) {
@@ -40,7 +47,8 @@ class ViewModelFactory constructor(
                         INSTANCE =
                                 ViewModelFactory(
                                         sharePref,
-                                        iTopRepository
+                                        iTopRepository,
+                                        iDataRepository
                                 )
                         RetrofitManager.sharedPreferences = sharePref
                     }

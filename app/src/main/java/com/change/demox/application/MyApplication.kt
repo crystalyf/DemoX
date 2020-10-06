@@ -8,6 +8,8 @@ import com.change.demox.R
 import com.change.demox.repository.ITopRepository
 import com.change.demox.repository.TopRepository
 import com.change.demox.utils.SharedPreferences
+import com.change.demox.views.recyclerview.paging.usecase.repository.DataRepositoryImpl
+import com.change.demox.views.recyclerview.paging.usecase.repository.IDataRepository
 
 /**
  * Created by xingjunchao on 2020/08/24.
@@ -23,6 +25,9 @@ class MyApplication : Application(), Application.ActivityLifecycleCallbacks {
 
     val topRepository: ITopRepository
         get() = TopRepository.instance(this)
+
+    val dataRepository: IDataRepository
+        get() = DataRepositoryImpl.instance(this)
 
     override fun onCreate() {
         super.onCreate()

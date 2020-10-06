@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="itemData"
+            type="com.change.demox.views.recyclerview.paging.bean.SampleModel" />
+
+        <variable
+            name="viewmodel"
+            type="com.change.demox.views.recyclerview.paging.PagingViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:text="@{itemData.first}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="30dp"
+            android:text="未读"
+            android:textColor="@{itemData.second ? @color/colorGray : @color/colorRed}" />
+
+    </FrameLayout>
+
+</layout>
