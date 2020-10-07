@@ -7,6 +7,7 @@ import com.change.demox.R
 import com.change.demox.views.recyclerview.ceiling.RecyclerviewCeilingActivity
 import com.change.demox.views.recyclerview.ceilingTwo.RecyclerviewCeilingTwoActivity
 import com.change.demox.views.recyclerview.muti.RecyclerviewCategoryActivity
+import com.change.demox.views.recyclerview.paging.delete.PagingDeleteActivity
 import com.change.demox.views.recyclerview.paging.onlyshow.PagingFragmentActivity
 import kotlinx.android.synthetic.main.activity_recycler.*
 
@@ -34,6 +35,10 @@ class RecyclerActivity : AppCompatActivity() {
 
         btn_paging.setOnClickListener {
             val intent = Intent(this, PagingFragmentActivity::class.java)
+            startActivity(intent)
+        }
+        btn_paging_delete.setOnClickListener {
+            val intent = Intent(this, PagingDeleteActivity::class.java)
             startActivity(intent)
         }
     }

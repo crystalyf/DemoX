@@ -1,4 +1,4 @@
-package com.change.demox.views.recyclerview.paging.onlyshow
+package com.change.demox.views.recyclerview.paging.delete
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,25 +7,25 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.change.demox.databinding.FragmentPagingBinding
+import com.change.demox.databinding.FragmentPagingDeleteBinding
 import com.change.demox.extension.getViewModelFactory
 import timber.log.Timber
 
-class PagingFragment : Fragment() {
+class PagingDeleteFragment : Fragment() {
 
-    private  var viewModel: PagingViewModel? = null
+    private var viewModel: PagingDeleteViewModel? = null
 
-    private var viewDataBinding: FragmentPagingBinding? = null
+    private var viewDataBinding: FragmentPagingDeleteBinding? = null
 
-    private lateinit var listAdapter: HomeListAdapter
+    private lateinit var listAdapter: BookListAdapter
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        viewDataBinding = FragmentPagingBinding.inflate(inflater, container, false).apply {
-            viewModel = viewModels<PagingViewModel> { activity?.getViewModelFactory()!! }.value
+        viewDataBinding = FragmentPagingDeleteBinding.inflate(inflater, container, false).apply {
+            viewModel = viewModels<PagingDeleteViewModel> { activity?.getViewModelFactory()!! }.value
         }
         return viewDataBinding!!.root
     }
@@ -33,7 +33,7 @@ class PagingFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewDataBinding!!.lifecycleOwner = this.viewLifecycleOwner
-        setupListAdapter()
+        initView()
     }
 
     override fun onDestroyView() {
@@ -42,20 +42,27 @@ class PagingFragment : Fragment() {
         viewDataBinding = null
     }
 
-    private fun setupListAdapter() {
-         viewModel = viewDataBinding?.viewModel
-        if (viewModel != null) {
-            listAdapter = HomeListAdapter(viewModel!!)
-            viewDataBinding!!.homeList.adapter = listAdapter
-            //在Activity中对LiveData进行订阅
-            viewModel?.datas?.observe(viewLifecycleOwner, Observer {
-                // 每当数据更新，计算新旧数据集的差异，对列表进行更新
-                //内部代码：mDiffer.submitList(pagedList);
-                listAdapter.submitList(it)
-            })
+    private fun initView() {
+        setupListAdapter()
+        viewDataBinding?.swipeRefresh?.setOnRefreshListener {
+            viewDataBinding?.swipeRefresh?.isRefreshing = false
+            listAdapter.clearCheckStates()
+            viewModel?.refresh()
+        }
+    }
 
-            viewModel?.reloadEvent?.observe(viewLifecycleOwner, Observer {
-                listAdapter.notifyItemChanged(it.peekContent())
+    private fun setupListAdapter() {
+        viewModel = viewDataBinding?.viewModel
+        if (viewModel != null) {
+            listAdapter = BookListAdapter(viewModel, activity?.applicationContext!!)
+            viewDataBinding!!.homeList.adapter = listAdapter
+            viewModel?.getDataList()
+            //在Activity中对LiveData进行订阅
+            viewModel?.books?.observe(viewLifecycleOwner, Observer {
+                if (listAdapter.currentList?.size ?: 0 > 0 && it.size == 0) {
+                    return@Observer
+                }
+                listAdapter.submitList(it)
             })
         } else {
             Timber.w("ViewModel not initialized when attempting to set up adapter.")

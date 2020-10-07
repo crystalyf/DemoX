@@ -1,10 +1,9 @@
 package com.change.demox.remote
 
+import com.change.demox.views.recyclerview.paging.delete.bean.BookModel
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Streaming
-import retrofit2.http.Url
+import retrofit2.http.*
 
 interface RetrofitService {
 
@@ -23,6 +22,16 @@ interface RetrofitService {
     fun downLoadPDFByLink(
             @Url fileUrl: String
     ): Call<ResponseBody>
+
+
+    /**
+     * 获取Books的数据列表
+     *
+     * @return
+     */
+    @GET(ApiConfigRetrofit.PATH_BOOKS)
+    fun getBooks(
+    ): Call<BookModel>
 
 
 }

@@ -32,4 +32,6 @@
 
     <!-- InputEditTextView -->
     <color name="colorInputEditHint">#3B566B</color>
+    <!-- divider -->
+    <color name="colorItemDividerGray">#DCDCDC</color>
 </resources>

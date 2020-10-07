@@ -3,9 +3,7 @@ package com.change.demox.remote
 sealed class ApiConfigRetrofit {
 
     companion object {
-        // API PATH (暂没用上)
-        const val PATH_BOOKS = "books"
-        const val PATH_BOOK_DETAIL = "books/{book_id}"
+        const val PATH_BOOKS = "getBookList"
 
 
         const val CONTENT_TYPE_JSON = "Content-Type: x-www-form-urlencoded"

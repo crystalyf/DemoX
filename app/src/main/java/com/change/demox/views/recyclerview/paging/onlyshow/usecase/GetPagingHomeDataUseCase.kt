@@ -50,9 +50,12 @@ class GetPagingHomeDataUseCase(private val dataRepo: IDataRepository) {
                 .setPageSize(50)   // 分页加载的数量
                 .setEnablePlaceholders(true)  // 是否启用占位符
                 .setInitialLoadSizeHint(50)  // 初次加载的数量：定义首次加载时要加载的Item数量。此值通常大于PageSize，因此在初始化列表时，该配置可以使得加载的数据保证屏幕可以小范围的滚动。
-                .setPrefetchDistance(1)  // 预取数据的距离：顾名思义，该参数配置定义了列表当距离加载边缘多远时进行分页的请求，默认大小为PageSize——即距离底部还有一页数据时，开启下一页的数据加载
+                .setPrefetchDistance(10)  // 预取数据的距离：顾名思义，该参数配置定义了列表当距离加载边缘多远时进行分页的请求，默认大小为PageSize——即距离底部还有一页数据时，开启下一页的数据加载
                 .build()
         ).build()
+
+        //PrefetchDistance：提前多少个item开始加载下（上）一页数据
+
         /**
          * 点进build()可以看到，最终Builder中的所有配置都通过annotation依赖注入的方式对PagedList进行了实例化
          */
@@ -61,6 +64,7 @@ class GetPagingHomeDataUseCase(private val dataRepo: IDataRepository) {
     fun refresh() {
         datasource.sourceLiveData.value?.invalidate()
     }
+
 }
 
 

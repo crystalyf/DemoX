@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ bg_divider.xml
+  ~
+  ~ Created by xingjunchao on 2019/12/09.
+  ~ Copyright © 2019年 Eole. All rights reserved.
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <solid android:color="@color/colorItemDividerGray" />
+    <size android:height="1dp" />
+
+</shape>

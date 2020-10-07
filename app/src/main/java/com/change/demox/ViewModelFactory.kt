@@ -8,6 +8,9 @@ import com.change.demox.repository.ITopRepository
 import com.change.demox.usecase.PDFBookDocumentUseCase
 import com.change.demox.utils.SharedPreferences
 import com.change.demox.views.bottomsheet.BottomSheetViewModel
+import com.change.demox.views.recyclerview.paging.delete.PagingDeleteViewModel
+import com.change.demox.views.recyclerview.paging.delete.usecase.GetBooksUseCase
+import com.change.demox.views.recyclerview.paging.delete.usecase.repository.ISearchRepository
 import com.change.demox.views.recyclerview.paging.onlyshow.PagingViewModel
 import com.change.demox.views.recyclerview.paging.onlyshow.usecase.GetPagingHomeDataUseCase
 import com.change.demox.views.recyclerview.paging.onlyshow.usecase.repository.IDataRepository
@@ -16,6 +19,7 @@ class ViewModelFactory constructor(
         private val sharePref: SharedPreferences,
         private val topRepository: ITopRepository,
         private val dataRepository: IDataRepository,
+        private val searchRepository: ISearchRepository
 ) : ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel> create(modelClass: Class<T>) =
@@ -27,6 +31,8 @@ class ViewModelFactory constructor(
                         BottomSheetViewModel()
                     isAssignableFrom(PagingViewModel::class.java) ->
                         PagingViewModel(GetPagingHomeDataUseCase(dataRepository))
+                    isAssignableFrom(PagingDeleteViewModel::class.java) ->
+                        PagingDeleteViewModel(GetBooksUseCase(searchRepository))
                     else ->
                         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }
@@ -39,7 +45,8 @@ class ViewModelFactory constructor(
         fun getInstance(
                 sharePref: SharedPreferences,
                 iTopRepository: ITopRepository,
-                iDataRepository: IDataRepository
+                iDataRepository: IDataRepository,
+                iSearchRepository: ISearchRepository
         ): ViewModelFactory {
             if (INSTANCE == null) {
                 synchronized(ViewModelFactory::class) {
@@ -48,7 +55,8 @@ class ViewModelFactory constructor(
                                 ViewModelFactory(
                                         sharePref,
                                         iTopRepository,
-                                        iDataRepository
+                                        iDataRepository,
+                                        iSearchRepository
                                 )
                         RetrofitManager.sharedPreferences = sharePref
                     }

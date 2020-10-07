@@ -25,12 +25,12 @@ android {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField STRING, API_HOST, '"https://staticzcjb.weibangong.com/"'
+            buildConfigField STRING, API_HOST, '"http://mock.apistub.cn/user/keyan93/DemoX/"'
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField STRING, API_HOST, '"https://staticzcjb.weibangong.com/"'
+            buildConfigField STRING, API_HOST, '"http://mock.apistub.cn/user/keyan93/DemoX/"'
         }
     }
 

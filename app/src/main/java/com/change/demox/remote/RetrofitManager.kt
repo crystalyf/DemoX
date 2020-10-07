@@ -4,6 +4,7 @@ import com.change.demox.BuildConfig
 import com.change.demox.application.MyApplication
 import com.change.demox.remote.bean.ApiErrorModel
 import com.change.demox.utils.SharedPreferences
+import com.change.demox.views.recyclerview.paging.delete.bean.BookModel
 import com.google.common.collect.Sets
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
@@ -63,6 +64,20 @@ object RetrofitManager : BaseRetrofitManager() {
             .client(client)
             .build()
             .create(RetrofitService::class.java)
+
+
+    /**
+     *
+     * @param offset  获取数据的偏移量，用APISTUB其实没用上，API是一个无参数的get请求。
+     */
+    suspend fun getBooks(
+            offset: Int = 0
+    ) = suspendCancellableCoroutine<BookModel?> {
+        exclusiveRun(
+                retrofitService.getBooks(), ApiCallback(it)
+        )
+    }
+
 
     /**
      * 下载PDF文件

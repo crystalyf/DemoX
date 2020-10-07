@@ -22,9 +22,11 @@ fun Activity.getViewModelFactory(): ViewModelFactory {
     val sharePref = SharedPreferences(applicationContext)
     val topRepository = (applicationContext as MyApplication).topRepository
     val dataRepository = (applicationContext as MyApplication).dataRepository
+    val searchRepository = (applicationContext as MyApplication).searchRepository
     return ViewModelFactory.getInstance(
             sharePref,
             topRepository,
-            dataRepository
+            dataRepository,
+            searchRepository
     )
 }

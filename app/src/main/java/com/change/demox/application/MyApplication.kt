@@ -8,6 +8,8 @@ import com.change.demox.R
 import com.change.demox.repository.ITopRepository
 import com.change.demox.repository.TopRepository
 import com.change.demox.utils.SharedPreferences
+import com.change.demox.views.recyclerview.paging.delete.usecase.repository.ISearchRepository
+import com.change.demox.views.recyclerview.paging.delete.usecase.repository.SearchRepository
 import com.change.demox.views.recyclerview.paging.onlyshow.usecase.repository.DataRepositoryImpl
 import com.change.demox.views.recyclerview.paging.onlyshow.usecase.repository.IDataRepository
 
@@ -25,6 +27,10 @@ class MyApplication : Application(), Application.ActivityLifecycleCallbacks {
 
     val topRepository: ITopRepository
         get() = TopRepository.instance(this)
+
+    val searchRepository: ISearchRepository
+        get() = SearchRepository.instance(this)
+
 
     val dataRepository: IDataRepository
         get() = DataRepositoryImpl.instance(this)

@@ -30,4 +30,10 @@
         android:layout_height="wrap_content"
         android:text="paging 分页加载" />
 
+    <Button
+        android:id="@+id/btn_paging_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="paging 分页加载(带删除)" />
+
 </LinearLayout>
