@@ -1,6 +1,8 @@
 package com.change.demox.views.recyclerview.paging.delete
 
+import android.text.TextUtils
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
 import com.change.demox.views.recyclerview.paging.delete.bean.Book
@@ -11,7 +13,7 @@ class PagingDeleteViewModel(
 ) : ViewModel() {
 
     lateinit var books: LiveData<PagedList<Book>>
-
+    var deleteButtonEnable = MutableLiveData<Boolean>()
     /**
      * 获取数据源
      *
@@ -28,6 +30,32 @@ class PagingDeleteViewModel(
      */
     fun refresh() {
         GetBooksUseCase.refresh()
+    }
+
+    /**
+     * 删除按钮的状态
+     *
+     * @property bookId　bookID
+     */
+    fun refreshDeleteButtonState(
+            bookId: String? = "",
+            checkState: HashMap<Int, Boolean>? = null
+    ) {
+        var i = 0
+        //checkbox選択済み
+        /**
+         * 選択（いいえ->はい）
+         * 選択されている場合は、代わりに選択します
+         * 選択済み（はい->いいえ）
+         * 何も選択されていない場合は、なしに変更します
+         */
+        if (TextUtils.isEmpty(bookId)) {
+            while (i < books.value?.size!!) {
+                books.value!![i]?.isChecked = false
+                i++
+            }
+        }
+        deleteButtonEnable.value = (checkState?.containsValue(true) == true)
     }
 
 

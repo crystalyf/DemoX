@@ -67,5 +67,9 @@
         <item name="android:gravity">start</item>
     </style>
 
+    <style name="commonDialogStyle" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
 
 </resources>

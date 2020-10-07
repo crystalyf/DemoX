@@ -104,6 +104,7 @@ class BookListAdapter(private val viewModel: PagingDeleteViewModel?, private val
                 item: Book?
         ) {
             item?.isChecked = !item?.isChecked!!
+            viewModel.refreshDeleteButtonState(item.book_id.toString(), checkStates)
         }
 
         companion object {

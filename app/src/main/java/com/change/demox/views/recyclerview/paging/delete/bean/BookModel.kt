@@ -30,7 +30,7 @@ data class Book(
         val model_name: String,
         val options: List<BOption>?,
         val remarks: String,
-        var isChecked: Boolean? = false
+        var isChecked: Boolean = false
 ) : Parcelable {
     fun isSameWith(other: Book): Boolean {
         return book_id == other.book_id
@@ -41,7 +41,6 @@ data class Book(
                 && model_name == other.model_name
                 && options == other.options
                 && remarks == other.remarks
-                && isChecked == other.isChecked
     }
 }
 
