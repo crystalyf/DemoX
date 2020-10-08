@@ -90,6 +90,7 @@ class ModelSearchResultDataSource(
                 if (e is RetrofitApiException) {
                     _error.postValue(e)
                 }
+                //Paging失败重试机制
                 retry = {
                     loadAfter(params, callback)
                 }
