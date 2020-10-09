@@ -7,6 +7,20 @@ Demo Android合集
 ![img](https://github.com/crystalyf/DemoX/blob/master/gif/ucrop.gif)
 
 
+图片手势缩放，滑动，平移：
+
+
+
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E6%89%8B%E5%8A%BF%E7%BC%A9%E6%94%BE.gif)
+
+
+
+给图片指定位置添加标记：
+
+
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E5%9B%BE%E7%89%87%E6%B7%BB%E5%8A%A0%E6%A0%87%E8%AE%B0.gif)
+
+
 动态切换主题色：
 
 
