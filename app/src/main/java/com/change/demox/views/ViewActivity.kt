@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
 import com.change.demox.views.bottomsheet.BottomSheetRootActivity
 import com.change.demox.views.edittext.EditTextActivity
+import com.change.demox.views.imageview.ImageViewActivity
 import com.change.demox.views.recyclerview.RecyclerActivity
 import com.change.demox.views.spinner.SpinnerActivity
 import com.change.demox.views.textview.TextViewActivity
@@ -38,6 +39,10 @@ class ViewActivity : AppCompatActivity() {
         }
         btn_bottomsheet.setOnClickListener {
             val intent = Intent(this, BottomSheetRootActivity::class.java)
+            startActivity(intent)
+        }
+        btn_imageview.setOnClickListener {
+            val intent = Intent(this, ImageViewActivity::class.java)
             startActivity(intent)
         }
     }

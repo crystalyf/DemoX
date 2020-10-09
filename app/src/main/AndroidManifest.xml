@@ -46,6 +46,8 @@
         <activity android:name=".views.bottomsheet.BottomSheetRootActivity" />
         <activity android:name=".views.recyclerview.paging.onlyshow.PagingFragmentActivity" />
         <activity android:name=".views.recyclerview.paging.delete.PagingDeleteActivity" />
+        <activity android:name=".views.imageview.ImageViewActivity" />
+        <activity android:name="com.change.demox.views.imageview.viewTag.ViewTagActivity" />
     </application>
 
 </manifest>
