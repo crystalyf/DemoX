@@ -9,4 +9,7 @@
     <string name="password_is_incorrect_text">您的密码不正确</string>
     <string name="contact_add_name_tag">姓名</string>
     <string name="contact_add_phone_tag">电话号</string>
+
+    <string name="menu_close">关闭</string>
+    <string name="tutorial_start">开始</string>
 </resources>

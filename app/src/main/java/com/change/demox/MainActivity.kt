@@ -8,6 +8,7 @@ import com.change.demox.pdf.PdfShowActivity
 import com.change.demox.themecolor.waytwo.DynamicThemeColorActivity
 import com.change.demox.ucrop.UcropActivity
 import com.change.demox.views.ViewActivity
+import com.change.demox.views.tutorial.TutorialActivity
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btn_ucrop.setOnClickListener(this)
         btn_views.setOnClickListener(this)
         btn_pdf_online.setOnClickListener(this)
+        btn_tutorial.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -50,6 +52,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.btn_pdf_online -> {
                 val intent = Intent(this, PdfShowActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.btn_tutorial -> {
+                val intent = Intent(this, TutorialActivity::class.java)
                 startActivity(intent)
             }
             else -> {

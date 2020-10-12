@@ -14,6 +14,7 @@ import com.change.demox.views.recyclerview.paging.delete.usecase.repository.ISea
 import com.change.demox.views.recyclerview.paging.onlyshow.PagingViewModel
 import com.change.demox.views.recyclerview.paging.onlyshow.usecase.GetPagingHomeDataUseCase
 import com.change.demox.views.recyclerview.paging.onlyshow.usecase.repository.IDataRepository
+import com.change.demox.views.tutorial.TutorialViewModel
 
 class ViewModelFactory constructor(
         private val sharePref: SharedPreferences,
@@ -33,6 +34,8 @@ class ViewModelFactory constructor(
                         PagingViewModel(GetPagingHomeDataUseCase(dataRepository))
                     isAssignableFrom(PagingDeleteViewModel::class.java) ->
                         PagingDeleteViewModel(GetBooksUseCase(searchRepository))
+                    isAssignableFrom(TutorialViewModel::class.java) ->
+                        TutorialViewModel()
                     else ->
                         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }

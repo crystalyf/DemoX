@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ arrays.xml
+  ~
+  ~ Created by xingjunchao on 2020/06/04.
+  ~ Copyright © 2020年 Kubota-PAD. All rights reserved.
+  -->
+
+<resources>
+    <!--tutorial-->
+    <string-array name="tutorial_text">
+        <item>引导文言1</item>
+        <item>引导文言2</item>
+        <item>引导文言3</item>
+        <item>引导文言4</item>
+    </string-array>
+
+</resources>

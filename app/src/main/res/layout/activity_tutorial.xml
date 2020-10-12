@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ activity_tutorial.xml
+  ~
+  ~ Created by xingjunchao on 2020/06/04.
+  ~ Copyright © 2020年 Kubota-PAD. All rights reserved.
+  -->
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.change.demox.views.tutorial.TutorialViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager_tutorial"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Space
+            android:id="@+id/space_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/imageview_tutorial"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageview_tutorial"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/tutorial_text"
+            app:layout_constraintTop_toBottomOf="@id/space_top" />
+
+        <TextView
+            android:id="@+id/tutorial_text"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_below="@id/imageview_tutorial"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/button_tutorial_ok"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageview_tutorial" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_tutorial_ok"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/bg_round"
+            android:onClick="@{() -> viewModel.tutorialOkClick()}"
+            android:text="开始"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:visibility="@{viewModel.isLastPage() ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toTopOf="@id/linearlayout_tutorial_dot"
+            app:layout_constraintTop_toBottomOf="@id/tutorial_text" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_tutorial_next"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/bg_round"
+            android:onClick="@{() -> viewModel.tutorialNextClick()}"
+            android:text="下一步"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:visibility="@{viewModel.isLastPage() ? View.INVISIBLE : View.VISIBLE}"
+            app:layout_constraintBottom_toTopOf="@id/linearlayout_tutorial_dot"
+            app:layout_constraintTop_toBottomOf="@id/tutorial_text" />
+
+        <LinearLayout
+            android:id="@+id/linearlayout_tutorial_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_tutorial_ok">
+
+            <ImageView
+                android:id="@+id/imageview_tutorial_dot1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="2dp"
+                android:src="@drawable/ic_dot_on" />
+
+            <ImageView
+                android:id="@+id/imageview_tutorial_dot2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="2dp"
+                android:src="@drawable/ic_dot_off" />
+
+            <ImageView
+                android:id="@+id/imageview_tutorial_dot3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="2dp"
+                android:src="@drawable/ic_dot_off" />
+
+            <ImageView
+                android:id="@+id/imageview_tutorial_dot4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="2dp"
+                android:src="@drawable/ic_dot_off" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

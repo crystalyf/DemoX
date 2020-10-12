@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="licenses 许可" />
+
     <Button
         android:id="@+id/btn_ucrop"
         android:layout_width="match_parent"
@@ -34,5 +35,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="加载online PDF" />
+
+    <Button
+        android:id="@+id/btn_tutorial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="引导页" />
 
 </LinearLayout>

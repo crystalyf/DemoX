@@ -49,6 +49,7 @@
         <activity android:name=".views.imageview.ImageViewActivity" />
         <activity android:name="com.change.demox.views.imageview.viewTag.ViewTagActivity" />
         <activity android:name=".views.slideview.SlideViewActivity" />
+        <activity android:name=".views.tutorial.TutorialActivity" />
     </application>
 
 </manifest>
