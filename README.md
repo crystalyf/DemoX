@@ -67,11 +67,18 @@ bottomSheet：
 
 
 
+引导页：
+
+
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E5%BC%95%E5%AF%BC%E9%A1%B5.gif)
+
+
+
+
 滑动接听组件：
 
 
 ![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E6%BB%91%E5%8A%A8%E6%8E%A5%E5%90%AC%E7%BB%84%E4%BB%B6.gif)
-
 
 
 
