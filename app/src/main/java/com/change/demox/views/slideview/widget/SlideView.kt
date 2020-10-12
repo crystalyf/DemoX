@@ -1,4 +1,4 @@
-package com.change.demox.views.widget
+package com.change.demox.views.slideview.widget
 
 import android.animation.Animator
 import android.animation.ObjectAnimator
@@ -19,7 +19,11 @@ class SlideView : View {
     private var mSlideBgWidth: Int = 0
     private var mSlideBgHeight: Int = 0
     private var mSlideBgRadius: Int = 0
+
+    //默认背景色
     private var mBackgroundColor: Int = 0
+
+    //滑过部分的布局颜色
     private var mSlideColor: Int = 0
     private var mTextColor: Int = 0
     private var mSlideLeft: Int = 0
@@ -51,7 +55,6 @@ class SlideView : View {
         mSlideColor = ContextCompat.getColor(context, R.color.color_slide_over_bg)
         mTextColor = ContextCompat.getColor(context, R.color.white)
         mTrColor = ContextCompat.getColor(context, R.color.transparent)
-
         mSlideLeft = 0
     }
 
@@ -69,7 +72,6 @@ class SlideView : View {
     override fun onTouchEvent(event: MotionEvent): Boolean {
 
         val action = event.action
-
         when (action) {
             MotionEvent.ACTION_DOWN -> {
                 mLastX = event.rawX.toInt()
@@ -90,17 +92,13 @@ class SlideView : View {
             MotionEvent.ACTION_MOVE -> {
 
                 val dx = event.rawX.toInt() - mLastX
-
                 mSlideLeft += dx
-
                 if (mSlideLeft < 0) {
                     mSlideLeft = 0
                 }
-
                 if (mSlideLeft >= mSlideBgWidth - mSlideBitmap!!.width) {
                     mSlideLeft = mSlideBgWidth - mSlideBitmap!!.width
                 }
-
                 if (mSlideIsMoving) {
                     invalidate()
                     mLastX = event.rawX.toInt()
@@ -119,7 +117,6 @@ class SlideView : View {
             else -> {
             }
         }
-
         return super.onTouchEvent(event)
 
     }
@@ -137,21 +134,16 @@ class SlideView : View {
         mPaint.color = mTextColor
         mPaint.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
         val fontMetrics = mPaint.fontMetricsInt
-
         val baseline = (mTextRect!!.bottom + mTextRect!!.top - fontMetrics.bottom - fontMetrics.top) / 2
         mPaint.textAlign = Paint.Align.CENTER
-
         canvas.drawText(context.getString(R.string.slide_text),
                 mTextRect!!.centerX().toFloat(), baseline.toFloat(), mPaint)
-
         //mPaint mSlideColor bg
         mPaint.color = mSlideColor
         canvas.drawRoundRect(0F, 0F, (mSlideLeft + 2 * mMargin).toFloat(),
                 mSlideBgHeight.toFloat(), mSlideBgRadius.toFloat(), mSlideBgRadius.toFloat(), mPaint)
-
         //mPaint slide
         canvas.drawBitmap(mSlideBitmap!!, mSlideLeft.toFloat(), 0f, mPaint)
-
         super.onDraw(canvas)
     }
 

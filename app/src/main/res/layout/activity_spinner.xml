@@ -6,13 +6,6 @@
     android:orientation="vertical"
     tools:context=".views.ViewActivity">
 
-
-    <com.change.demox.views.widget.SlideView
-        android:id="@+id/slide_accept"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginTop="50dp" />
-
     <TextView
         android:layout_marginTop="30dp"
         android:layout_width="wrap_content"

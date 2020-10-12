@@ -28,7 +28,7 @@
     <color name="colorUcropLogo">#212121</color>
 
     <color name="color_slide_bg">@color/colorRed</color>
-    <color name="color_slide_over_bg">@color/white</color>
+    <color name="color_slide_over_bg">@color/colorWhite90</color>
 
     <!-- InputEditTextView -->
     <color name="colorInputEditHint">#3B566B</color>

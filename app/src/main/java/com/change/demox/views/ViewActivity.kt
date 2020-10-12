@@ -8,6 +8,7 @@ import com.change.demox.views.bottomsheet.BottomSheetRootActivity
 import com.change.demox.views.edittext.EditTextActivity
 import com.change.demox.views.imageview.ImageViewActivity
 import com.change.demox.views.recyclerview.RecyclerActivity
+import com.change.demox.views.slideview.SlideViewActivity
 import com.change.demox.views.spinner.SpinnerActivity
 import com.change.demox.views.textview.TextViewActivity
 import kotlinx.android.synthetic.main.activity_view.*
@@ -45,5 +46,10 @@ class ViewActivity : AppCompatActivity() {
             val intent = Intent(this, ImageViewActivity::class.java)
             startActivity(intent)
         }
+        btn_slide_view.setOnClickListener {
+            val intent = Intent(this, SlideViewActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
