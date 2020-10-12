@@ -75,10 +75,12 @@ bottomSheet：
 
 
 
-paging分页加载：
+paging分页加载，批量删除：
 
 
 ![img](https://github.com/crystalyf/DemoX/blob/master/gif/paging%E5%88%86%E9%A1%B5.gif)
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/paging%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4.gif)
+
 
 
 
