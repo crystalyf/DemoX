@@ -59,8 +59,6 @@ Recyclerview顶部悬停效果，（跟随消失和覆盖效果）：
 
 
 
-
-
 bottomSheet：
 
 
@@ -68,11 +66,12 @@ bottomSheet：
 
 
 
+滑动接听组件：
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E6%BB%91%E5%8A%A8%E6%8E%A5%E5%90%AC%E7%BB%84%E4%BB%B6.gif)
+
 
 
 paging分页加载：
-
-
 ![img](https://github.com/crystalyf/DemoX/blob/master/gif/paging%E5%88%86%E9%A1%B5.gif)
 
 
