@@ -181,6 +181,19 @@ class DragLayout : RelativeLayout {
         }
     }
 
+
+    /**
+     *
+     * View组件的绘制流程会在onMeasure,onLayout以及onDraw方法中执行分发逻辑：
+     *
+     * 也就是在onMeasure同时执行子View的测量大小逻辑
+     * 在onLayout中同时执行子View的测量位置逻辑
+     * 在onDraw中同时执行子View的绘制逻辑
+     *
+     *
+     */
+
+
     /**
      * 测量控件的高度，可以得到每个控件的最终高度
      *
@@ -192,6 +205,11 @@ class DragLayout : RelativeLayout {
         dragRange = contentView!!.measuredHeight
     }
 
+    /**
+     *
+     *  执行子View的测量位置逻辑
+     *
+     */
     override fun onLayout(
             changed: Boolean,
             l: Int,
