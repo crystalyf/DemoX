@@ -276,6 +276,11 @@ class DragLayout : RelativeLayout {
 
     private fun reLayout(currentState: Int) {
         when (currentState) {
+            /**
+             * 在onLayout()方法中再调用子View的layout()方法，让子View布局
+             */
+
+            //确定该View所有的子View在父容器的位置
             State.AT_BOTTOM -> {
                 dragViewLayout!!.layout(
                         width - dragViewLayout!!.width,
