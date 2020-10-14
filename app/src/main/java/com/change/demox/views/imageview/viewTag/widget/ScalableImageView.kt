@@ -22,6 +22,9 @@ import kotlin.math.max
 import kotlin.math.min
 
 /**
+ *
+ * 自定义View
+ *
  * 首先，在Android系统中，每一次手势交互都会依照以下顺序执行。
 
 1. 接触接触屏一刹那，触发一个MotionEvent事件。
@@ -191,7 +194,7 @@ class ScalableImageView(context: Context?, attrs: AttributeSet?) : View(context,
     }
 
     /**
-     * 初始化和屏幕旋转时的回调方法
+     * 方法在view第一次被指定了大小值、或者view的大小发生改变时会被调用。所以一般用来计算一些位置和与view的size有关的值
      */
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         initView()

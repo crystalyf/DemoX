@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.change.demox.R
 
 /**
- * レイアウトをドラッグ、ボトムシートの使用
+ * 自定义ViewGroup
  *
  */
 class DragLayout : RelativeLayout {
@@ -208,6 +208,14 @@ class DragLayout : RelativeLayout {
     /**
      *
      *  执行子View的测量位置逻辑
+     *
+    4.1 onLayout方法参数
+    关于left、right、top、bottom。
+    它们都是坐标值，既然是坐标值，就要明确坐标系，这个坐标系是什么？我们知道，这些值都是ViewGroup设定的，那么，这个坐标系自然也是由ViewGroup决定的了。这个坐标系就是以ViewGroup左上角为原点，向右x，向下y构建起来的。
+    ViewGroup的左上角又在哪里呢？
+    我们知道，在ViewGroup的parent（也是ViewGroup）眼中，我们的ViewGroup就是一个普通的View。假如我们的ViewGroup没有parent，它的左上角在屏幕上的位置又该如何确定？系统控制的Window都有一个DecorView，其实这个DecorView就是一个帧布局。
+    如何理解ViewGroup那个方框
+    代表ViewGroup的方框的宽是上述方法中的right-left，方框的高是bottom-top。
      *
      */
     override fun onLayout(
