@@ -1,5 +1,6 @@
 package com.change.demox.utils
 
+import android.content.Context
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 
@@ -16,7 +17,7 @@ object ViewUtils {
         }
 
         private class PasswordCharSequence(
-            val transformation: CharSequence
+                val transformation: CharSequence
         ) : CharSequence by transformation {
             override fun get(index: Int): Char = if (transformation[index] == DOT) {
                 BIGGER_DOT
@@ -27,5 +28,18 @@ object ViewUtils {
 
         private const val DOT = '\u2022'
         private const val BIGGER_DOT = '●'
+    }
+
+    /**
+     * dip to px
+     *
+     * @param context
+     * @param dpValue
+     * @return
+     */
+    fun dip2px(context: Context?, dpValue: Float): Float {
+        if (context == null) return 0f
+        val scale = context.resources.displayMetrics.density
+        return dpValue * scale + 0.5f
     }
 }

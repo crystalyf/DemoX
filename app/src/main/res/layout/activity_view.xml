@@ -49,4 +49,10 @@
         android:layout_height="wrap_content"
         android:text="滑动接听组件" />
 
+    <Button
+        android:id="@+id/btn_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="dialog合集" />
+
 </LinearLayout>

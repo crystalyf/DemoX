@@ -50,6 +50,8 @@
         <activity android:name="com.change.demox.views.imageview.viewTag.ViewTagActivity" />
         <activity android:name=".views.slideview.SlideViewActivity" />
         <activity android:name=".views.tutorial.TutorialActivity" />
+        <activity android:name=".views.dialog.DialogActivity" />
+        <activity android:name=".views.dialog.dialogfragment.DialogFragmentActivity" />
     </application>
 
 </manifest>

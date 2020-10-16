@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~
+  ~ Created by xingjunchao on 2020/06/08.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/white">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="top"
+            android:background="@color/colorShadowGrey" />
+
+        <TextView
+            android:id="@+id/button_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/button_delete"
+            android:background="@drawable/selector_dialog_fragment_cancel_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:minWidth="103dp"
+            android:minHeight="36dp"
+            android:text="取消"
+            android:textColor="@drawable/selector_primary_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/button_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="18dp"
+            android:background="@drawable/selector_download_delete_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:minWidth="59dp"
+            android:minHeight="36dp"
+            android:text="删除"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+</layout>

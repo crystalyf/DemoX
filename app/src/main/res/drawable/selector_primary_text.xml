@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ bg_primary_text.xmls.xml
+  ~
+  ~ Created by shitianming on 2020/08/04.
+  ~ Copyright © 2020年 Kubota-PAD. All rights reserved.
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="false" android:color="?android:colorPrimary"/>
+    <item android:state_pressed="true" android:color="@color/colorWhite90"/>
+</selector>

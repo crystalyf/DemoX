@@ -9,10 +9,12 @@
     <color name="white">#ffffff</color>
     <color name="colorWhite90">#E5FFFFFF</color>
     <color name="colorBlack">#000000</color>
-    <color name="colorGray">#585858</color>
     <color name="transparent">#00000000</color>
-
-
+    <!--grey-->
+    <color name="colorGray">#585858</color>
+    <color name="colorShadowGrey">#EFEFEF</color>
+    <color name="colorBorderButtonPressedGrey">#999B9B9B</color>
+    <color name="colorMenuVersionGray">#9B9B9B</color>
     <!--blue-->
     <color name="md_blue_500">#2196F3</color>
     <color name="md_blue_700">#1976D2</color>
