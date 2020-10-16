@@ -91,6 +91,15 @@ paging分页加载，批量删除：
 
 
 
+DialogFragment(底部删除栏效果)：
+
+
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/dialogFragment.gif)
+
+
+
+
+
 
 
 
