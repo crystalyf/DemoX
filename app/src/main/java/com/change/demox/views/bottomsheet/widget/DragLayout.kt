@@ -230,6 +230,7 @@ class DragLayout : RelativeLayout {
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        //手指实时位置x,y
         val pointY = ev?.y
         val pointX = ev?.x
 
@@ -285,7 +286,7 @@ class DragLayout : RelativeLayout {
     private fun reLayout(currentState: Int) {
         when (currentState) {
             /**
-             * 在onLayout()方法中再调用子View的layout()方法，让子View布局
+             * 在onLayout()方法中再调用子View的layout()方法，让子View重新布局,以实现滑动
              */
 
             //确定该View所有的子View在父容器的位置
