@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data></data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.change.demox.views.webview.widget.CommonWebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <include
+            android:id="@+id/error_layout"
+            layout="@layout/layout_webview_error"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/web_progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:progress="0"
+            android:progressDrawable="@drawable/progress_state_webview" />
+
+        <!-- progress circle -->
+        <ProgressBar
+            android:id="@+id/pb_circle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:indeterminateBehavior="repeat"
+            android:indeterminateDuration="3000"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</layout>

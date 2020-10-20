@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.change.demox">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -52,6 +53,8 @@
         <activity android:name=".views.tutorial.TutorialActivity" />
         <activity android:name=".views.dialog.DialogActivity" />
         <activity android:name=".views.dialog.dialogfragment.DialogFragmentActivity" />
+        <activity android:name=".views.webview.TermActivity" />
+        <activity android:name=".views.webview.WebViewActivity" />
     </application>
 
 </manifest>

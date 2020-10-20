@@ -12,6 +12,7 @@ import com.change.demox.views.recyclerview.RecyclerActivity
 import com.change.demox.views.slideview.SlideViewActivity
 import com.change.demox.views.spinner.SpinnerActivity
 import com.change.demox.views.textview.TextViewActivity
+import com.change.demox.views.webview.WebViewActivity
 import kotlinx.android.synthetic.main.activity_view.*
 
 
@@ -45,6 +46,10 @@ class ViewActivity : AppCompatActivity() {
         }
         btn_imageview.setOnClickListener {
             val intent = Intent(this, ImageViewActivity::class.java)
+            startActivity(intent)
+        }
+        btn_webview.setOnClickListener {
+            val intent = Intent(this, WebViewActivity::class.java)
             startActivity(intent)
         }
         btn_slide_view.setOnClickListener {

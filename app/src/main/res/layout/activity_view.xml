@@ -44,6 +44,12 @@
         android:text="ImageView合集" />
 
     <Button
+        android:id="@+id/btn_webview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="WebView合集" />
+
+    <Button
         android:id="@+id/btn_slide_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

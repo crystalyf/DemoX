@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:id="@+id/error_layout"
+             android:background="@color/white">
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:layout_gravity="center">
+
+        <LinearLayout android:layout_width="56dp"
+                      android:layout_height="56dp"
+                      android:gravity="center"
+                      android:background="@drawable/round_count"
+                      android:layout_gravity="center">
+        <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@mipmap/error"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="已经发生了错误"
+                android:layout_marginTop="23dp"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="17sp"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/error_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="请在通讯良好的地方重新加载"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/colorGray"
+                android:textSize="14sp"/>
+
+        <TextView
+                android:id="@+id/error_btn"
+                android:layout_width="320dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="重新加载（reload）"
+                android:layout_marginTop="28dp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/red_common_button"
+                android:textStyle="bold"
+                android:textSize="15sp"/>
+
+    </LinearLayout>
+
+</FrameLayout>
+</layout>
