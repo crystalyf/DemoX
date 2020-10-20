@@ -99,6 +99,17 @@ DialogFragment(底部删除栏效果)：
 
 
 
+DialogFragment(底部删除栏效果)：
+
+
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E8%87%AA%E5%AE%9A%E4%B9%89WebView%E5%8A%A0%E8%BD%BD1.gif)
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E8%87%AA%E5%AE%9A%E4%B9%89WebView%E5%8A%A0%E8%BD%BD2.gif)
+
+
+
+
+
+
 
 
 
