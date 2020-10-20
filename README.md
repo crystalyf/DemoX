@@ -99,7 +99,7 @@ DialogFragment(底部删除栏效果)：
 
 
 
-DialogFragment(底部删除栏效果)：
+WebView的自定义组件（包含了等待加载，错误显示布局）：
 
 
 ![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E8%87%AA%E5%AE%9A%E4%B9%89WebView%E5%8A%A0%E8%BD%BD1.gif)
