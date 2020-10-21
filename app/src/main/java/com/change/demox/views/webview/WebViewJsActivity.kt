@@ -39,7 +39,7 @@ class WebViewJsActivity : AppCompatActivity() {
 
     private val mWebViewClient: WebViewClient = object : WebViewClient() {
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-            //URL does not jump
+            //点击图片区域之后，防止webview跳转
             return true
         }
     }
