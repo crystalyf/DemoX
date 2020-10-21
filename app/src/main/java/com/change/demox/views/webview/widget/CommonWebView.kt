@@ -200,12 +200,17 @@ class CommonWebView @JvmOverloads constructor(
         /**
          * 如果遇到了重定向，或者点击了页面中的a标签实现页面跳转，那么会回调这个方法。可以说这个是WebView里面最重要的回调之一
          *
+         * shouldOverrideUrlLoading 这个方法的返回值 ：
+
+        return true： 表示当前url即使是重定向url也不会再执行（除了在return true之前使用webview.loadUrl(url)除外，因为这个会重新加载）
+        return false： 表示由系统执行url，直到不再执行此方法，即加载完重定向的ur（即具体的url，不再有重定向）。
+         *
          * @param view
          * @param url
          * @return
          */
         override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-            //返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器
+            //返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器（ Utils.startBrowser（）方法打开浏览器）
             return if (Utils.isUrlNeedShowInBrowser(url)) {
                 Utils.startBrowser(mContext, url)
                 false
