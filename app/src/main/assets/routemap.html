@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"/>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="callback.js"></script>
+<title>路線図</title>
+<script type="text/javascript">
+function scrollAction() {
+    var defaultStation = document.getElementById('defaultStation');
+    var coords = defaultStation.coords.split(',');
+    var x = (Number(coords[0]) + Number(coords[2])) / 2;
+    var y = (Number(coords[1]) + Number(coords[3])) / 2;
+
+    x -= window.innerWidth / 2;
+    y -= window.innerHeight / 2;
+
+    window.scrollTo(x, y);
+}
+</script>
+</head>
+
+<body style="margin:0px;">
+<img src="routemap.png" alt="" usemap="#aaMap" id="aa" onload="scrollAction()">
+<map name="aaMap">    <!-- coords是image上每个点击响应位置的矩阵坐标，点击之后就JS调用Android了 -->
+	<!-- 山口線 SY -->
+  <area shape="rect" coords="861,810,1086,880" href="app://station/id=SY01,ST07" target="SY01,ST07" alt="西武遊園地">
+      <area shape="rect" coords="871,694,1089,762" href="app://station/id=SY02" target="SY02" alt="遊園地西">
+      <area shape="rect" coords="868,585,1091,661" href="app://station/id=SY03,SI41" target="SY03,SI41" alt="西武球場前">
+		<!-- 多摩湖線 ST -->
+      <area shape="rect" coords="1427,1168,1493,1320" href="app://station/id=ST01,SK01" target="ST01,SK01" alt="国分寺">
+      <area shape="rect" coords="1517,1095,1733,1163" href="app://station/id=ST02" target="ST02" alt="一橋学園">
+      <area shape="rect" coords="1511,1024,1730,1089" href="app://station/id=ST03" target="ST03" alt="青梅街道">
+      <area shape="rect" coords="1519,754,1594,883" href="app://station/id=ST04,SS30" target="ST04,SS30" alt="萩山">
+      <area shape="rect" coords="1422,763,1486,880" href="app://station/id=ST05" target="ST05" alt="八坂">
+      <area shape="rect" coords="1257,690,1330,880" href="app://station/id=ST06" target="ST06" alt="武蔵大和">
+		<!-- 国分寺線 西武園線 SK -->
+      <area shape="rect" coords="1255,1099,1405,1162" href="app://station/id=SK02" target="SK02" alt="恋ヶ窪">
+      <area shape="rect" coords="1256,1025,1405,1090" href="app://station/id=SK03" target="SK03" alt="鷹の台">
+      <area shape="rect" coords="1282,922,1406,1014" href="app://station/id=SK04,SS31" target="SK04,SS31" alt="小川">
+      <area shape="rect" coords="1623,634,1777,721" href="app://station/id=SK05,SS21" target="SK05,SS21" alt="東村山">
+      <area shape="rect" coords="1360,621,1471,714" href="app://station/id=SK06" target="SK06" alt="西武園">
+		<!-- 池袋線 SI -->
+      <area shape="rect" coords="2901,506,2963,673" href="app://station/id=SI01" target="SI01" alt="池袋">
+      <area shape="rect" coords="2826,505,2885,678" href="app://station/id=SI02" target="SI02" alt="椎名町">
+      <area shape="rect" coords="2735,504,2803,710" href="app://station/id=SI03" target="SI03" alt="東長崎">
+      <area shape="rect" coords="2659,504,2719,686" href="app://station/id=SI04" target="SI04" alt="江古田">
+      <area shape="rect" coords="2571,505,2641,669" href="app://station/id=SI05" target="SI05" alt="桜台">
+      <area shape="rect" coords="2495,502,2561,662" href="app://station/id=SI06" target="SI06" alt="練馬">
+      <area shape="rect" coords="2413,505,2477,699" href="app://station/id=SI07" target="SI07" alt="中村橋">
+      <area shape="rect" coords="2329,504,2397,706" href="app://station/id=SI08" target="SI08" alt="富士見台">
+      <area shape="rect" coords="2248,503,2317,743" href="app://station/id=SI09" target="SI09" alt="練馬高野台">
+      <area shape="rect" coords="2168,502,2235,742" href="app://station/id=SI10" target="SI10" alt="石神井公園">
+      <area shape="rect" coords="2086,502,2151,707" href="app://station/id=SI11" target="SI11" alt="大泉学園">
+      <area shape="rect" coords="2009,504,2072,636" href="app://station/id=SI12" target="SI12" alt="保谷">
+      <area shape="rect" coords="1923,507,1989,728" href="app://station/id=SI13" target="SI13" alt="ひばりヶ丘">
+      <area shape="rect" coords="1845,506,1910,716" href="app://station/id=SI14" target="SI14" alt="東久留米">
+      <area shape="rect" coords="1771,503,1831,630" href="app://station/id=SI15" target="SI15" alt="清瀬">
+      <area shape="rect" coords="1684,417,1757,559" href="app://station/id=SI16" target="SI16" alt="秋津">
+      <area shape="rect" coords="1567,405,1667,560" href="app://station/id=SI17,SS22" target="SI17,SS22" alt="所沢" id="defaultStation">
+      <area shape="rect" coords="1490,365,1562,563" href="app://station/id=SI18" target="SI18" alt="西所沢">
+      <area shape="rect" coords="1421,396,1484,561" href="app://station/id=SI19" target="SI19" alt="小手指">
+      <area shape="rect" coords="1338,363,1405,561" href="app://station/id=SI20" target="SI20" alt="狭山ヶ丘">
+      <area shape="rect" coords="1259,353,1326,560" href="app://station/id=SI21" target="SI21" alt="武蔵藤沢">
+      <area shape="rect" coords="1178,328,1247,560" href="app://station/id=SI22" target="SI22" alt="稲荷山公園">
+      <area shape="rect" coords="1108,400,1169,558" href="app://station/id=SI23" target="SI23" alt="入間市">
+      <area shape="rect" coords="1031,428,1091,559" href="app://station/id=SI24" target="SI24" alt="仏子">
+      <area shape="rect" coords="951,398,1015,559" href="app://station/id=SI25" target="SI25" alt="元加治">
+      <area shape="rect" coords="806,504,934,573" href="app://station/id=SI26" target="SI26" alt="飯能">
+      <area shape="rect" coords="867,294,939,481" href="app://station/id=SI27" target="SI27" alt="東飯能">
+      <area shape="rect" coords="795,336,858,481" href="app://station/id=SI28" target="SI28" alt="高麗">
+      <area shape="rect" coords="711,282,778,478" href="app://station/id=SI29" target="SI29" alt="武蔵横手">
+      <area shape="rect" coords="631,289,700,478" href="app://station/id=SI30" target="SI30" alt="東吾野">
+      <area shape="rect" coords="560,343,622,479" href="app://station/id=SI31" target="SI31" alt="吾野">
+      <area shape="rect" coords="478,311,546,477" href="app://station/id=SI32" target="SI32" alt="西吾野">
+      <area shape="rect" coords="401,338,466,476" href="app://station/id=SI33" target="SI33" alt="正丸">
+      <area shape="rect" coords="322,285,391,478" href="app://station/id=SI34" target="SI34" alt="芦ヶ久保">
+      <area shape="rect" coords="248,344,315,478" href="app://station/id=SI35" target="SI35" alt="横瀬">
+      <area shape="rect" coords="178,288,242,479" href="app://station/id=SI36" target="SI36" alt="西武秩父">
+      <area shape="rect" coords="2715,283,2917,354" href="app://station/id=SI37" target="SI37" alt="小竹向原">
+      <area shape="rect" coords="2625,400,2795,461" href="app://station/id=SI38" target="SI38" alt="新桜台">
+      <area shape="rect" coords="2250,241,2316,394" href="app://station/id=SI39" target="SI39" alt="豊島園">
+      <area shape="rect" coords="1150,577,1212,777" href="app://station/id=SI40" target="SI40" alt="下山口">
+		<!-- 多摩川線 SW -->
+     <area shape="rect" coords="1907,1095,2051,1206" href="app://station/id=SW01" target="SW01" alt="武蔵境">
+ 	 <area shape="rect" coords="1905,1254,1974,1452" href="app://station/id=SW02" target="SW02" alt="新小金井">
+ 	 <area shape="rect" coords="1821,1250,1889,1465" href="app://station/id=SW03" target="SW03" alt="多磨">
+	 <area shape="rect" coords="1734,1249,1802,1412" href="app://station/id=SW04" target="SW04" alt="白糸台">
+	 <area shape="rect" coords="1652,1248,1717,1445" href="app://station/id=SW05" target="SW05" alt="競艇場前">
+	 <area shape="rect" coords="1566,1248,1632,1391" href="app://station/id=SW06" target="SW06" alt="是政">
+		<!-- 新宿線 SS -->
+	 <area shape="rect" coords="2820,899,2910,1047" href="app://station/id=SS01" target="SS01" alt="西武新宿">
+	 <area shape="rect" coords="2739,837,2800,1026" href="app://station/id=SS02" target="SS02" alt="高田馬場">
+	 <area shape="rect" coords="2672,840,2729,998" href="app://station/id=SS03" target="SS03" alt="下落合">
+	 <area shape="rect" coords="2605,837,2666,959" href="app://station/id=SS04" target="SS04" alt="中井">
+	 <area shape="rect" coords="2537,837,2599,1065" href="app://station/id=SS05" target="SS05" alt="新井薬師前">
+	 <area shape="rect" coords="2470,839,2529,994" href="app://station/id=SS06" target="SS06" alt="沼袋">
+	 <area shape="rect" coords="2402,837,2461,960" href="app://station/id=SS07" target="SS07" alt="野方">
+	 <area shape="rect" coords="2335,838,2396,1026" href="app://station/id=SS08" target="SS08" alt="都立家政">
+	 <area shape="rect" coords="2268,840,2329,994" href="app://station/id=SS09" target="SS09" alt="鷺ノ宮">
+	 <area shape="rect" coords="2203,838,2262,993" href="app://station/id=SS10" target="SS10" alt="下井草">
+	 <area shape="rect" coords="2137,836,2197,958" href="app://station/id=SS11" target="SS11" alt="井荻">
+	 <area shape="rect" coords="2068,838,2131,994" href="app://station/id=SS12" target="SS12" alt="上井草">
+	 <area shape="rect" coords="2004,839,2064,1028" href="app://station/id=SS13" target="SS13" alt="上石神井">
+	 <area shape="rect" coords="1937,840,1997,999" href="app://station/id=SS14" target="SS14" alt="武蔵関">
+	 <area shape="rect" coords="1867,841,1929,1020" href="app://station/id=SS15" target="SS15" alt="東伏見">
+	 <area shape="rect" coords="1802,840,1864,1032" href="app://station/id=SS16" target="SS16" alt="西武柳沢">
+	 <area shape="rect" coords="1737,837,1798,968" href="app://station/id=SS17" target="SS17" alt="田無">
+	 <area shape="rect" coords="1671,838,1733,1015" href="app://station/id=SS18" target="SS18" alt="花小金井">
+	 <area shape="rect" coords="1604,837,1667,968" href="app://station/id=SS19" target="SS19" alt="小平">
+  <area shape="rect" coords="1618,751,1781,814" href="app://station/id=SS20" target="SS20" alt="久米川">
+  <area shape="rect" coords="1463,298,1665,361" href="app://station/id=SS23" target="SS23" alt="航空公園">
+  <area shape="rect" coords="1468,231,1666,294" href="app://station/id=SS24" target="SS24" alt="新所沢">
+  <area shape="rect" coords="1523,163,1665,225" href="app://station/id=SS25" target="SS25" alt="入曽">
+  <area shape="rect" coords="1683,165,1750,323" href="app://station/id=SS26" target="SS26" alt="狭山市">
+  <area shape="rect" coords="1758,164,1827,325" href="app://station/id=SS27" target="SS27" alt="新狭山">
+  <area shape="rect" coords="1839,162,1907,340" href="app://station/id=SS28" target="SS28" alt="南大塚">
+  <area shape="rect" coords="1927,161,1990,446" href="app://station/id=SS29" target="SS29" alt="本川越">
+  <area shape="rect" coords="1177,920,1248,1124" href="app://station/id=SS32" target="SS32" alt="東大和市">
+  <area shape="rect" coords="1108,917,1172,1111" href="app://station/id=SS33" target="SS33" alt="玉川上水">
+  <area shape="rect" coords="1025,917,1092,1269" href="app://station/id=SS34" target="SS34" alt="武蔵砂川">
+  <area shape="rect" coords="947,916,1012,1114" href="app://station/id=SS35" target="SS35" alt="西武立川">
+  <area shape="rect" coords="871,915,938,1045" href="app://station/id=SS36" target="SS36" alt="拝島">
+</map>
+
+</body>
+</html>

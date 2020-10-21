@@ -55,6 +55,7 @@
         <activity android:name=".views.dialog.dialogfragment.DialogFragmentActivity" />
         <activity android:name=".views.webview.TermActivity" />
         <activity android:name=".views.webview.WebViewActivity" />
+        <activity android:name=".views.webview.WebViewJsActivity" />
     </application>
 
 </manifest>
