@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ fragment_fig_illustration.xml
+  ~
+  ~ Created by xingjunchao on 2020/06/17.
+  ~ Copyright © 2020年 Kubota-PAD. All rights reserved.
+  -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.change.demox.views.recyclerview.figillustration.FigViewModel" />
+    </data>
+
+    <com.change.demox.views.recyclerview.figillustration.widget.DragLayout
+        android:id="@+id/drawLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:splitMotionEvents="false">
+
+        <com.change.demox.views.recyclerview.figillustration.widget.ChildViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:visibility="visible"
+            android:layout_marginBottom="32dp"/>
+
+        <RelativeLayout
+            android:id="@+id/dragView"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_bottomsheet_radius_white"
+            android:elevation="10dp">
+
+            <View
+                android:layout_width="44dp"
+                android:layout_height="5dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bg_grey_radius" />
+            <View
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="1dp"
+                android:layout_height="0.5dp"
+                android:background="@drawable/bg_divider" />
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/frame_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/dragView"
+            android:elevation="10dp"
+            android:padding="1dp"
+            android:background="@color/white"
+           >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_part"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/layout_network_error"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/network_error_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:gravity="center_horizontal"
+                    android:text="请确认你的网络"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/network_error_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="网络不行啊兄弟"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/layout_progress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.core.widget.ContentLoadingProgressBar
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+
+            </FrameLayout>
+        </FrameLayout>
+
+    </com.change.demox.views.recyclerview.figillustration.widget.DragLayout>
+
+</layout>

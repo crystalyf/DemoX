@@ -36,4 +36,10 @@
         android:layout_height="wrap_content"
         android:text="paging 分页加载(带删除)" />
 
+    <Button
+        android:id="@+id/btn_recyclerview_lazy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="recyclerview+viewPager懒加载" />
+
 </LinearLayout>

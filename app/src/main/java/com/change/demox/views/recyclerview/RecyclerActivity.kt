@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
 import com.change.demox.views.recyclerview.ceiling.RecyclerviewCeilingActivity
 import com.change.demox.views.recyclerview.ceilingTwo.RecyclerviewCeilingTwoActivity
+import com.change.demox.views.recyclerview.figillustration.FigRootActivity
 import com.change.demox.views.recyclerview.muti.RecyclerviewCategoryActivity
 import com.change.demox.views.recyclerview.paging.delete.PagingDeleteActivity
 import com.change.demox.views.recyclerview.paging.onlyshow.PagingFragmentActivity
@@ -39,6 +40,10 @@ class RecyclerActivity : AppCompatActivity() {
         }
         btn_paging_delete.setOnClickListener {
             val intent = Intent(this, PagingDeleteActivity::class.java)
+            startActivity(intent)
+        }
+        btn_recyclerview_lazy.setOnClickListener {
+            val intent = Intent(this, FigRootActivity::class.java)
             startActivity(intent)
         }
     }

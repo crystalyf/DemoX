@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ fragment_fig
+  ~ Created by xingjunchao on 2020/06/17.
+  ~ Copyright © 2020年 Kubota-PAD. All rights reserved.
+  -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:id="@+id/framelayout_child"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.change.demox.views.recyclerview.figillustration.widget.ChildViewPager
+                android:id="@+id/viewPagerChild"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>

@@ -56,6 +56,7 @@
         <activity android:name=".views.webview.TermActivity" />
         <activity android:name=".views.webview.WebViewActivity" />
         <activity android:name=".views.webview.WebViewJsActivity" />
+        <activity android:name=".views.recyclerview.figillustration.FigRootActivity" />
     </application>
 
 </manifest>

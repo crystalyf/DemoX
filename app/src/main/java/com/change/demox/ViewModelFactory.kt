@@ -8,6 +8,7 @@ import com.change.demox.repository.ITopRepository
 import com.change.demox.usecase.PDFBookDocumentUseCase
 import com.change.demox.utils.SharedPreferences
 import com.change.demox.views.bottomsheet.BottomSheetViewModel
+import com.change.demox.views.recyclerview.figillustration.FigViewModel
 import com.change.demox.views.recyclerview.paging.delete.PagingDeleteViewModel
 import com.change.demox.views.recyclerview.paging.delete.usecase.GetBooksUseCase
 import com.change.demox.views.recyclerview.paging.delete.usecase.repository.ISearchRepository
@@ -36,6 +37,8 @@ class ViewModelFactory constructor(
                         PagingDeleteViewModel(GetBooksUseCase(searchRepository))
                     isAssignableFrom(TutorialViewModel::class.java) ->
                         TutorialViewModel()
+                    isAssignableFrom(FigViewModel::class.java) ->
+                        FigViewModel()
                     else ->
                         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }

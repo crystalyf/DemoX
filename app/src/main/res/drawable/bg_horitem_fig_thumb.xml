@@ -1,0 +1,20 @@
+<!--
+  ~ bg_horitem_fig_thumb.xml
+  ~
+  ~ Created by xingjunchao on 2020/06/19.
+  ~ Copyright © 2020年 Kubota-PAD. All rights reserved.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="66dp"
+    android:height="44dp"
+    android:tint="?android:colorPrimary"
+    android:viewportWidth="66"
+    android:viewportHeight="44">
+    <path
+        android:fillAlpha="0.15"
+        android:fillColor="#FF000000"
+        android:pathData="M1,1h64v42h-64z"
+        android:strokeWidth="2"
+        android:strokeColor="#009AA4" />
+</vector>

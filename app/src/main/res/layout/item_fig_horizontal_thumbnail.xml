@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/imageview_thumbnail"
+            android:layout_width="66dp"
+            android:layout_height="44dp"
+            android:padding="1dp"
+            android:scaleType="fitCenter" />
+
+    </FrameLayout>
+
+</FrameLayout>

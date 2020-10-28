@@ -86,7 +86,7 @@ dependencies {
     implementation "com.jakewharton.timber:timber:4.7.1"
     // PDF Viewer
     implementation "com.github.barteksc:android-pdf-viewer:3.2.0-beta.1"
-
+    implementation 'com.google.android.material:material:1.2.1'
     testImplementation "androidx.paging:paging-common:2.1.2"
 
 }
