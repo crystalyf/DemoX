@@ -14,6 +14,7 @@ class PagingDeleteViewModel(
 
     lateinit var books: LiveData<PagedList<Book>>
     var deleteButtonEnable = MutableLiveData<Boolean>()
+
     /**
      * 获取数据源
      *
@@ -42,7 +43,7 @@ class PagingDeleteViewModel(
             checkState: HashMap<Int, Boolean>? = null
     ) {
         var i = 0
-        //checkbox選択済み
+        //选中checkbox
         /**
          * 選択（いいえ->はい）
          * 選択されている場合は、代わりに選択します

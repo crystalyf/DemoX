@@ -94,7 +94,7 @@ class BookListAdapter(private val viewModel: PagingDeleteViewModel?, private val
         }
 
         /**
-         * アイテム選択ステータスの適応
+         * 适配item子项的选择状态
          *
          * @param viewModel メンバー管理画面ViewModel
          * @param item リストアイテム

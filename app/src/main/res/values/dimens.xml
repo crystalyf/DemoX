@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!--スリープ状態・異常画面-->
     <dimen name="lock_password_delete_width">20dp</dimen>
     <dimen name="lock_password_delete_height">16dp</dimen>
@@ -8,6 +8,11 @@
     <dimen name="lock_slide_view_radius">35dp</dimen>
     <dimen name="lock_slide_view_text_size">14.5sp</dimen>
     <dimen name="lock_slide_view_color_margin_start">30dp</dimen>
+
+
+    <!-- SpinnerActivity -->
+    <dimen name="train_number_input_spinner_layout_drop_width">126dp</dimen>
+    <dimen name="train_number_input_spinner_layout_drop_height">196dp</dimen>
 
 
 </resources>

@@ -3,33 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorGray"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".views.ViewActivity">
 
     <TextView
-        android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="基于ArrayAdaper的Spinner:"/>
+        android:layout_marginTop="30dp"
+        android:text="基于ArrayAdaper的Spinner:"
+        android:textColor="@color/colorWhite90"
+        android:textSize="17sp"
+        android:visibility="gone" />
+
     <Spinner
         android:id="@+id/field_item_spinner_content"
         style="@style/spinner_style"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:dropDownWidth="60dp" />
+        android:dropDownWidth="60dp"
+        android:visibility="gone" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="基于BaseAdaper的自定义Adapter Spinner:"/>
+        android:text="基于BaseAdaper的自定义Adapter Spinner:"
+        android:textColor="@color/colorWhite90"
+        android:textSize="17sp"
+        android:visibility="gone" />
+
     <Spinner
-        android:id="@+id/spinner_content_left"
+        android:id="@+id/spinner_content_base"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:background="@drawable/spinner_selector"
-        android:dropDownWidth="76dp" />
+        android:dropDownWidth="76dp"
+        android:visibility="gone" />
 
 
     <Spinner
@@ -37,9 +49,60 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:dropDownWidth="76dp" />
+        android:dropDownWidth="76dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="自定义实现的Spinner:"
+        android:textColor="@color/colorWhite90"
+        android:textSize="17sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal">
+
+        <com.change.demox.views.spinner.widget.SpinnerTextView
+            android:id="@+id/spinner_content_left"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/spinner_common"
+            android:dropDownWidth="@dimen/train_number_input_spinner_layout_drop_width"
+            android:gravity="start|center_vertical"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:ignore="DuplicateIds" />
+
+        <com.change.demox.views.spinner.widget.SpinnerTextView
+            android:id="@+id/spinner_content_right"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/spinner_common"
+            android:dropDownWidth="@dimen/train_number_input_spinner_layout_drop_width"
+            android:gravity="start|center_vertical"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_train_number_ok"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="ok" />
+
+
+</LinearLayout>
 
 
     <!--dropDownWidth :  下拉列表的宽度  -->
-
-</LinearLayout>
