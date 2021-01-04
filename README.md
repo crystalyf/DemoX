@@ -91,6 +91,14 @@ paging分页加载，批量删除：
 
 
 
+自定义Spinner：
+
+
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E8%87%AA%E5%AE%9A%E4%B9%89Spinner.gif)
+
+
+
+
 DialogFragment(底部删除栏效果)：
 
 
