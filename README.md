@@ -43,7 +43,10 @@ Demo Android合集
 
 
 
-带类别的recyclerview：< br >带banner类别的效果是从此开源项目中抽出来的代码：https://github.com/git-xuhao/KotlinMvp
+带类别的recyclerview：
+
+
+带banner类别的效果是从此开源项目中抽出来的代码：https://github.com/git-xuhao/KotlinMvp
 
 
 ![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E5%8F%8Citem%E7%9A%84recyclerview.gif)
