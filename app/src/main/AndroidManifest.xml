@@ -57,6 +57,7 @@
         <activity android:name=".views.webview.WebViewActivity" />
         <activity android:name=".views.webview.WebViewJsActivity" />
         <activity android:name=".views.recyclerview.figillustration.FigRootActivity" />
+        <activity android:name=".views.recyclerview.banner.BannerRootActivity" />
     </application>
 
 </manifest>

@@ -36,4 +36,11 @@
     <color name="colorInputEditHint">#3B566B</color>
     <!-- divider -->
     <color name="colorItemDividerGray">#DCDCDC</color>
+    <!-- light black -->
+    <color name="color_light_black">#5000</color>
+    <!-- title 半透明背景颜色 -->
+    <color name="color_title_bg">#CCFFFFFF</color>
+    <!-- item 标题颜色 -->
+    <color name="color_item_title">#000000</color>
+    <color name="color_darker_gray">#aaa</color>
 </resources>

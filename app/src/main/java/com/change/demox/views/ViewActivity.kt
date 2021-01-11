@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
+import com.change.demox.views.recyclerview.banner.BannerRootActivity
 import com.change.demox.views.bottomsheet.BottomSheetRootActivity
 import com.change.demox.views.dialog.DialogActivity
 import com.change.demox.views.edittext.EditTextActivity
@@ -58,6 +59,10 @@ class ViewActivity : AppCompatActivity() {
         }
         btn_dialog.setOnClickListener {
             val intent = Intent(this, DialogActivity::class.java)
+            startActivity(intent)
+        }
+        btn_banner.setOnClickListener {
+            val intent = Intent(this, BannerRootActivity::class.java)
             startActivity(intent)
         }
     }

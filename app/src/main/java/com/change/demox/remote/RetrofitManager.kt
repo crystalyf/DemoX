@@ -16,6 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 import java.io.*
@@ -61,6 +62,18 @@ object RetrofitManager : BaseRetrofitManager() {
     private val retrofitService = Retrofit.Builder()
             .baseUrl(BuildConfig.API_HOST)
             .addConverterFactory(GsonConverterFactory.create())   //Gson解析器（转换工厂）
+            .client(client)
+            .build()
+            .create(RetrofitService::class.java)
+
+
+    /**
+     *  [retrofitService] banner画面发API所用
+     */
+    val retrofitService2= Retrofit.Builder()
+            .baseUrl("http://baobab.kaiyanapp.com/api/")
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create()) //Gson解析器（Rxjava2转换工厂）
+            .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
             .create(RetrofitService::class.java)

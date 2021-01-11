@@ -12,6 +12,7 @@ import com.change.demox.views.recyclerview.paging.delete.usecase.repository.ISea
 import com.change.demox.views.recyclerview.paging.delete.usecase.repository.SearchRepository
 import com.change.demox.views.recyclerview.paging.onlyshow.usecase.repository.DataRepositoryImpl
 import com.change.demox.views.recyclerview.paging.onlyshow.usecase.repository.IDataRepository
+import com.squareup.leakcanary.RefWatcher
 
 /**
  * Created by xingjunchao on 2020/08/24.
@@ -19,6 +20,7 @@ import com.change.demox.views.recyclerview.paging.onlyshow.usecase.repository.ID
 class MyApplication : Application(), Application.ActivityLifecycleCallbacks {
     var context: Context? = null
         private set
+    private var refWatcher: RefWatcher? = null
 
     /**
      * データ保存操作の対象
@@ -46,6 +48,10 @@ class MyApplication : Application(), Application.ActivityLifecycleCallbacks {
         @get:Synchronized
         var instance: MyApplication? = null
             private set
+        fun getRefWatcher(context: Context): RefWatcher? {
+            val myApplication = context.applicationContext as MyApplication
+            return myApplication.refWatcher
+        }
     }
 
     override fun onActivityPaused(activity: Activity) {
