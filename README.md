@@ -43,10 +43,12 @@ Demo Android合集
 
 
 
-带类别的recyclerview(双列表项的recyclerview)：
+带类别的recyclerview：
+带banner类别的效果是从此开源项目中抽出来的代码：https://github.com/git-xuhao/KotlinMvp
 
 
 ![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E5%8F%8Citem%E7%9A%84recyclerview.gif)
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/recyclerview_banner_muti.gif)
 
 
 
