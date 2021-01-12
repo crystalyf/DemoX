@@ -103,6 +103,17 @@ paging分页加载，批量删除：
 
 
 
+可折叠的toolbar布局 CollapsingToolbarLayout：
+
+
+效果代码是从此开源项目中抽出来的：https://github.com/git-xuhao/KotlinMvp
+
+
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/CollapsingToolbarLayout.gif)
+
+
+
+
 DialogFragment(底部删除栏效果)：
 
 
