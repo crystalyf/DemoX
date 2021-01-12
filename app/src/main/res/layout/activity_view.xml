@@ -65,6 +65,12 @@
         android:id="@+id/btn_banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="  Banner展示" />
+        android:text="Banner展示" />
+
+    <Button
+        android:id="@+id/btn_collapsing_toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="折叠工具栏的效果" />
 
 </LinearLayout>

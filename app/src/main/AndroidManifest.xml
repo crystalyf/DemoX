@@ -15,8 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:theme="@style/AppTheme">
-        <activity android:name=".views.textview.TextViewActivity"></activity>
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".views.textview.TextViewActivity"/>
         <activity android:name=".views.recyclerview.RecyclerActivity" />
         <activity android:name=".views.ViewActivity" />
         <activity android:name=".licenses.LicensesActivity" />
@@ -58,6 +58,7 @@
         <activity android:name=".views.webview.WebViewJsActivity" />
         <activity android:name=".views.recyclerview.figillustration.FigRootActivity" />
         <activity android:name=".views.recyclerview.banner.BannerRootActivity" />
+        <activity android:name=".views.collapsingtoolbarlayout.ProfileHomePageActivity" />
     </application>
 
 </manifest>

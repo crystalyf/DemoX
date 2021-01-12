@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/colorThemeGreen</color>
+    <color name="colorPrimary">@color/white</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">@color/colorThemeGreen</color>
 
@@ -43,4 +43,5 @@
     <!-- item 标题颜色 -->
     <color name="color_item_title">#000000</color>
     <color name="color_darker_gray">#aaa</color>
+    <color name="color_division_line">@color/colorGray</color>
 </resources>

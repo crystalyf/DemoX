@@ -14,5 +14,11 @@
     <dimen name="train_number_input_spinner_layout_drop_width">126dp</dimen>
     <dimen name="train_number_input_spinner_layout_drop_height">196dp</dimen>
 
+    <!--  ProfileHomePageActivity -->
+    <dimen name="padding_common">10dp</dimen>
+    <dimen name="padding_common_h">15dp</dimen>
+    <dimen name="padding_common_v">10dp</dimen>
+    <dimen name="padding_common_d">5dp</dimen>
+    <dimen name="division_line">0.5dp</dimen>
 
 </resources>
