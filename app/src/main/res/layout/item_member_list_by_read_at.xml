@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ item_member_list_by_read_at.xml
+  ~
+  ~ Created by xingjunchao on 2020/01/10.
+  ~ Copyright © 2019年 Eole. All rights reserved.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="memberName"
+            type="String" />
+
+        <variable
+            name="iconUrl"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/white"
+        android:divider="@drawable/bg_divider"
+        android:dividerPadding="1dp"
+        android:orientation="vertical"
+        android:showDividers="end">
+
+        <LinearLayout
+            android:id="@+id/linearlayout_member"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageview_icon"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_gravity="top"
+                android:layout_marginTop="12dp"
+                app:singleImage="@{iconUrl}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="9dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textview_member_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@{memberName}"
+                    android:textColor="@color/colorGray"
+                    android:textSize="18sp"
+                    tools:text="メンバー名あいう" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textview_member_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="9485757"
+                        android:textSize="14sp"
+                        android:typeface="monospace"
+                        tools:text="11111111" />
+
+                    <com.google.android.flexbox.FlexboxLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="-8dp"
+                        app:flexDirection="row"
+                        app:flexWrap="wrap">
+
+                        <TextView
+                            android:id="@+id/textview_member_self"
+                            style="@style/commonListLabelSpace"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_list_item_self_marker"
+                            android:gravity="center"
+                            android:text="自身"
+                            android:textColor="@color/colorRed" />
+
+                        <TextView
+                            android:id="@+id/textview_member_manager"
+                            style="@style/commonListLabelSpace"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_list_item_manager_marker"
+                            android:gravity="center"
+                            android:text="管理员"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/textview_member_contacter"
+                            style="@style/commonListLabelSpace"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_list_item_unanswer_marker"
+                            android:gravity="center"
+                            android:text="发送者"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/textview_member_unread"
+                            style="@style/commonListLabelSpace"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_list_item_unread_outline"
+                            android:gravity="center"
+                            android:text="未读"
+                            android:textColor="@color/colorGreen" />
+
+                        <TextView
+                            android:id="@+id/textview_member_unanswer"
+                            style="@style/commonListLabelSpace"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_list_item_unanswer_outline"
+                            android:gravity="center"
+                            android:text="未回答"
+                            android:textColor="@color/colorRed" />
+                    </com.google.android.flexbox.FlexboxLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>
+
+

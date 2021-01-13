@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ bg_list_item_manager_marker.xml  メンバー管理画面item
+  ~
+  ~ Created by xingjunchao on 2019/12/30.
+  ~ Copyright © 2019年 Eole. All rights reserved.
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/colorThemeOrange" />
+    <corners android:radius="20dp" />
+
+</shape>

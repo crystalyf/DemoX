@@ -59,6 +59,7 @@
         <activity android:name=".views.recyclerview.figillustration.FigRootActivity" />
         <activity android:name=".views.recyclerview.banner.BannerRootActivity" />
         <activity android:name=".views.collapsingtoolbarlayout.ProfileHomePageActivity" />
+        <activity android:name=".views.flexboxlayout.FlexboxLayoutRootActivity" />
     </application>
 
 </manifest>

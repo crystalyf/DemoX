@@ -24,6 +24,7 @@
     <!--red-->
     <color name="colorRed">#D34415</color>
     <color name="colorBlue">#2196F3</color>
+    <color name="colorGreen">#4CAF50</color>
 
     <color name="colorTransparentBackground">#a0000000</color>
 

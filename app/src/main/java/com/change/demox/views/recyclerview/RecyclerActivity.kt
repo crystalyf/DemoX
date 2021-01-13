@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
+import com.change.demox.views.flexboxlayout.FlexboxLayoutRootActivity
 import com.change.demox.views.recyclerview.ceiling.RecyclerviewCeilingActivity
 import com.change.demox.views.recyclerview.ceilingTwo.RecyclerviewCeilingTwoActivity
 import com.change.demox.views.recyclerview.figillustration.FigRootActivity
@@ -44,6 +45,10 @@ class RecyclerActivity : AppCompatActivity() {
         }
         btn_recyclerview_lazy.setOnClickListener {
             val intent = Intent(this, FigRootActivity::class.java)
+            startActivity(intent)
+        }
+        btn_flexbox_layout.setOnClickListener {
+            val intent = Intent(this, FlexboxLayoutRootActivity::class.java)
             startActivity(intent)
         }
     }
