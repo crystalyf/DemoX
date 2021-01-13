@@ -63,7 +63,7 @@ Recyclerview顶部悬停效果，（跟随消失和覆盖效果）：
 
 
 
-Recyclerview + FlexboxLayout：
+Recyclerview + FlexboxLayout(自动换行)：
 
 
 ![img](https://github.com/crystalyf/DemoX/blob/master/gif/recyclerview_flexboxLayout.gif)
