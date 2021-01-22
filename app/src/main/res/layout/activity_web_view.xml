@@ -18,4 +18,10 @@
         android:layout_height="wrap_content"
         android:text="Js调用Android" />
 
+    <Button
+        android:id="@+id/btn_web_cache"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Webview Cache" />
+
 </LinearLayout>

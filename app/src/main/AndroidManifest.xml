@@ -60,6 +60,7 @@
         <activity android:name=".views.recyclerview.banner.BannerRootActivity" />
         <activity android:name=".views.collapsingtoolbarlayout.ProfileHomePageActivity" />
         <activity android:name=".views.flexboxlayout.FlexboxLayoutRootActivity" />
+        <activity android:name=".views.webview.webcache.WebViewCacheActivity" />
     </application>
 
 </manifest>
