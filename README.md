@@ -139,6 +139,15 @@ WebView的自定义组件（包含了等待加载，错误显示布局）：
 
 
 
+优化了缓存和加载的自定义Webview（能解决离线缓存刷新乱窜，离线缓存图片隔一次才能加载）：
+
+
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E6%96%AD%E7%BD%91%E7%BC%93%E5%AD%98%E5%88%B7%E6%96%B0%E4%B9%B1%E7%AA%9C.gif)
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/%20%E6%96%AD%E7%BD%91webview%E7%BC%93%E5%AD%98%E5%88%B7%E6%96%B0%E6%98%BE%E7%A4%BA%E6%AD%A3%E5%B8%B8.gif)
+
+
+
+
 
 
 
