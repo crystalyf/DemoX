@@ -10,6 +10,7 @@ import com.change.demox.views.collapsingtoolbarlayout.ProfileHomePageActivity
 import com.change.demox.views.dialog.DialogActivity
 import com.change.demox.views.edittext.EditTextActivity
 import com.change.demox.views.imageview.ImageViewActivity
+import com.change.demox.views.qrcode.scan.CustomScanActivity
 import com.change.demox.views.recyclerview.RecyclerActivity
 import com.change.demox.views.slideview.SlideViewActivity
 import com.change.demox.views.spinner.SpinnerActivity
@@ -64,6 +65,10 @@ class ViewActivity : AppCompatActivity() {
         }
         btn_banner.setOnClickListener {
             val intent = Intent(this, BannerRootActivity::class.java)
+            startActivity(intent)
+        }
+        btn_qrcode.setOnClickListener {
+            val intent = Intent(this, CustomScanActivity::class.java)
             startActivity(intent)
         }
         btn_collapsing_toolbar_layout.setOnClickListener {

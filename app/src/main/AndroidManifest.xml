@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".application.MyApplication"
@@ -61,6 +62,8 @@
         <activity android:name=".views.collapsingtoolbarlayout.ProfileHomePageActivity" />
         <activity android:name=".views.flexboxlayout.FlexboxLayoutRootActivity" />
         <activity android:name=".views.webview.webcache.WebViewCacheActivity" />
+        <activity android:name=".views.qrcode.QrcodeActivity" />
+        <activity android:name=".views.qrcode.scan.CustomScanActivity" />
     </application>
 
 </manifest>
