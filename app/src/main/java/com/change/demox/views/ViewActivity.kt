@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
 import com.change.demox.views.recyclerview.banner.BannerRootActivity
 import com.change.demox.views.bottomsheet.BottomSheetRootActivity
+import com.change.demox.views.browser.BrowserActivity
 import com.change.demox.views.collapsingtoolbarlayout.ProfileHomePageActivity
 import com.change.demox.views.dialog.DialogActivity
 import com.change.demox.views.edittext.EditTextActivity
@@ -73,6 +74,10 @@ class ViewActivity : AppCompatActivity() {
         }
         btn_collapsing_toolbar_layout.setOnClickListener {
             val intent = Intent(this, ProfileHomePageActivity::class.java)
+            startActivity(intent)
+        }
+        btn_browser.setOnClickListener {
+            val intent = Intent(this, BrowserActivity::class.java)
             startActivity(intent)
         }
     }

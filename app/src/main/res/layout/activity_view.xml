@@ -74,6 +74,12 @@
         android:text="二维码功能" />
 
     <Button
+        android:id="@+id/btn_browser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="web浏览器功能" />
+
+    <Button
         android:id="@+id/btn_collapsing_toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

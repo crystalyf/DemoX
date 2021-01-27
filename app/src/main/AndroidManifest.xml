@@ -64,6 +64,7 @@
         <activity android:name=".views.webview.webcache.WebViewCacheActivity" />
         <activity android:name=".views.qrcode.QrcodeActivity" />
         <activity android:name=".views.qrcode.scan.CustomScanActivity" />
+        <activity android:name=".views.browser.BrowserActivity" />
     </application>
 
 </manifest>
