@@ -130,6 +130,14 @@ DialogFragment(底部删除栏效果)：
 
 
 
+获取网页标签内容（比如head,meta）：
+
+
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/webview%E8%8E%B7%E5%8F%96html%E5%86%85%E5%AE%B9.gif)
+
+
+
+
 WebView的自定义组件（包含了等待加载，错误显示布局）：
 
 
