@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import com.change.demox.R
 import com.change.demox.repository.ITopRepository
 import com.change.demox.repository.TopRepository
@@ -84,5 +85,9 @@ class MyApplication : Application(), Application.ActivityLifecycleCallbacks {
 
     override fun onActivityResumed(activity: Activity) {
 
+    }
+
+    fun showToast(content:String){
+        Toast.makeText(this,content,Toast.LENGTH_LONG).show()
     }
 }

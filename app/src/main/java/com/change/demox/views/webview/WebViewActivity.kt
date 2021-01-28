@@ -28,5 +28,9 @@ class WebViewActivity : AppCompatActivity() {
             val intent = Intent(this, WebViewCacheActivity::class.java)
             startActivity(intent)
         }
+        btn_webview_get_html.setOnClickListener {
+            val intent = Intent(this, WebViewGetHtmlContentActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
