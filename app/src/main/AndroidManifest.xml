@@ -68,6 +68,7 @@
         <activity android:name=".views.webview.WebViewGetHtmlContentActivity" />
         <activity android:name=".views.firebase.FirebaseRootActivity" />
         <activity android:name=".views.firebase.FirebaseTwitterActivity" />
+        <activity android:name=".views.googlemap.GoogleMapStartActivity" />
     </application>
 
 </manifest>

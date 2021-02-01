@@ -11,6 +11,7 @@ import com.change.demox.views.collapsingtoolbarlayout.ProfileHomePageActivity
 import com.change.demox.views.dialog.DialogActivity
 import com.change.demox.views.edittext.EditTextActivity
 import com.change.demox.views.firebase.FirebaseRootActivity
+import com.change.demox.views.googlemap.GoogleMapStartActivity
 import com.change.demox.views.imageview.ImageViewActivity
 import com.change.demox.views.qrcode.scan.CustomScanActivity
 import com.change.demox.views.recyclerview.RecyclerActivity
@@ -79,6 +80,10 @@ class ViewActivity : AppCompatActivity() {
         }
         btn_collapsing_toolbar_layout.setOnClickListener {
             val intent = Intent(this, ProfileHomePageActivity::class.java)
+            startActivity(intent)
+        }
+        btn_start_googlemap.setOnClickListener {
+            val intent = Intent(this, GoogleMapStartActivity::class.java)
             startActivity(intent)
         }
         btn_browser.setOnClickListener {
