@@ -66,6 +66,8 @@
         <activity android:name=".views.qrcode.scan.CustomScanActivity" />
         <activity android:name=".views.browser.BrowserActivity" />
         <activity android:name=".views.webview.WebViewGetHtmlContentActivity" />
+        <activity android:name=".views.firebase.FirebaseRootActivity" />
+        <activity android:name=".views.firebase.FirebaseTwitterActivity" />
     </application>
 
 </manifest>

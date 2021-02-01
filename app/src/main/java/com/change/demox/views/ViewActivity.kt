@@ -10,6 +10,7 @@ import com.change.demox.views.browser.BrowserActivity
 import com.change.demox.views.collapsingtoolbarlayout.ProfileHomePageActivity
 import com.change.demox.views.dialog.DialogActivity
 import com.change.demox.views.edittext.EditTextActivity
+import com.change.demox.views.firebase.FirebaseRootActivity
 import com.change.demox.views.imageview.ImageViewActivity
 import com.change.demox.views.qrcode.scan.CustomScanActivity
 import com.change.demox.views.recyclerview.RecyclerActivity
@@ -70,6 +71,10 @@ class ViewActivity : AppCompatActivity() {
         }
         btn_qrcode.setOnClickListener {
             val intent = Intent(this, CustomScanActivity::class.java)
+            startActivity(intent)
+        }
+        btn_firebase.setOnClickListener {
+            val intent = Intent(this, FirebaseRootActivity::class.java)
             startActivity(intent)
         }
         btn_collapsing_toolbar_layout.setOnClickListener {

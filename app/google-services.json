@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "816134625838",
+    "project_id": "demox-9527b",
+    "storage_bucket": "demox-9527b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816134625838:android:46b2fb96b51003f6701dbf",
+        "android_client_info": {
+          "package_name": "com.change.demox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "816134625838-niug641mce1rmois1fkc53vkvo1f8n2o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.change.demox",
+            "certificate_hash": "4cfd880170b30cf347d4e40b5616347b2245cd5d"
+          }
+        },
+        {
+          "client_id": "816134625838-1b5i1g8j3mvula06mj23hu6hsvpu8c3i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeh1lWJg7F9LFE3ROXhL6qY_lmu2ClWXo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "816134625838-1b5i1g8j3mvula06mj23hu6hsvpu8c3i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

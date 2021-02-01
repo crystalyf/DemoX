@@ -74,6 +74,12 @@
         android:text="二维码功能" />
 
     <Button
+        android:id="@+id/btn_firebase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Firebase合集功能" />
+
+    <Button
         android:id="@+id/btn_browser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
