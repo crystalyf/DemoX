@@ -6,14 +6,35 @@ import android.util.Log
 import android.webkit.*
 import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
-import com.change.demox.utils.Utils
 import kotlinx.android.synthetic.main.activity_web_view_js.*
-import kotlinx.android.synthetic.main.layout_webview.*
 
 /**
  * Js调用Android
  *
  * 点击的网页JS会调用Android本画面代码
+ *
+ * 交互逻辑是：js文件的点击回调方法里，调用安卓端的方法名，就能通知安卓端进入android代码的回调里。
+ *
+JS：
+$(document).ready(function(){
+$("area").off('click').on('click', function(){
+//点击以后的JS->android ,调用Android中JavaScriptInterface.station()
+JavaScriptInterface.station($(this).prop('alt'));
+});
+})
+
+
+Android：
+internal class JavaScriptInterface {
+@JavascriptInterface
+fun station(name: String?) {
+if (TextUtils.isEmpty(name)) {
+return
+}
+Log.v("showContent", name)
+}
+}
+如此，点击触发JS执行后，Android的station方法里就能接收到了。
  *
  */
 class WebViewJsActivity : AppCompatActivity() {
@@ -34,7 +55,10 @@ class WebViewJsActivity : AppCompatActivity() {
         webview_js.addJavascriptInterface(JavaScriptInterface(), "JavaScriptInterface")
         webview_js.webChromeClient = WebChromeClient()
         webview_js.webViewClient = mWebViewClient
+        //网页文件在本地
         webview_js.loadUrl("file:///android_asset/routemap.html")
+        //网页文件在远端服务器
+        // webview_js.loadUrl("http://47.105.132.26:22123/routemap.html")
     }
 
     private val mWebViewClient: WebViewClient = object : WebViewClient() {
