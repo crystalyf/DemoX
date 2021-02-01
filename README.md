@@ -158,6 +158,13 @@ WebView的自定义组件（包含了等待加载，错误显示布局）：
 
 
 
+Firebase Twitter Auth认证登陆：
+
+
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/Firebase%20Twitter%20Auth%E8%AE%A4%E8%AF%81%E7%99%BB%E9%99%86.gif)
+
+
+
 
 
 
