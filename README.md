@@ -166,6 +166,14 @@ Firebase Twitter Auth认证登陆：
 
 
 
+Scheme启动谷歌地图：
+
+
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/scheme%E5%90%AF%E5%8A%A8%E8%B0%B7%E6%AD%8Capp.gif)
+
+
+
+
 
 
 
