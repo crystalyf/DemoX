@@ -42,7 +42,10 @@ class GoogleMapStartActivity : AppCompatActivity() {
             // val strUri = "https://www.google.com/maps/search/?api=1&query="+lat+","+lng"
 
             //这个URL格式能设置zoom
-            val strUri = "https://www.google.com/maps/@?api=1&map_action=map&center=38.924674,121.675399&zoom=15"
+            //val strUri = "https://www.google.com/maps/@?api=1&map_action=map&center=38.924674,121.675399&zoom=15"
+            //搜索条件是个准确的地址名称
+            val strUri = "https://www.google.com/maps/search/?api=1&query=大阪府大阪市北区大深町3-1 グランフロント大阪 タワーB 14F&zoom=8"
+
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(strUri))
             intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity")
             startActivity(intent)
