@@ -52,19 +52,32 @@ class WebViewJsActivity : AppCompatActivity() {
         settings.loadsImagesAutomatically = true
         webview_js.setInitialScale(100)
         //通过 addJavascriptInterface 方法进行添加对象映射
-        webview_js.addJavascriptInterface(JavaScriptInterface(), "JavaScriptInterface")
+         webview_js.addJavascriptInterface(JavaScriptInterface(), "JavaScriptInterface")
         webview_js.webChromeClient = WebChromeClient()
         webview_js.webViewClient = mWebViewClient
         //网页文件在本地
-        webview_js.loadUrl("file:///android_asset/routemap.html")
+        // webview_js.loadUrl("file:///android_asset/routemap.html")
         //网页文件在远端服务器
-        // webview_js.loadUrl("http://47.105.132.26:22123/routemap.html")
+         webview_js.loadUrl("http://47.105.132.26:22123/routemap.html")
+
+        //webview_js.loadUrl("https://v01-ib.valuedirect.nri.co.jp/sp_im/IBGate/sD02101CT/PD/2#DSD0210150")
     }
 
+
     private val mWebViewClient: WebViewClient = object : WebViewClient() {
+
+        /**
+         * url重定向会执行此方法以及点击页面某些链接也会执行此方法
+         * 通俗的说，当返回true时，你点任何链接都是失效的，需要你自己跳转。return false时webview会自己跳转。
+         */
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
             //点击图片区域之后，防止webview跳转
             return true
+        }
+
+        override fun onPageFinished(view: WebView?, url: String?) {
+            super.onPageFinished(view, url)
+            Log.v("url:", url)
         }
     }
 
