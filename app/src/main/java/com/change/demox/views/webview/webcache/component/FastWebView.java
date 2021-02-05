@@ -28,7 +28,7 @@ public class FastWebView extends WebView implements FastOpenApi {
     }
 
     public FastWebView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
     }
 
     public FastWebView(Context context, AttributeSet attrs, int defStyleAttr) {

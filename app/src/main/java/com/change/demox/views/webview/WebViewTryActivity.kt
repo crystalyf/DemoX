@@ -1,4 +1,4 @@
-package com.change.demox.views.webview.webcache
+package com.change.demox.views.webview
 
 import android.content.Context
 import android.content.Intent
@@ -10,64 +10,46 @@ import android.webkit.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
-import com.change.demox.views.webview.webcache.component.config.FastCacheMode
 import kotlinx.android.synthetic.main.activity_web_view_try.*
-import kotlinx.android.synthetic.main.activity_webview_cache.*
 
-
-class WebViewCacheActivity : AppCompatActivity() {
-
-    val TAG = "FastWebView"
-
-    //var url = "https://www.pref.saitama.lg.jp/a0311/bouhansupporter/index.html"
-
-    var url = "https://v01-ib.valuedirect.nri.co.jp/sp_im/IBGate/sD02101CT/PD/2#DSD0210150"
-   // var url = "http://www.huoyanzn.com/"
-   // var url = "https://www.seiburailway.jp/railways/tourist/chinese/"
+/**
+ * Webview-> 点击下载监听
+ *
+ */
+class WebViewTryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_webview_cache)
+        setContentView(R.layout.activity_web_view_try)
         initView()
     }
 
     private fun initView() {
-        val settings: WebSettings = webview_cache.settings
-//        settings.javaScriptEnabled = true
-        settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
-        settings.setAppCacheEnabled(true)
-        settings.javaScriptEnabled = true
-        settings.domStorageEnabled = true
-        settings.allowFileAccess = true
-        settings.useWideViewPort = true
-        settings.loadWithOverviewMode = true
-        settings.defaultTextEncodingName = "UTF-8"
-        webview_cache.webChromeClient = WebChromeClient()
-        webview_cache.webViewClient = mWebViewClient
-
-        //   webview.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        webview_cache.setCacheMode(FastCacheMode.FORCE)
-        webview_cache.loadUrl(url)
+        val settings: WebSettings = webview.settings
+        settings.builtInZoomControls = true
+        settings.displayZoomControls = false
+        settings.loadsImagesAutomatically = true
+        webview.setInitialScale(100)
+        webview.webChromeClient = WebChromeClient()
+        webview.webViewClient = mWebViewClient
+        webview.loadUrl("http://www.dqjsw.com.cn/down/8509.html")
 
 
-        webview_cache.setDownloadListener { url, userAgent, contentDisposition, mimetype, contentLength ->
+        /**
+         * 点击这个8509网页上下载APK的按钮，就触发下载监听了
+         */
+        webview.setDownloadListener { url, userAgent, contentDisposition, mimetype, contentLength ->
             Log.v("url:DownloadListener", "进入setDownloadListener，mimetype :$mimetype")
             // PDF document use external browser
             if (TextUtils.isEmpty(mimetype)) {
                 return@setDownloadListener
             }
-            if (mimetype.equals("application/pdf")) {
+//            if (mimetype.equals("application/pdf")) {
                 Log.v("url:DownloadListener", "进入setDownloadListener，mimetype :$mimetype")
-                //调用系统中已经内置的浏览器进行下载：
+                //调用系统中已经内置的浏览器，打开外部浏览器进行下载：
                 showExternalApplicationDialog(url)
-            }
-        }
-
-
-        btn_refresh.setOnClickListener {
-            webview_cache.reload()
+//            }
         }
     }
-
 
     private fun showExternalApplicationDialog(data: String) {
         AlertDialog.Builder(this)
@@ -81,7 +63,13 @@ class WebViewCacheActivity : AppCompatActivity() {
                 .show()
     }
 
+
     private val mWebViewClient: WebViewClient = object : WebViewClient() {
+
+        /**
+         * url重定向会执行此方法以及点击页面某些链接也会执行此方法
+         * 通俗的说，当返回true时，你点任何链接都是失效的，需要你自己跳转。return false时webview会自己跳转。
+         */
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
             Log.v("shouldOverrideUrl:", url)
             //点击图片区域之后，防止webview跳转
@@ -92,7 +80,14 @@ class WebViewCacheActivity : AppCompatActivity() {
             super.onPageFinished(view, url)
             Log.v("url:", url)
         }
+
+        override fun onReceivedHttpError(view: WebView?, request: WebResourceRequest?, errorResponse: WebResourceResponse) {
+            Log.v("url:", errorResponse.statusCode.toString())
+            if (errorResponse.statusCode >= 500) {
+            }
+        }
     }
+
 
     private fun startBrowser(context: Context, url: String?) {
         if (TextUtils.isEmpty(url)) {
@@ -108,5 +103,6 @@ class WebViewCacheActivity : AppCompatActivity() {
 
         }
     }
+
 
 }

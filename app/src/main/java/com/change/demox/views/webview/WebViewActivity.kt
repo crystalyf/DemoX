@@ -20,6 +20,10 @@ class WebViewActivity : AppCompatActivity() {
             val intent = Intent(this, TermActivity::class.java)
             startActivity(intent)
         }
+        btn_webview_demo.setOnClickListener {
+            val intent = Intent(this, WebViewTryActivity::class.java)
+            startActivity(intent)
+        }
         btn_js_webview.setOnClickListener {
             val intent = Intent(this, WebViewJsActivity::class.java)
             startActivity(intent)

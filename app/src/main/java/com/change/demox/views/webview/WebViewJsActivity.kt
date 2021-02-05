@@ -1,12 +1,21 @@
 package com.change.demox.views.webview
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.webkit.*
+import android.webkit.WebChromeClient
+import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
+import com.change.demox.views.webview.webcache.component.utils.LogUtils
 import kotlinx.android.synthetic.main.activity_web_view_js.*
+import java.security.AccessController.getContext
 
 /**
  * Js调用Android
@@ -52,15 +61,42 @@ class WebViewJsActivity : AppCompatActivity() {
         settings.loadsImagesAutomatically = true
         webview_js.setInitialScale(100)
         //通过 addJavascriptInterface 方法进行添加对象映射
-         webview_js.addJavascriptInterface(JavaScriptInterface(), "JavaScriptInterface")
+       //  webview_js.addJavascriptInterface(JavaScriptInterface(), "JavaScriptInterface")
         webview_js.webChromeClient = WebChromeClient()
         webview_js.webViewClient = mWebViewClient
         //网页文件在本地
         // webview_js.loadUrl("file:///android_asset/routemap.html")
         //网页文件在远端服务器
-         webview_js.loadUrl("http://47.105.132.26:22123/routemap.html")
+        // webview_js.loadUrl("http://47.105.132.26:22123/routemap.html")
 
         //webview_js.loadUrl("https://v01-ib.valuedirect.nri.co.jp/sp_im/IBGate/sD02101CT/PD/2#DSD0210150")
+
+        webview_js.loadUrl("http://www.dqjsw.com.cn/down/8509.html")
+
+
+        webview_js.setDownloadListener { url, userAgent, contentDisposition, mimetype, contentLength ->
+            Log.v("url:", "进入setDownloadListener，mimetype :$mimetype")
+            // PDF document use external browser
+            if (TextUtils.isEmpty(mimetype)) {
+                return@setDownloadListener
+            }
+            if (mimetype.equals("application/pdf")) {
+                Log.v("url:", "进入setDownloadListener，mimetype :$mimetype")
+                showExternalApplicationDialog(url)
+            }
+        }
+    }
+
+    private fun showExternalApplicationDialog(data: String) {
+        AlertDialog.Builder(this)
+                .setTitle("标题")
+                .setMessage("信息")
+                .setPositiveButton("OK", { dialog, which ->
+                    dialog.dismiss()
+                    startBrowser(this, data)
+                })
+                .setNegativeButton("Cancel", { dialog, which -> dialog.dismiss() })
+                .show()
     }
 
 
@@ -72,7 +108,7 @@ class WebViewJsActivity : AppCompatActivity() {
          */
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
             //点击图片区域之后，防止webview跳转
-            return true
+            return false
         }
 
         override fun onPageFinished(view: WebView?, url: String?) {
@@ -81,19 +117,36 @@ class WebViewJsActivity : AppCompatActivity() {
         }
     }
 
+
+    private fun startBrowser(context: Context, url: String?) {
+        if (TextUtils.isEmpty(url)) {
+            return
+        }
+        val intent = Intent()
+        intent.action = Intent.ACTION_VIEW
+        val content_url = Uri.parse(url)
+        intent.data = content_url
+        try {
+            context.startActivity(intent)
+        } catch (e: Exception) {
+
+        }
+    }
+
+
     /**
      * 前端代码嵌入js：
      * imageClick 名应和js函数方法名一致
      *
      * @param src 图片的链接
      */
-    internal class JavaScriptInterface {
-        @JavascriptInterface
-        fun station(name: String?) {
-            if (TextUtils.isEmpty(name)) {
-                return
-            }
-            Log.v("showContent", name)
-        }
-    }
+//    internal class JavaScriptInterface {
+//        @JavascriptInterface
+//        fun station(name: String?) {
+//            if (TextUtils.isEmpty(name)) {
+//                return
+//            }
+//            Log.v("showContent", name)
+//        }
+//    }
 }
