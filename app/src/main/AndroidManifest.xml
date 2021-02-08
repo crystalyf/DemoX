@@ -27,6 +27,19 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- host: DYNAMIC_LINK_URIPREFIX去掉最后反斜线 -->
+                <data
+                    android:host="https://demox.page.link"
+                    android:scheme="https" />
+            </intent-filter>
+
+
         </activity>
         <activity android:name=".themecolor.waytwo.DynamicThemeColorActivity" />
         <activity android:name=".themecolor.waytwo.SecondActivity" />
@@ -70,6 +83,7 @@
         <activity android:name=".views.firebase.FirebaseTwitterActivity" />
         <activity android:name=".views.googlemap.GoogleMapStartActivity" />
         <activity android:name=".views.webview.WebViewTryActivity" />
+        <activity android:name=".views.firebase.dynamiclink.FirebaseDynamicLinkActivity" />
     </application>
 
 </manifest>

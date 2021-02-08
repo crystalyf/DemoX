@@ -9,6 +9,7 @@ import com.change.demox.usecase.PDFBookDocumentUseCase
 import com.change.demox.utils.SharedPreferences
 import com.change.demox.views.bottomsheet.BottomSheetViewModel
 import com.change.demox.views.firebase.FirebaseTwitterViewModel
+import com.change.demox.views.firebase.dynamiclink.FirebaseDynamicViewModel
 import com.change.demox.views.flexboxlayout.TopicDetailViewModel
 import com.change.demox.views.recyclerview.figillustration.FigViewModel
 import com.change.demox.views.recyclerview.paging.delete.PagingDeleteViewModel
@@ -45,6 +46,8 @@ class ViewModelFactory constructor(
                         FigViewModel()
                     isAssignableFrom(FirebaseTwitterViewModel::class.java) ->
                         FirebaseTwitterViewModel()
+                    isAssignableFrom(FirebaseDynamicViewModel::class.java) ->
+                        FirebaseDynamicViewModel()
                     else ->
                         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }

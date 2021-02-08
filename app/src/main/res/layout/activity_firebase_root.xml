@@ -12,4 +12,10 @@
         android:layout_height="wrap_content"
         android:text="firebase-Twitter认证登陆" />
 
+    <Button
+        android:id="@+id/btn_firebase_dynamic_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="firebase-DynamicLink" />
+
 </LinearLayout>

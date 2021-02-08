@@ -13,6 +13,12 @@
         android:text="免责画面" />
 
     <Button
+        android:id="@+id/btn_webview_demo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Webview Demo" />
+
+    <Button
         android:id="@+id/btn_js_webview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

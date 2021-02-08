@@ -11,6 +11,8 @@ android {
 
     def STRING = 'String'
     def API_HOST = 'API_HOST'
+    def DYNAMIC_LINK_URIPREFIX = 'DYNAMIC_LINK_URIPREFIX'
+    def DYNAMIC_LINK_DEEP_FRONT = 'DYNAMIC_LINK_DEEP_FRONT'
 
     defaultConfig {
         applicationId "com.change.demox"
@@ -27,11 +29,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField STRING, API_HOST, '"http://mock.apistub.cn/user/keyan93/DemoX/"'
+            buildConfigField STRING, DYNAMIC_LINK_URIPREFIX, '"https://demox.page.link/"'
+            buildConfigField STRING, DYNAMIC_LINK_DEEP_FRONT, '"https://com.change.demox/"'
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField STRING, API_HOST, '"http://mock.apistub.cn/user/keyan93/DemoX/"'
+            buildConfigField STRING, DYNAMIC_LINK_URIPREFIX, '"https://demox.page.link/"'
+            buildConfigField STRING, DYNAMIC_LINK_DEEP_FRONT, '"https://com.change.demox/"'
         }
     }
 
@@ -114,6 +120,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx:19.3.1'
     implementation "com.google.firebase:firebase-core:18.0.0"
     implementation "com.google.firebase:firebase-analytics:18.0.0"
+    implementation 'com.google.firebase:firebase-dynamic-links-ktx:19.1.1'
 
 }
 repositories {
