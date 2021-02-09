@@ -8,7 +8,7 @@ import com.change.demox.repository.ITopRepository
 import com.change.demox.usecase.PDFBookDocumentUseCase
 import com.change.demox.utils.SharedPreferences
 import com.change.demox.views.bottomsheet.BottomSheetViewModel
-import com.change.demox.views.firebase.FirebaseTwitterViewModel
+import com.change.demox.views.firebase.auth.FirebaseAuthViewModel
 import com.change.demox.views.firebase.dynamiclink.FirebaseDynamicViewModel
 import com.change.demox.views.flexboxlayout.TopicDetailViewModel
 import com.change.demox.views.recyclerview.figillustration.FigViewModel
@@ -44,8 +44,8 @@ class ViewModelFactory constructor(
                         TopicDetailViewModel()
                     isAssignableFrom(FigViewModel::class.java) ->
                         FigViewModel()
-                    isAssignableFrom(FirebaseTwitterViewModel::class.java) ->
-                        FirebaseTwitterViewModel()
+                    isAssignableFrom(FirebaseAuthViewModel::class.java) ->
+                        FirebaseAuthViewModel()
                     isAssignableFrom(FirebaseDynamicViewModel::class.java) ->
                         FirebaseDynamicViewModel()
                     else ->

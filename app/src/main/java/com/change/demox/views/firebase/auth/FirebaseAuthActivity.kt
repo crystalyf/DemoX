@@ -1,4 +1,4 @@
-package com.change.demox.views.firebase
+package com.change.demox.views.firebase.auth
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -8,8 +8,8 @@ import com.change.demox.extension.getViewModelFactory
 import kotlinx.android.synthetic.main.activity_firebase_twitter.*
 
 
-class FirebaseTwitterActivity : BaseActivity() {
-    val viewModel by viewModels<FirebaseTwitterViewModel> { getViewModelFactory() }
+class FirebaseAuthActivity : BaseActivity() {
+    val viewModel by viewModels<FirebaseAuthViewModel> { getViewModelFactory() }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,10 +23,13 @@ class FirebaseTwitterActivity : BaseActivity() {
             //todo sign in action
             viewModel.refreshTwitterAuthentication()
         }
-
         sign_in_with_twiiter.setOnClickListener {
             //sign in action
-            viewModel.doTwitterAuthentication(this@FirebaseTwitterActivity)
+            viewModel.doTwitterAuthentication(this@FirebaseAuthActivity)
+        }
+        sign_in_with_apple.setOnClickListener {
+            //sign in action
+            viewModel.doAppleAuthentication(this@FirebaseAuthActivity)
         }
     }
 

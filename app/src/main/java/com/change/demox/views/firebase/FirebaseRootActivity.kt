@@ -4,10 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
+import com.change.demox.views.firebase.auth.FirebaseAuthActivity
 import com.change.demox.views.firebase.dynamiclink.FirebaseDynamicLinkActivity
-import com.change.demox.views.webview.webcache.WebViewCacheActivity
 import kotlinx.android.synthetic.main.activity_firebase_root.*
-import kotlinx.android.synthetic.main.activity_web_view.*
 
 
 class FirebaseRootActivity : AppCompatActivity() {
@@ -19,7 +18,7 @@ class FirebaseRootActivity : AppCompatActivity() {
 
     private fun initView() {
         btn_firebase_twitter.setOnClickListener {
-            val intent = Intent(this, FirebaseTwitterActivity::class.java)
+            val intent = Intent(this, FirebaseAuthActivity::class.java)
             startActivity(intent)
         }
         btn_firebase_dynamic_link.setOnClickListener {

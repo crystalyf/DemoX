@@ -80,7 +80,7 @@
         <activity android:name=".views.browser.BrowserActivity" />
         <activity android:name=".views.webview.WebViewGetHtmlContentActivity" />
         <activity android:name=".views.firebase.FirebaseRootActivity" />
-        <activity android:name=".views.firebase.FirebaseTwitterActivity" />
+        <activity android:name=".views.firebase.auth.FirebaseAuthActivity" />
         <activity android:name=".views.googlemap.GoogleMapStartActivity" />
         <activity android:name=".views.webview.WebViewTryActivity" />
         <activity android:name=".views.firebase.dynamiclink.FirebaseDynamicLinkActivity" />
