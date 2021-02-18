@@ -4,6 +4,7 @@ import android.app.Activity
 import android.util.Log
 import com.change.base.BaseViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.OAuthCredential
 import com.google.firebase.auth.OAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -31,13 +32,11 @@ class FirebaseAuthViewModel : BaseViewModel() {
         auth.startActivityForSignInWithProvider(context, authProvider!!)
                 .addOnSuccessListener { authResult ->
                     var token: String? = ""
-                    if (authResult.user != null) {
-                        // User is signed in
-                        val task = authResult.user?.getIdToken(false)
-                        if (task?.isSuccessful!!) {
-                            token = task.result?.token
-                        }
-                    }
+                    var secret: String? = ""
+                    //强转OAuthCredential类型以获取secret：
+                    val temp:OAuthCredential = authResult.credential as OAuthCredential
+                    token = temp.accessToken
+                    secret = temp.secret
                     Log.d(TAG, "activitySignIn:onSuccess:${authResult.user}")
                     //authResult: zza,zzc,zzc
                 }
