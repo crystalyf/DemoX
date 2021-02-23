@@ -84,6 +84,7 @@
         <activity android:name=".views.googlemap.GoogleMapStartActivity" />
         <activity android:name=".views.webview.WebViewTryActivity" />
         <activity android:name=".views.firebase.dynamiclink.FirebaseDynamicLinkActivity" />
+        <activity android:name=".views.dialog.dialogfullscreen.DialogFullScreenActivity" />
     </application>
 
 </manifest>

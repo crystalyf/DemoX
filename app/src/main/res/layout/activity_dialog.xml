@@ -12,4 +12,10 @@
         android:layout_height="wrap_content"
         android:text="dialogFragment 合集" />
 
+    <Button
+        android:id="@+id/btn_dialog_fullscreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="全屏Dialog" />
+
 </LinearLayout>

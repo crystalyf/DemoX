@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
 import com.change.demox.views.bottomsheet.BottomSheetRootActivity
 import com.change.demox.views.dialog.dialogfragment.DialogFragmentActivity
+import com.change.demox.views.dialog.dialogfullscreen.DialogFullScreenActivity
 import com.change.demox.views.edittext.EditTextActivity
 import com.change.demox.views.imageview.ImageViewActivity
 import com.change.demox.views.recyclerview.RecyclerActivity
@@ -28,6 +29,9 @@ class DialogActivity : AppCompatActivity() {
             val intent = Intent(this, DialogFragmentActivity::class.java)
             startActivity(intent)
         }
-
+        btn_dialog_fullscreen.setOnClickListener {
+            val intent = Intent(this, DialogFullScreenActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
