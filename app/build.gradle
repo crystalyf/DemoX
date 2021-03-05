@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.android.gms.oss-licenses-plugin'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 29
@@ -120,6 +121,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx:19.3.1'
     implementation "com.google.firebase:firebase-core:18.0.0"
     implementation "com.google.firebase:firebase-analytics:18.0.0"
+    // Add dependency
+    implementation 'com.google.firebase:firebase-crashlytics:17.3.1'
     implementation 'com.google.firebase:firebase-dynamic-links-ktx:19.1.1'
 
 }
