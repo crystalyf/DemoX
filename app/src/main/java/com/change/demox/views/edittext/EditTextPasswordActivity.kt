@@ -1,8 +1,11 @@
 package com.change.demox.views.edittext
 
 import android.os.Bundle
+import android.text.TextUtils
+import android.text.method.DigitsKeyListener
 import android.text.method.PasswordTransformationMethod
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import com.change.demox.R
 import com.change.demox.utils.ViewUtils
 import kotlinx.android.synthetic.main.activity_edit_text_password.*
@@ -31,5 +34,10 @@ class EditTextPasswordActivity : AppCompatActivity() {
          */
         edit_big.transformationMethod = ViewUtils.BiggerDotPasswordTransformationMethod
         edit_normal.transformationMethod = PasswordTransformationMethod.getInstance()
+
+
+
+       // edit_normal.keyListener = DigitsKeyListener.getInstance("123890.")
+
     }
 }
