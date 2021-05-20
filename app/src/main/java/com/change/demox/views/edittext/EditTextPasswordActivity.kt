@@ -8,9 +8,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.change.demox.R
 import com.change.demox.utils.ViewUtils
+import com.change.demox.views.edittext.widget.TrimTextWatcher
 import kotlinx.android.synthetic.main.activity_edit_text_password.*
 
-
+/**
+ * EditText的转换显示： 输入密码，输入时去除空格
+ */
 class EditTextPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,10 +37,8 @@ class EditTextPasswordActivity : AppCompatActivity() {
          */
         edit_big.transformationMethod = ViewUtils.BiggerDotPasswordTransformationMethod
         edit_normal.transformationMethod = PasswordTransformationMethod.getInstance()
-
-
-
-       // edit_normal.keyListener = DigitsKeyListener.getInstance("123890.")
+        //输入时去除前后空格的EditText
+        edit_trim.addTextChangedListener(TrimTextWatcher(edit_trim))
 
     }
 }
