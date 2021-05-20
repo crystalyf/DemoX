@@ -11,20 +11,18 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Matrix
+import android.graphics.*
+import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
+import android.provider.OpenableColumns
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.change.demox.R
 import com.yalantis.ucrop.UCrop
 import com.yalantis.ucrop.util.BitmapLoadUtils
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileOutputStream
+import java.io.*
 import kotlin.math.max
 
 
@@ -276,5 +274,161 @@ object FileUtils {
             null
         }
     }
+
+    /**
+     *  通过文件Uri得到文件路径 （Uri -> FilePath）
+     *
+     *  文件uri是以此开头的映射地址 :content://
+     *
+     *  Android的Uri由以下三部分组成： "content://"、数据的路径、标示ID(可选)
+
+    　　举些例子，如： 
+
+    　　　　所有联系人的Uri： content://contacts/people
+
+    　　　　某个联系人的Uri: content://contacts/people/5
+
+    　　　　所有图片Uri: content://media/external
+
+    　　　　某个图片的Uri：content://media/external/images/media/4
+     */
+    fun getFilePathFromUri(uri: Uri, context: Context): String? {
+        val returnCursor = context.contentResolver.query(uri, null, null, null, null)
+        val nameIndex = returnCursor!!.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+        returnCursor.moveToFirst()
+        val name = returnCursor.getString(nameIndex)
+        val file = File(context.filesDir, name)
+        try {
+            val inputStream: InputStream? = context.contentResolver.openInputStream(uri)
+            val outputStream = FileOutputStream(file)
+            var read = 0
+            val maxBufferSize = 1 * 1024 * 1024
+            val bytesAvailable: Int = inputStream?.available()!!
+            val bufferSize = Math.min(bytesAvailable, maxBufferSize)
+            val buffers = ByteArray(bufferSize)
+            while (inputStream.read(buffers).also { read = it } != -1) {
+                outputStream.write(buffers, 0, read)
+            }
+            inputStream.close()
+            outputStream.close()
+        } catch (e: Exception) {
+
+        }
+        return file.path
+    }
+
+    /**
+     * 文件是否大于4MB？
+     */
+    fun isFileUp4MB(length: Long): Boolean {
+        return length >= 1048576 * 4
+    }
+
+
+    /**
+     * 将图像压缩到目标尺寸以下 （ 以下4个function()是四合一使用 ）
+     */
+    fun compressBmpFileToTargetSize(file: File, targetSize: Long? = 1048576 * 3): File {
+        if (file.length() > targetSize ?: 0) {
+            val ratio = 2
+            val options = BitmapFactory.Options()
+            var bitmap = BitmapFactory.decodeFile(file.absolutePath, options)
+
+            //判断图像读取的时候是否发生过旋转，如果有，那么转回来
+            val rotate = readPictureDegree(file.absolutePath)
+            if (rotate != ExifInterface.ORIENTATION_UNDEFINED) {
+                bitmap = rotateBitmap(bitmap, rotate)
+            }
+            var targetWidth = options.outWidth / ratio
+            var targetHeight = options.outHeight / ratio
+
+            //将图像压缩到相应的大小
+            val baos = ByteArrayOutputStream()
+            val quality = 100
+            var result: Bitmap? = generateScaledBmp(bitmap, targetWidth, targetHeight, baos, quality)
+
+            var count = 0
+            while (baos.size() > targetSize ?: 0 && count <= 10) {
+                targetWidth /= ratio
+                targetHeight /= ratio
+                count++
+                baos.reset()
+                result = generateScaledBmp(result!!, targetWidth, targetHeight, baos, quality)
+            }
+            try {
+                val fos = FileOutputStream(file)
+                fos.write(baos.toByteArray())
+                fos.flush()
+                fos.close()
+            } catch (e: java.lang.Exception) {
+                e.printStackTrace()
+            }
+        }
+        return file
+    }
+
+    private fun generateScaledBmp(srcBmp: Bitmap, targetWidth: Int, targetHeight: Int, baos: ByteArrayOutputStream, quality: Int): Bitmap? {
+        val result = Bitmap.createBitmap(targetWidth, targetHeight, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(result)
+        val rect = Rect(0, 0, result.width, result.height)
+        canvas.drawBitmap(srcBmp, null, rect, null)
+        if (!srcBmp.isRecycled) {
+            srcBmp.recycle()
+        }
+        result.compress(Bitmap.CompressFormat.JPEG, quality, baos)
+        return result
+    }
+
+    /**
+     * 读取照片的旋转角度
+     */
+    private fun readPictureDegree(path: String): Int {
+        var degree = 0
+        try {
+            val exifInterface = ExifInterface(path)
+            val orientation: Int = exifInterface.getAttributeInt(
+                    ExifInterface.TAG_ORIENTATION,
+                    ExifInterface.ORIENTATION_NORMAL)
+            when (orientation) {
+                ExifInterface.ORIENTATION_ROTATE_90 -> degree = 90
+                ExifInterface.ORIENTATION_ROTATE_180 -> degree = 180
+                ExifInterface.ORIENTATION_ROTATE_270 -> degree = 270
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return degree
+    }
+
+    /**
+     * 写真を回転させる
+     */
+    private fun rotateBitmap(bitmap: Bitmap, rotate: Int): Bitmap? {
+        val w = bitmap.width
+        val h = bitmap.height
+        val matrix = Matrix()
+        matrix.postRotate(rotate.toFloat())
+        return Bitmap.createBitmap(bitmap, 0, 0, w, h, matrix, true)
+    }
+
+    /**
+     *  判断该文件是否存在？ true：是false：否
+     *
+     *  strFile : 文件路径
+     */
+    fun fileIsExist(strFile: String?): Boolean {
+        try {
+            val f = File(strFile)
+            if (!f.exists()) {
+                return false
+            }
+        } catch (e: java.lang.Exception) {
+            return false
+        }
+        return true
+    }
+
+
+
 
 }
