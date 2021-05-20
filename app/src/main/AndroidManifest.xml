@@ -63,6 +63,7 @@
         <activity android:name=".views.recyclerview.paging.delete.PagingDeleteActivity" />
         <activity android:name=".views.imageview.ImageViewActivity" />
         <activity android:name="com.change.demox.views.imageview.viewTag.ViewTagActivity" />
+        <activity android:name="com.change.demox.views.imageview.imageshow.ImageViewShowActivity" />
         <activity android:name=".views.slideview.SlideViewActivity" />
         <activity android:name=".views.tutorial.TutorialActivity" />
         <activity android:name=".views.dialog.DialogActivity" />

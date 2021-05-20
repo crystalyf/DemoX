@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
+import com.change.demox.views.imageview.imageshow.ImageViewShowActivity
 import com.change.demox.views.imageview.viewTag.ViewTagActivity
 import kotlinx.android.synthetic.main.activity_image_view.*
 
@@ -23,6 +24,11 @@ class ImageViewActivity : AppCompatActivity() {
         btn_gesture.setOnClickListener {
             //手势操作（手势滑动,手势缩放，双击缩放）
             val intent = Intent(this, ViewTagActivity::class.java)
+            startActivity(intent)
+        }
+        btn_image_show.setOnClickListener {
+            //图片显示
+            val intent = Intent(this, ImageViewShowActivity::class.java)
             startActivity(intent)
         }
     }

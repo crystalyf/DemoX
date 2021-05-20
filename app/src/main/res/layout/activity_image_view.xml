@@ -18,5 +18,11 @@
         android:layout_height="wrap_content"
         android:text="手势操作（手势滑动,手势缩放，双击缩放）" />
 
+    <Button
+        android:id="@+id/btn_image_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="图片显示" />
+
 
 </LinearLayout>
