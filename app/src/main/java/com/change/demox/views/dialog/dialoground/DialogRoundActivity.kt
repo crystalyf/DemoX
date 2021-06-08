@@ -1,4 +1,4 @@
-package com.change.demox.views.dialog.dialogfullscreen
+package com.change.demox.views.dialog.dialoground
 
 import android.os.Bundle
 import com.change.base.BaseActivity
@@ -9,26 +9,25 @@ import kotlinx.android.synthetic.main.activity_dialog_fullscreen.*
  *  全屏显示的Dialog
  *
  */
-class DialogFullScreenActivity : BaseActivity() {
+class DialogRoundActivity : BaseActivity() {
 
 
-    private var dialog: NotificationWebViewDialog? = null
-    private val url = "https://www.baidu.com/"
+    private var dialog: RoundDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dialog_fullscreen)
+        setContentView(R.layout.activity_dialog_round)
         initView()
     }
 
     private fun initView() {
         btn_pop.setOnClickListener {
-            showWebViewDialog(url)
+            showRoundDialog()
         }
     }
 
-    private fun showWebViewDialog(webUrl: String) {
-        dialog = NotificationWebViewDialog(this, webUrl)
+    private fun showRoundDialog() {
+        dialog = RoundDialog(this)
         dialog?.show()
     }
 }
