@@ -73,11 +73,11 @@ Recyclerview + FlexboxLayout(自动换行)：
 
 
 
-bottomSheet：
+bottomSheet，自定义：
 
 
 ![img](https://github.com/crystalyf/DemoX/blob/master/gif/bottomsheet.gif)
-
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E8%87%AA%E5%AE%9A%E4%B9%89BottomSheetDialog.gif)
 
 
 
