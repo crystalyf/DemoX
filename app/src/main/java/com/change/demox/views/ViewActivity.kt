@@ -13,6 +13,7 @@ import com.change.demox.views.edittext.EditTextActivity
 import com.change.demox.views.firebase.FirebaseRootActivity
 import com.change.demox.views.googlemap.GoogleMapStartActivity
 import com.change.demox.views.imageview.ImageViewActivity
+import com.change.demox.views.layout.LayoutActivity
 import com.change.demox.views.qrcode.scan.CustomScanActivity
 import com.change.demox.views.recyclerview.RecyclerActivity
 import com.change.demox.views.slideview.SlideViewActivity
@@ -36,6 +37,10 @@ class ViewActivity : AppCompatActivity() {
         }
         btn_recyclerview.setOnClickListener {
             val intent = Intent(this, RecyclerActivity::class.java)
+            startActivity(intent)
+        }
+        btn_layout.setOnClickListener {
+            val intent = Intent(this, LayoutActivity::class.java)
             startActivity(intent)
         }
         btn_textview.setOnClickListener {

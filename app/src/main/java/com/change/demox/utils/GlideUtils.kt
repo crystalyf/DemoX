@@ -79,7 +79,7 @@ class GlideUtils {
                     .load(url)
                     .placeholder(R.drawable.ic_progress_glide_rotate_24)
                     .error(R.drawable.ic_progress_glide_rotate_24)
-                    .fallback(R.drawable.ic_progress_glide_rotate_24)
+                    .fallback(R.drawable.ic_noimage)
                     .listener(
                             object : RequestListener<Drawable> {
                                 override fun onLoadFailed(

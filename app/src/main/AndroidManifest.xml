@@ -87,6 +87,7 @@
         <activity android:name=".views.firebase.dynamiclink.FirebaseDynamicLinkActivity" />
         <activity android:name=".views.dialog.dialogfullscreen.DialogFullScreenActivity" />
         <activity android:name=".views.dialog.dialoground.DialogRoundActivity" />
+        <activity android:name=".views.layout.LayoutActivity" />
     </application>
 
 </manifest>
