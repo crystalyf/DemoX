@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ListView
+            android:layout_marginTop="15dp"
+            android:scrollbars="none"
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="176dp"
+            android:choiceMode="singleChoice"
+            android:divider="@null"/>
+
+    <LinearLayout
+            android:layout_marginTop="15dp"
+            android:id="@+id/footer_view"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <View
+                android:layout_width="match_parent"
+                android:background="@color/colorGray"
+                android:layout_height="1dp"/>
+
+        <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:text="关闭"/>
+    </LinearLayout>
+</LinearLayout>

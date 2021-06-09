@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
 import com.change.demox.views.bottomsheet.BottomSheetRootActivity
+import com.change.demox.views.dialog.bottomsheetdialog.BottomSheetDialogActivity
 import com.change.demox.views.dialog.dialogfragment.DialogFragmentActivity
 import com.change.demox.views.dialog.dialogfullscreen.DialogFullScreenActivity
 import com.change.demox.views.dialog.dialoground.DialogRoundActivity
@@ -36,6 +37,10 @@ class DialogActivity : AppCompatActivity() {
         }
         btn_dialog_round.setOnClickListener {
             val intent = Intent(this, DialogRoundActivity::class.java)
+            startActivity(intent)
+        }
+        btn_custom_bottomsheet_dialog.setOnClickListener {
+            val intent = Intent(this, BottomSheetDialogActivity::class.java)
             startActivity(intent)
         }
     }

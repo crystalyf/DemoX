@@ -24,4 +24,10 @@
         android:layout_height="wrap_content"
         android:text="圆角Dialog" />
 
+    <Button
+        android:id="@+id/btn_custom_bottomsheet_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义bottomSheet Dialog" />
+
 </LinearLayout>

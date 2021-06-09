@@ -6,101 +6,114 @@
     android:orientation="vertical"
     tools:context=".views.ViewActivity">
 
-    <Button
-        android:id="@+id/btn_textview"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="textView 合集" />
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="layout 合集" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="textView 合集" />
+
+            <Button
+                android:id="@+id/btn_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="layout 合集" />
 
 
-    <Button
-        android:id="@+id/btn_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="spinner合集" />
+            <Button
+                android:id="@+id/btn_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="spinner合集" />
 
-    <Button
-        android:id="@+id/btn_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="recyclerview合集" />
+            <Button
+                android:id="@+id/btn_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="recyclerview合集" />
 
-    <Button
-        android:id="@+id/btn_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="edittext合集" />
+            <Button
+                android:id="@+id/btn_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="edittext合集" />
 
-    <Button
-        android:id="@+id/btn_bottomsheet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="bottomSheet合集" />
+            <Button
+                android:id="@+id/btn_bottomsheet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="bottomSheet合集" />
 
-    <Button
-        android:id="@+id/btn_imageview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ImageView合集" />
+            <Button
+                android:id="@+id/btn_imageview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ImageView合集" />
 
-    <Button
-        android:id="@+id/btn_webview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="WebView合集" />
+            <Button
+                android:id="@+id/btn_webview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="WebView合集" />
 
-    <Button
-        android:id="@+id/btn_slide_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="滑动接听组件" />
+            <Button
+                android:id="@+id/btn_slide_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="滑动接听组件" />
 
-    <Button
-        android:id="@+id/btn_dialog"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="dialog合集" />
+            <Button
+                android:id="@+id/btn_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="dialog合集" />
 
-    <Button
-        android:id="@+id/btn_banner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Banner展示" />
+            <Button
+                android:id="@+id/btn_banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Banner展示" />
 
-    <Button
-        android:id="@+id/btn_qrcode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="二维码功能" />
+            <Button
+                android:id="@+id/btn_qrcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="二维码功能" />
 
-    <Button
-        android:id="@+id/btn_firebase"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Firebase合集功能" />
+            <Button
+                android:id="@+id/btn_firebase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Firebase合集功能" />
 
-    <Button
-        android:id="@+id/btn_browser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="web浏览器功能" />
+            <Button
+                android:id="@+id/btn_browser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="web浏览器功能" />
 
-    <Button
-        android:id="@+id/btn_collapsing_toolbar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="折叠工具栏的效果" />
+            <Button
+                android:id="@+id/btn_collapsing_toolbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="折叠工具栏的效果" />
 
-    <Button
-        android:id="@+id/btn_start_googlemap"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="谷歌地图合集" />
+            <Button
+                android:id="@+id/btn_start_googlemap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="谷歌地图合集" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

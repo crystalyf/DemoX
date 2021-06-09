@@ -88,6 +88,7 @@
         <activity android:name=".views.dialog.dialogfullscreen.DialogFullScreenActivity" />
         <activity android:name=".views.dialog.dialoground.DialogRoundActivity" />
         <activity android:name=".views.layout.LayoutActivity" />
+        <activity android:name=".views.dialog.bottomsheetdialog.BottomSheetDialogActivity" />
     </application>
 
 </manifest>

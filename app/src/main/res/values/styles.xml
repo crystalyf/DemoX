@@ -124,5 +124,24 @@
         <item name="android:layout_marginBottom">3dp</item>
     </style>
 
+    <!-- 自定义下拉dialog-->
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog"/>
+
+    <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="shapeAppearance">@style/BaseBottomSheetDialogShape</item>
+    </style>
+
+    <style name="BaseBottomSheetDialogShape" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerSizeTopLeft">15dp</item>
+        <item name="cornerSizeTopRight">15dp</item>
+    </style>
+
 
 </resources>
