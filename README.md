@@ -33,7 +33,7 @@ Demo Android合集
 
 ![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E5%B8%A6%E5%88%A0%E9%99%A4%E6%8C%89%E9%92%AE%E7%9A%84Edittext.gif)
 ![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E5%AF%86%E7%A0%81%E6%A0%B7%E5%BC%8F.gif)
-![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E8%BF%87%E6%BB%A4%E7%A9%BA%E6%A0%BC.gif)
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/EditText%E8%BF%87%E6%BB%A4%E5%89%8D%E5%90%8E%E7%A9%BA%E6%A0%BC.gif)
 
 
 
