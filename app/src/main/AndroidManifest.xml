@@ -89,6 +89,7 @@
         <activity android:name=".views.dialog.dialoground.DialogRoundActivity" />
         <activity android:name=".views.layout.LayoutActivity" />
         <activity android:name=".views.dialog.bottomsheetdialog.BottomSheetDialogActivity" />
+        <activity android:name=".views.webview.WebViewCommonActivity" />
     </application>
 
 </manifest>
