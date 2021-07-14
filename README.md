@@ -26,6 +26,8 @@ Camera2拍照：
 
 
 ![img](https://github.com/crystalyf/DemoX/blob/master/gif/CameraX2%E6%8B%8D%E7%85%A7.gif)
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/Camera2%E6%8B%8D%E7%85%A7%E6%98%BE%E7%A4%BA.gif)
+
 
 
 动态切换主题色：
