@@ -92,7 +92,9 @@
         <activity android:name=".views.layout.LayoutActivity" />
         <activity android:name=".views.dialog.bottomsheetdialog.BottomSheetDialogActivity" />
         <activity android:name=".views.webview.WebViewCommonActivity" />
-        <activity android:name=".camera.CameraActivity" />
+        <activity android:name=".camera.albumandcamera.CameraAndShowActivity" />
+        <activity android:name=".camera.CameraRootActivity" />
+        <activity android:name=".camera.onlycamera.CameraActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

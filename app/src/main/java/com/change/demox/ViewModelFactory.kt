@@ -2,7 +2,8 @@ package com.change.demox
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.change.demox.camera.TakePhotoViewModel
+import com.change.demox.camera.albumandcamera.CameraAndShowViewModel
+import com.change.demox.camera.onlycamera.TakePhotoViewModel
 import com.change.demox.pdf.PDFBookDocumentViewModel
 import com.change.demox.remote.RetrofitManager
 import com.change.demox.repository.ITopRepository
@@ -51,6 +52,8 @@ class ViewModelFactory constructor(
                         FirebaseDynamicViewModel()
                     isAssignableFrom(TakePhotoViewModel::class.java) ->
                         TakePhotoViewModel()
+                    isAssignableFrom(CameraAndShowViewModel::class.java) ->
+                        CameraAndShowViewModel()
                     else ->
                         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }

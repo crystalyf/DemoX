@@ -12,6 +12,8 @@
     <color name="transparent">#00000000</color>
     <!--grey-->
     <color name="colorGray">#585858</color>
+    <color name="gray_c4">#C4C4C4</color>
+    <color name="grey_7b">#7B7B7B</color>
     <color name="colorShadowGrey">#EFEFEF</color>
     <color name="colorBorderButtonPressedGrey">#999B9B9B</color>
     <color name="colorMenuVersionGray">#9B9B9B</color>

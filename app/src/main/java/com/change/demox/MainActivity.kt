@@ -7,7 +7,7 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.change.demox.camera.CameraActivity
+import com.change.demox.camera.CameraRootActivity
 import com.change.demox.pdf.PdfShowActivity
 import com.change.demox.themecolor.waytwo.DynamicThemeColorActivity
 import com.change.demox.ucrop.UcropActivity
@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.btn_camera -> {
-                val intent = Intent(this, CameraActivity::class.java)
+                val intent = Intent(this, CameraRootActivity::class.java)
                 startActivity(intent)
             }
             else -> {

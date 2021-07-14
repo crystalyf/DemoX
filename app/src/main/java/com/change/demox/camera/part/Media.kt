@@ -12,31 +12,20 @@ data class Media(
     //for save image id
     var id: Long? = null
 
-    // TODO make data
+    // TODO 构造数据源，限制了造5个
     fun createData(): MutableList<Media> {
         var list = mutableListOf<Media>()
         val a = Media(photoStatue = PhotoStatue.TAKE_CAMERA.ordinal)
         val b = Media()
         val c = Media()
+        val d = Media()
+        val e = Media()
         list.add(a)
         list.add(b)
         list.add(c)
+        list.add(d)
+        list.add(e)
         return list
-    }
-
-    fun createAlbumData(): MutableList<Media> {
-        var list = mutableListOf<Media>()
-        val a = Media()
-        val b = Media()
-        val c = Media()
-        list.add(a)
-        list.add(b)
-        list.add(c)
-        return list
-    }
-
-    fun clearMedia() {
-        this.uri = null
     }
 }
 
