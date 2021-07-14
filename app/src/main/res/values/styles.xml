@@ -143,5 +143,18 @@
         <item name="cornerSizeTopRight">15dp</item>
     </style>
 
+    <!-- camera 拍照按钮 -->
+    <style name="camera_general_button" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/colorThemeOrange</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconEndPadding">7dp</item>
+    </style>
+
 
 </resources>

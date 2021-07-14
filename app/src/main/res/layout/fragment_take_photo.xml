@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.change.demox.camera.TakePhotoViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.change.demox.camera.TakePhotoFragment" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorGray"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorBlack">
+
+            <ImageButton
+                android:id="@+id/btnFlash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:elevation="1dp"
+                android:paddingStart="20dp"
+                android:src="@drawable/ic_flash_auto"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btnSwitchCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:background="@android:color/transparent"
+                android:elevation="1dp"
+                android:paddingEnd="20dp"
+                android:src="@drawable/ic_loop_24px"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- PreviewView 是 FrameLayout 的子类，
+        它会使用 SurfaceView 或者TextureView 展示来自相机捕捉到的画面
+
+         当涉及到诸如功耗和响应时间这些关键指标时，SurfaceView 的表现一般都比 TextureView 要好，
+         这也是为什么 PreviewView 会将 SurfaceView 作为默认实现模式的原因
+         -->
+        <androidx.camera.view.PreviewView
+            android:id="@+id/viewFinder"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/galleryImage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_dot_action_gallery"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/imagePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="375dp"
+            android:src="@drawable/ic_dot_action_gallery"
+            android:visibility="gone" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/type1_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@id/lin_bottom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/lin_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recyclerview">
+
+                <RelativeLayout
+                    android:id="@+id/rl_take_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_marginTop="64dp"
+                    android:layout_marginBottom="35dp">
+
+                    <ImageButton
+                        android:id="@+id/btnTakePicture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_take_picture" />
+
+                    <ImageButton
+                        android:id="@+id/btnGallery"
+                        android:layout_width="22dp"
+                        android:layout_height="18dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="66dp"
+                        android:background="@android:color/transparent"
+                        android:elevation="1dp"
+                        android:src="@drawable/ic_dot_action_gallery" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_btn_delete"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="83dp"
+                    android:layout_marginBottom="40dp"
+                    android:visibility="gone">
+
+                    <ImageButton
+                        android:id="@+id/btnDelete"
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_delete" />
+
+                    <ImageButton
+                        android:id="@+id/btnCamera"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="70dp"
+                        android:background="@android:color/transparent"
+                        android:elevation="1dp"
+                        android:src="@drawable/ic_photo_camera_24px" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/type2_layout"
+            android:layout_width="match_parent"
+            android:layout_height="144dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_re_take"
+                style="@style/camera_general_button"
+                android:layout_marginTop="57dp"
+                android:backgroundTint="@color/colorThemeOrange"
+                android:text="重新拍摄"
+                app:icon="@drawable/ic_history_24px"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_use_image"
+                style="@style/camera_general_button"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="57dp"
+                android:text="使用这张照片"
+                app:icon="@drawable/ic_selected"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.change.demox.camera.CameraActivity
 import com.change.demox.pdf.PdfShowActivity
 import com.change.demox.themecolor.waytwo.DynamicThemeColorActivity
 import com.change.demox.ucrop.UcropActivity
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btn_views.setOnClickListener(this)
         btn_pdf_online.setOnClickListener(this)
         btn_tutorial.setOnClickListener(this)
+        btn_camera.setOnClickListener(this)
     }
 
     /**
@@ -104,6 +106,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.btn_tutorial -> {
                 val intent = Intent(this, TutorialActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.btn_camera -> {
+                val intent = Intent(this, CameraActivity::class.java)
                 startActivity(intent)
             }
             else -> {
