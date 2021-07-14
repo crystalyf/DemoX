@@ -21,6 +21,13 @@ Demo Android合集
 ![img](https://github.com/crystalyf/DemoX/blob/master/gif/%E5%9B%BE%E7%89%87%E6%B7%BB%E5%8A%A0%E6%A0%87%E8%AE%B0.gif)
 
 
+
+Camera2拍照：
+
+
+![img](https://github.com/crystalyf/DemoX/blob/master/gif/CameraX2%E6%8B%8D%E7%85%A7.gif)
+
+
 动态切换主题色：
 
 
