@@ -7,6 +7,7 @@ import com.change.demox.R
 import com.change.demox.views.recyclerview.banner.BannerRootActivity
 import com.change.demox.views.bottomsheet.BottomSheetRootActivity
 import com.change.demox.views.browser.BrowserActivity
+import com.change.demox.views.chart.ChartActivity
 import com.change.demox.views.collapsingtoolbarlayout.ProfileHomePageActivity
 import com.change.demox.views.dialog.DialogActivity
 import com.change.demox.views.edittext.EditTextActivity
@@ -89,6 +90,10 @@ class ViewActivity : AppCompatActivity() {
         }
         btn_start_googlemap.setOnClickListener {
             val intent = Intent(this, GoogleMapStartActivity::class.java)
+            startActivity(intent)
+        }
+        btn_pie_chart.setOnClickListener {
+            val intent = Intent(this, ChartActivity::class.java)
             startActivity(intent)
         }
         btn_browser.setOnClickListener {

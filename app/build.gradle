@@ -141,6 +141,8 @@ dependencies {
     implementation "androidx.camera:camera-extensions:1.0.0-alpha26"
     //camerax的生命周期库
     implementation "androidx.camera:camera-lifecycle:1.1.0-alpha06"
+    // MpChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
 }
 repositories {

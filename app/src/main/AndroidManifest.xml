@@ -95,6 +95,7 @@
         <activity android:name=".camera.albumandcamera.CameraAndShowActivity" />
         <activity android:name=".camera.CameraRootActivity" />
         <activity android:name=".camera.onlycamera.CameraActivity" />
+        <activity android:name=".views.chart.ChartActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
