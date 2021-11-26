@@ -28,7 +28,8 @@ Camera2拍照：
 ![img](https://github.com/crystalyf/DemoX/blob/master/gif/CameraX2%E6%8B%8D%E7%85%A7.gif)
 ![img](https://github.com/crystalyf/DemoX/blob/master/gif/Camera2%E6%8B%8D%E7%85%A7%E6%98%BE%E7%A4%BA.gif)
 
-
+<br />
+<br />
 文件存储（兼容10.0上下版本），比如：
 <br />
 存储图像文件至公共目录（共享存储目录）<br />
@@ -36,6 +37,7 @@ Camera2拍照：
 存储文件至APP的私有存储目录（沙盒）<br />
 获取指定的私有存储路径的所有文件<br />
 https://github.com/crystalyf/storage<br />
+<br />
 <br />
 
 动态切换主题色：
