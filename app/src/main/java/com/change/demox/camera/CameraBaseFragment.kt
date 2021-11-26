@@ -16,7 +16,6 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.change.demox.camera.part.Media
@@ -28,6 +27,7 @@ abstract class CameraBaseFragment<B : ViewBinding>() : Fragment() {
     abstract val binding: B
 
     protected val outputDirectory: String by lazy {
+        //沙盒外部私有存储的【DCIM】-> [demox_camera]是存放照片的路径
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             "${Environment.DIRECTORY_DCIM}/demox_camera/"
         } else {
@@ -98,15 +98,20 @@ abstract class CameraBaseFragment<B : ViewBinding>() : Fragment() {
         getMediaQMinus()
     }.reversed()
 
+
+    /**
+     * 获取媒体文件（AndroidQ 以上版本）
+     */
     private fun getMediaQPlus(): List<Media> {
         val items = mutableListOf<Media>()
         val contentResolver = requireContext().applicationContext.contentResolver
 
+        //使用MediaStore查询外部存储里的Video文件, EXTERNAL_CONTENT_URI代表外部存储器，该值不变
         contentResolver.query(
                 MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
                 arrayOf(
                         MediaStore.Video.Media._ID,
-                        MediaStore.Video.Media.RELATIVE_PATH,
+                        MediaStore.Video.Media.RELATIVE_PATH,   //RELATIVE_PATH是相对路径不是绝对路径
                         MediaStore.Video.Media.DATE_TAKEN,
                 ),
                 null,
@@ -121,15 +126,14 @@ abstract class CameraBaseFragment<B : ViewBinding>() : Fragment() {
                 val id = cursor.getLong(idColumn)
                 val path = cursor.getString(pathColumn)
                 val date = cursor.getLong(dateColumn)
-
                 val contentUri: Uri = ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, id)
-
                 if (path == outputDirectory) {
                     items.add(Media(contentUri.toString(), true, date))
                 }
             }
         }
 
+        //使用MediaStore查询外部存储里的Images文件, EXTERNAL_CONTENT_URI代表外部存储器，该值不变
         contentResolver.query(
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                 arrayOf(
@@ -144,15 +148,14 @@ abstract class CameraBaseFragment<B : ViewBinding>() : Fragment() {
             val idColumn = cursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID)
             val pathColumn = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.RELATIVE_PATH)
             val dateColumn = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATE_TAKEN)
-
             while (cursor.moveToNext()) {
                 val id = cursor.getLong(idColumn)
                 val path = cursor.getString(pathColumn)
                 val date = cursor.getLong(dateColumn)
-
+                //这个方法负责把id和contentUri连接成一个新的Uri，用于为路径加上ID部分
                 val contentUri: Uri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id)
-
                 if (path == outputDirectory) {
+                    //造入数据源供列表显示照片
                     items.add(Media(contentUri.toString(), false, date))
                 }
             }
@@ -160,20 +163,28 @@ abstract class CameraBaseFragment<B : ViewBinding>() : Fragment() {
         return items
     }
 
+    /**
+     * 获取媒体文件（AndroidQ 以下版本）
+     */
     private fun getMediaQMinus(): List<Media> {
         val items = mutableListOf<Media>()
-
+        //listFiles()是获取该目录下所有文件和目录的绝对路径
         File(outputDirectory).listFiles()?.forEach {
-            val authority = requireContext().applicationContext.packageName + ".provider"
-            val mediaUri = FileProvider.getUriForFile(requireContext(), authority, it)
-            items.add(Media(mediaUri.toString(), it.extension == "mp4", it.lastModified()))
+
+            //fixme: not use 的废写法：7.0之后的存储权限变更是用于【应用间共享文件】的，仅在此应用内获取资源路径并显示，用不上 uri 。留此代码为了跨应用时候留下写法
+//            val authority = requireContext().applicationContext.packageName + ".provider"
+//            //把一个文件File，转换为URI
+//            val mediaUri = FileProvider.getUriForFile(requireContext(), authority, it)
+
+            //传绝对路径即可,造入数据源供列表显示照片
+            items.add(Media(it.absolutePath, it.extension == "mp4", it.lastModified()))
         }
         items.sortBy { item -> item.date }
         return items
     }
 
     /**
-     * 権限管理ページにジャンプします
+     * 跳转到权限管理页面
      */
     private fun getAppDetailSettingIntent(context: Context?) {
         val intent = Intent()

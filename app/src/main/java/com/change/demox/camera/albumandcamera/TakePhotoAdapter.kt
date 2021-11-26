@@ -63,6 +63,7 @@ class TakePhotoAdapter(
                 PhotoStatue.TAKE_FINISH.ordinal -> {
                     binding.iv.visibility = View.GONE
                     binding.loadImage.visibility = View.VISIBLE
+                    //GlideUtils 显示图片（uri的形式）
                     GlideUtils.loadWithCenterCropTransformAutoIndicator(binding.loadImage, data.uri)
                 }
                 PhotoStatue.TAKE_CAMERA.ordinal -> {

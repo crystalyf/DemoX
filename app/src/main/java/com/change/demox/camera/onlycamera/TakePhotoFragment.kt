@@ -46,7 +46,7 @@ class TakePhotoFragment : CameraBaseFragment<FragmentTakePhotoBinding>() {
         private const val RATIO_16_9_VALUE = 16.0 / 9.0 // 宽高比 16x9
     }
 
-    // An instance for display manager to get display change callbacks
+    // 屏幕管理类, 用于显示管理器获取显示更改回调
     private val displayManager by lazy { requireContext().getSystemService(Context.DISPLAY_SERVICE) as DisplayManager }
 
     private var preview: Preview? = null
@@ -357,12 +357,12 @@ class TakePhotoFragment : CameraBaseFragment<FragmentTakePhotoBinding>() {
             //使用前置摄像头拍照
             isReversedHorizontal = lensFacing == CameraSelector.DEFAULT_FRONT_CAMERA
         }
-        //创建图片保存的文件地址
+        //设置保存参数到ContentValues中, 兼容Android Q和以下版本
         val outputOptions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             val contentValues = ContentValues().apply {
-                put(MediaStore.MediaColumns.DISPLAY_NAME, System.currentTimeMillis())
-                put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
-                put(MediaStore.MediaColumns.RELATIVE_PATH, outputDirectory)
+                put(MediaStore.MediaColumns.DISPLAY_NAME, System.currentTimeMillis())  //设置文件名
+                put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")  //     //设置文件类型
+                put(MediaStore.MediaColumns.RELATIVE_PATH, outputDirectory) //android Q中不再使用DATA字段，而用RELATIVE_PATH代替
             }
             val contentResolver = requireContext().contentResolver
             val contentUri = MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
