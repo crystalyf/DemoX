@@ -96,6 +96,8 @@
         <activity android:name=".camera.CameraRootActivity" />
         <activity android:name=".camera.onlycamera.CameraActivity" />
         <activity android:name=".views.chart.ChartActivity" />
+        <activity android:name=".views.customview.CustomViewActivity" />
+        <activity android:name=".views.customview.linechart.LineChartViewActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

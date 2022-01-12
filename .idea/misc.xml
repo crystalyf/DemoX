@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../../../../layout/custom_preview.xml" value="0.29010416666666666" />
+        <entry key="app/src/main/res/drawable/shape_pop_bg.xml" value="0.18645833333333334" />
+        <entry key="app/src/main/res/layout/activity_custom_view.xml" value="0.17569444444444443" />
+        <entry key="app/src/main/res/layout/activity_line_chart_view.xml" value="0.17569444444444443" />
+        <entry key="app/src/main/res/layout/activity_qrcode.xml" value="0.10378323108384459" />
+        <entry key="app/src/main/res/layout/activity_view.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

@@ -9,6 +9,7 @@ import com.change.demox.views.bottomsheet.BottomSheetRootActivity
 import com.change.demox.views.browser.BrowserActivity
 import com.change.demox.views.chart.ChartActivity
 import com.change.demox.views.collapsingtoolbarlayout.ProfileHomePageActivity
+import com.change.demox.views.customview.CustomViewActivity
 import com.change.demox.views.dialog.DialogActivity
 import com.change.demox.views.edittext.EditTextActivity
 import com.change.demox.views.firebase.FirebaseRootActivity
@@ -98,6 +99,10 @@ class ViewActivity : AppCompatActivity() {
         }
         btn_browser.setOnClickListener {
             val intent = Intent(this, BrowserActivity::class.java)
+            startActivity(intent)
+        }
+        btn_custom_view.setOnClickListener {
+            val intent = Intent(this, CustomViewActivity::class.java)
             startActivity(intent)
         }
     }

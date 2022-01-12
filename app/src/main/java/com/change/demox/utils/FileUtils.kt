@@ -110,11 +110,17 @@ object FileUtils {
         ) {
             //动图处理流程
             val selectedBitmap: Bitmap? = getBitmap(activity, uri)
+
+            /**
+             * getCacheDir()方法用于获取/data/data//cache目录 （私有存储的->内部存储—>cacheDir文件夹）
+             */
+            //在cache文件夹 create file
             val selectedImgFile = File(
                     activity.cacheDir,
                     selectedFileName
             )
 
+            //把bitmap写到file里
             convertBitmapToFile(selectedImgFile, selectedBitmap)
             selectedBitmap?.recycle()
             //ps: UCrop.of(sourceUri：原图片URI地址, destinationUri：最后生成图片的URI地址)
@@ -427,8 +433,6 @@ object FileUtils {
         }
         return true
     }
-
-
 
 
 }
