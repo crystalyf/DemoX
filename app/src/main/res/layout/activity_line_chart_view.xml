@@ -22,7 +22,12 @@
         <com.change.demox.views.customview.linechart.ChartView
             android:id="@+id/chart_view_1"
             android:layout_width="match_parent"
-            android:layout_height="400dp"/>
+            android:layout_height="500dp"/>
+
+<!--        <com.xiao.chartview.ChartView-->
+<!--            android:id="@+id/chart_view_2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="300dp"/>-->
 
     </LinearLayout>
 </ScrollView>

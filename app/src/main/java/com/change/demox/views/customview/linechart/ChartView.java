@@ -123,17 +123,24 @@ public class ChartView extends View {
         //取得自定义view自身最终的width，height
         int width = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
         int height = getMeasuredHeight() - getPaddingTop() - getPaddingBottom();
-
-        yScale = height / 7.5f;         // y轴刻度
-        xScale = width / 7.5f;          // x轴刻度
-        startPointX = xScale / 2;       // 开始绘图的x坐标
-        startPointY = yScale / 2;       // 开始UI图的y坐标
-        xLength = 6.5f * xScale;        // x轴长度
-        yLength = 5.5f * yScale;        // y轴长度
-
-        float chartLineStrokeWidth = xScale / 50;     // 图表线条的线宽
-        coordTextSize = xScale / 5;             // 坐标刻度文字的大小
-        float dataLineStrodeWidth = xScale / 15;      // 数据线条的线宽
+        // y轴刻度,控制刻度间的距离 （值越大，Y轴刻度间的距离越大，越占位置）
+        yScale = height / 14.5f;
+        // x轴刻度
+        xScale = width / 7.5f;
+        // 开始绘图的x坐标
+        startPointX = xScale / 2;
+        // 开始UI图的y坐标
+        startPointY = yScale / 2;
+        // x轴长度
+        xLength = 6.5f * xScale;
+        // y轴长度
+        yLength = 7.5f * yScale;
+        // 图表线条的线宽
+        float chartLineStrokeWidth = xScale / 50;
+        // 坐标刻度文字的大小
+        coordTextSize = xScale / 5;
+        // 数据线条的线宽
+        float dataLineStrodeWidth = xScale / 15;
 
         // 设置画笔相关属性
         mBackColorPaint.setColor(0x11DEDE68);
@@ -209,10 +216,10 @@ public class ChartView extends View {
      * @param canvas
      */
     private void drawXAxisAndYScaleValue(Canvas canvas) {
-        for (int i = 0; i < 6; i++) {
-            if (i < 5) {
-                mScaleValuePaint.getTextBounds(yLabel[4 - i], 0, yLabel[4 - i].length(), bounds);
-                canvas.drawText(yLabel[4 - i],
+        for (int i = 0; i < 8; i++) {
+            if (i < 7) {
+                mScaleValuePaint.getTextBounds(yLabel[6 - i], 0, yLabel[6 - i].length(), bounds);
+                canvas.drawText(yLabel[6 - i],
                         startPointX + xScale / 15,
                         startPointY + yScale * (i + 0.5f) + bounds.height() / 2,
                         mScaleValuePaint);
@@ -345,14 +352,16 @@ public class ChartView extends View {
         // Y坐标轴中间值
         float middle = format3Bit((dataFloats[0] + dataFloats[6]) / 2f);
         // Y刻度值之间的间隔
-        float scale = format3Bit((dataFloats[6] - dataFloats[0]) / 4 + 0.01f);
+        float scale = format3Bit((dataFloats[6] - dataFloats[0]) / 6 + 0.01f);
         //Y坐标轴中间值为基准，设置每个Y轴的刻度值
-        String[] yText = new String[5];
-        yText[0] = (middle - 2 * scale) + "";
-        yText[1] = (middle - scale) + "";
-        yText[2] = middle + "";
-        yText[3] = (middle + scale) + "";
-        yText[4] = (middle + 2 * scale) + "";
+        String[] yText = new String[7];
+        yText[0] = (middle - 3 * scale) + "";
+        yText[1] = (middle - 2 * scale) + "";
+        yText[2] = (middle - scale) + "";
+        yText[3] = middle + "";
+        yText[4] = (middle + scale) + "";
+        yText[5] = (middle + 2 * scale) + "";
+        yText[6] = (middle + 3 * scale) + "";
         for (int i = 0; i < yText.length; i++) {
             yText[i] = format3Bit(yText[i]);
         }
