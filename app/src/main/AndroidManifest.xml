@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:name=".application.MyApplication"
@@ -98,6 +99,7 @@
         <activity android:name=".views.chart.ChartActivity" />
         <activity android:name=".views.customview.CustomViewActivity" />
         <activity android:name=".views.customview.linechart.LineChartViewActivity" />
+        <activity android:name=".views.googlemap.customdraw.CustomMapRouteActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -108,6 +110,10 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${GOOGLEMAP_APIKEY}" />
 
     </application>
 

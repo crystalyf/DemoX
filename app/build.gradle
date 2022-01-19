@@ -1,10 +1,12 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'com.google.android.gms.oss-licenses-plugin'
-apply plugin: 'com.google.gms.google-services'
-apply plugin: 'com.google.firebase.crashlytics'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'com.google.android.gms.oss-licenses-plugin'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
 
 android {
     compileSdkVersion 29
@@ -21,8 +23,10 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [
+                GOOGLEMAP_APIKEY:"AIzaSyCxkieAQ81xbxMmHZXYgFYPmeZN5NKvJYA"
+        ]
     }
 
     buildTypes {
@@ -132,6 +136,8 @@ dependencies {
     // Add dependency
     implementation 'com.google.firebase:firebase-crashlytics:17.3.1'
     implementation 'com.google.firebase:firebase-dynamic-links-ktx:19.1.1'
+    // google map
+    implementation 'com.google.android.gms:play-services-maps:18.0.1'
 
     // CameraX 核心库使用 camera2 实现
     implementation "androidx.camera:camera-camera2:1.1.0-alpha06"

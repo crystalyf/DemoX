@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun initView() {
-        adaptFirebaseDynamicLinks()
+       // adaptFirebaseDynamicLinks()
         initClickListener()
     }
 

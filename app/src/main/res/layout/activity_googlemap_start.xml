@@ -12,4 +12,10 @@
         android:layout_height="wrap_content"
         android:text="启动谷歌地图 App" />
 
+    <Button
+        android:id="@+id/btn_googlemap_custom_route"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="启动谷歌地图 自定义轨迹" />
+
 </LinearLayout>

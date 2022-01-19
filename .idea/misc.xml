@@ -5,10 +5,16 @@
       <map>
         <entry key="../../../../../../../layout/custom_preview.xml" value="0.29010416666666666" />
         <entry key="app/src/main/res/drawable/shape_pop_bg.xml" value="0.18645833333333334" />
+        <entry key="app/src/main/res/layout/activity_custom_map_route.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/activity_custom_view.xml" value="0.17569444444444443" />
+        <entry key="app/src/main/res/layout/activity_googlemap_start.xml" value="0.10378323108384459" />
         <entry key="app/src/main/res/layout/activity_line_chart_view.xml" value="0.17569444444444443" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.10378323108384459" />
         <entry key="app/src/main/res/layout/activity_qrcode.xml" value="0.10378323108384459" />
         <entry key="app/src/main/res/layout/activity_view.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_view_tag.xml" value="0.10378323108384459" />
+        <entry key="app/src/main/res/layout/fragment_custom_map_route.xml" value="0.21145833333333333" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.10378323108384459" />
       </map>
     </option>
   </component>

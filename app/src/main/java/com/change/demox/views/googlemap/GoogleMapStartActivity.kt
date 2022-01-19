@@ -8,6 +8,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
+import com.change.demox.themecolor.waytwo.DynamicThemeColorActivity
+import com.change.demox.views.googlemap.customdraw.CustomMapRouteActivity
+import com.change.demox.views.googlemap.customdraw.CustomMapRouteFragment
 import kotlinx.android.synthetic.main.activity_googlemap_start.*
 
 
@@ -28,6 +31,11 @@ class GoogleMapStartActivity : AppCompatActivity() {
         btn_googlemap_start.setOnClickListener {
             //打开谷歌地图
             startGoogleMap()
+        }
+        btn_googlemap_custom_route.setOnClickListener {
+            //打开自定义谷歌地图轨迹画面
+            val intent = Intent(this, CustomMapRouteActivity::class.java)
+            startActivity(intent)
         }
     }
 
