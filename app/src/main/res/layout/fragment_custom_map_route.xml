@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_second"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:orientation="vertical">
 
     <fragment
         android:id="@+id/google_map"
@@ -13,4 +12,62 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#50323232"
+        android:clickable="true"
+        android:layout_gravity="bottom">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/flb_left"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:fabCustomSize="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_margin="16dp"
+                android:scaleType="center"
+                android:src="@mipmap/error" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/flb_right"
+                android:layout_toEndOf="@id/flb_left"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="ENGINE OFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="00:32:18"
+                    android:textSize="30sp" />
+
+            </LinearLayout>
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/flb_right"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:fabCustomSize="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="16dp"
+                android:scaleType="center"
+                android:src="@mipmap/error" />
+
+        </RelativeLayout>
+    </LinearLayout>
 </FrameLayout>

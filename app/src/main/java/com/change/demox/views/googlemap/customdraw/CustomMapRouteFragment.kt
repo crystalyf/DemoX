@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.change.demox.R
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -11,6 +12,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import kotlinx.android.synthetic.main.fragment_custom_map_route.*
 import java.util.*
 
 /**
@@ -21,6 +23,7 @@ import java.util.*
  */
 class CustomMapRouteFragment : Fragment(), OnMapReadyCallback {
 
+    lateinit var targetView:View
     var googleMap: GoogleMap? = null
     private val targetLocation = LatLng(38.859116, 121.525676)
     private val ZOOM_LEVEL = 14f
@@ -34,13 +37,14 @@ class CustomMapRouteFragment : Fragment(), OnMapReadyCallback {
     private val point6 = LatLng(38.854276, 121.532263)
     private val point7 = LatLng(38.848398, 121.529065)
     private val point8 = LatLng(38.849952, 121.518541)
+    private val point9 = LatLng(38.847645, 121.517221)
 
     //折线
     private var polyLine1: Polyline? = null
     private var polyLine2: Polyline? = null
     private var polyLine3: Polyline? = null
     private var polyLine4: Polyline? = null
-
+    private var polyLine5: Polyline? = null
     //折线形态
     private val PATTERN_DASH_LENGTH_PX = 30
     private val PATTERN_GAP_LENGTH_PX = 24
@@ -51,28 +55,31 @@ class CustomMapRouteFragment : Fragment(), OnMapReadyCallback {
     private val patternDashed = Arrays.asList(dash, gap)
 
     //折线宽
-    private val STROKE_WIDTH_PX = 13
+    private val STROKE_WIDTH_PX = 23
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = View.inflate(
+    ): View {
+         targetView = View.inflate(
             container?.context,
             R.layout.fragment_custom_map_route, null
         )
         val mapFragment: SupportMapFragment? =
             parentFragmentManager.findFragmentById(R.id.google_map) as? SupportMapFragment
         mapFragment?.getMapAsync(this)
-        return view
+        initView()
+        return targetView
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         this.googleMap = googleMap
         with(googleMap) {
-
-            //第1条折线（实现）
+            //第1条折线（实线）
             polyLine1 = addPolyline(PolylineOptions().apply {
+                startCap(RoundCap())
+                endCap(RoundCap())
+                jointType(JointType.ROUND)
                 add(point1, point2, point3, point4, point5)
                 width(STROKE_WIDTH_PX.toFloat())
                 color(resources.getColor(R.color.colorBlue))
@@ -80,6 +87,9 @@ class CustomMapRouteFragment : Fragment(), OnMapReadyCallback {
             })
             //第2条折线（圆点线）
             polyLine2 = addPolyline(PolylineOptions().apply {
+                startCap(RoundCap())
+                endCap(RoundCap())
+                jointType(JointType.ROUND)
                 add(point5, point6)
                 width(30.toFloat())
                 color(resources.getColor(R.color.colorGreen))
@@ -88,6 +98,9 @@ class CustomMapRouteFragment : Fragment(), OnMapReadyCallback {
             })
             //第3条折线(实线)
             polyLine3 = addPolyline(PolylineOptions().apply {
+                startCap(RoundCap())
+                endCap(RoundCap())
+                jointType(JointType.ROUND)
                 add(point6, point7)
                 width(STROKE_WIDTH_PX.toFloat())
                 color(resources.getColor(R.color.colorBlue))
@@ -95,15 +108,35 @@ class CustomMapRouteFragment : Fragment(), OnMapReadyCallback {
             })
             //第4条折线（虚线）
             polyLine4 = addPolyline(PolylineOptions().apply {
+                //开始位置圆角
+                startCap(RoundCap())
+                endCap(RoundCap())
                 add(point7, point8)
                 width(STROKE_WIDTH_PX.toFloat())
                 color(resources.getColor(R.color.colorRed))
                 pattern(patternDashed)
                 geodesic(true)
             })
-
+            //第5条折线(实线)
+            polyLine5 = addPolyline(PolylineOptions().apply {
+                startCap(RoundCap())
+                endCap(RoundCap())
+                add(point8, point9)
+                width(STROKE_WIDTH_PX.toFloat())
+                color(resources.getColor(R.color.colorBlue))
+                geodesic(true)
+            })
             //移动到指定经纬度
             moveCamera(CameraUpdateFactory.newLatLngZoom(targetLocation, ZOOM_LEVEL))
+        }
+    }
+
+    private fun initView(){
+        targetView.findViewById<View>(R.id.flb_left).setOnClickListener {
+            Toast.makeText(activity,"左悬浮按钮点击",Toast.LENGTH_SHORT).show()
+        }
+        targetView.findViewById<View>(R.id.flb_right).setOnClickListener {
+            Toast.makeText(activity,"右悬浮按钮点击",Toast.LENGTH_SHORT).show()
         }
     }
 
