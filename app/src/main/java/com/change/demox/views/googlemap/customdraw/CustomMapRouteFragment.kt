@@ -12,7 +12,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import kotlinx.android.synthetic.main.fragment_custom_map_route.*
 import java.util.*
 
 /**
@@ -23,13 +22,14 @@ import java.util.*
  */
 class CustomMapRouteFragment : Fragment(), OnMapReadyCallback {
 
-    lateinit var targetView:View
+    lateinit var targetView: View
     var googleMap: GoogleMap? = null
     private val targetLocation = LatLng(38.859116, 121.525676)
     private val ZOOM_LEVEL = 14f
 
     //折线组成的节点
     private val point1 = LatLng(38.867973, 121.521591)
+    private val point1_1 = LatLng(38.865091, 121.515034)
     private val point2 = LatLng(38.867856, 121.517642)
     private val point3 = LatLng(38.861411, 121.518102)
     private val point4 = LatLng(38.858207, 121.528358)
@@ -41,10 +41,13 @@ class CustomMapRouteFragment : Fragment(), OnMapReadyCallback {
 
     //折线
     private var polyLine1: Polyline? = null
+    private var polyLine1_1: Polyline? = null
+    private var polyLine1_2: Polyline? = null
     private var polyLine2: Polyline? = null
     private var polyLine3: Polyline? = null
     private var polyLine4: Polyline? = null
     private var polyLine5: Polyline? = null
+
     //折线形态
     private val PATTERN_DASH_LENGTH_PX = 30
     private val PATTERN_GAP_LENGTH_PX = 24
@@ -61,7 +64,7 @@ class CustomMapRouteFragment : Fragment(), OnMapReadyCallback {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-         targetView = View.inflate(
+        targetView = View.inflate(
             container?.context,
             R.layout.fragment_custom_map_route, null
         )
@@ -80,9 +83,27 @@ class CustomMapRouteFragment : Fragment(), OnMapReadyCallback {
                 startCap(RoundCap())
                 endCap(RoundCap())
                 jointType(JointType.ROUND)
-                add(point1, point2, point3, point4, point5)
+                add(point1, point2,point3)
+                width(STROKE_WIDTH_PX.toFloat())
+                color(resources.getColor(R.color.colorThemeOrange))
+                geodesic(true)
+            })
+            polyLine1_1 = addPolyline(PolylineOptions().apply {
+                startCap(RoundCap())
+                endCap(RoundCap())
+                jointType(JointType.ROUND)
+                add(point3, point4)
                 width(STROKE_WIDTH_PX.toFloat())
                 color(resources.getColor(R.color.colorBlue))
+                geodesic(true)
+            })
+            polyLine1_2 = addPolyline(PolylineOptions().apply {
+                startCap(RoundCap())
+                endCap(RoundCap())
+                jointType(JointType.ROUND)
+                add(point4, point5)
+                width(STROKE_WIDTH_PX.toFloat())
+                color(resources.getColor(R.color.colorGray))
                 geodesic(true)
             })
             //第2条折线（圆点线）
@@ -131,12 +152,12 @@ class CustomMapRouteFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-    private fun initView(){
+    private fun initView() {
         targetView.findViewById<View>(R.id.flb_left).setOnClickListener {
-            Toast.makeText(activity,"左悬浮按钮点击",Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "左悬浮按钮点击", Toast.LENGTH_SHORT).show()
         }
         targetView.findViewById<View>(R.id.flb_right).setOnClickListener {
-            Toast.makeText(activity,"右悬浮按钮点击",Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "右悬浮按钮点击", Toast.LENGTH_SHORT).show()
         }
     }
 
