@@ -3,6 +3,7 @@ package com.change.demox
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.change.demox.camera.albumandcamera.CameraAndShowViewModel
+import com.change.demox.camera.cameraandimageview.CameraAndShowImageViewModel
 import com.change.demox.camera.onlycamera.TakePhotoViewModel
 import com.change.demox.pdf.PDFBookDocumentViewModel
 import com.change.demox.remote.RetrofitManager
@@ -54,6 +55,9 @@ class ViewModelFactory constructor(
                         TakePhotoViewModel()
                     isAssignableFrom(CameraAndShowViewModel::class.java) ->
                         CameraAndShowViewModel()
+                    isAssignableFrom(CameraAndShowImageViewModel::class.java) ->
+                        CameraAndShowImageViewModel()
+
                     else ->
                         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }

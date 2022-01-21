@@ -100,6 +100,7 @@
         <activity android:name=".views.customview.CustomViewActivity" />
         <activity android:name=".views.customview.linechart.LineChartViewActivity" />
         <activity android:name=".views.googlemap.customdraw.CustomMapRouteActivity" />
+        <activity android:name=".camera.cameraandimageview.CameraAndShowImageViewActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

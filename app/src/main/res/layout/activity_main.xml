@@ -46,6 +46,6 @@
         android:id="@+id/btn_camera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Camera2 拍照" />
+        android:text="Camera 拍照" />
 
 </LinearLayout>

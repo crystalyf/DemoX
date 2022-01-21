@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
 import com.change.demox.camera.albumandcamera.CameraAndShowActivity
+import com.change.demox.camera.cameraandimageview.CameraAndShowImageViewActivity
 import com.change.demox.camera.onlycamera.CameraActivity
 import kotlinx.android.synthetic.main.activity_camera_root.*
 import kotlinx.android.synthetic.main.activity_edit_text.*
@@ -27,6 +28,10 @@ class CameraRootActivity : AppCompatActivity() {
         }
         btn_camera_and_album.setOnClickListener {
             val intent = Intent(this, CameraAndShowActivity::class.java)
+            startActivity(intent)
+        }
+        btn_camera_and_show_imageview.setOnClickListener {
+            val intent = Intent(this, CameraAndShowImageViewActivity::class.java)
             startActivity(intent)
         }
     }

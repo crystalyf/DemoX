@@ -10,13 +10,21 @@
         android:id="@+id/btn_only_camera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="仅照相" />
+        android:text="Camera2仅照相" />
 
     <Button
         android:id="@+id/btn_camera_and_album"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="照相+显示" />
+        android:text="Camera2照相+显示在列表中" />
+
+    <Button
+        android:id="@+id/btn_camera_and_show_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="系统相机照相+显示在一个固定ImageView中" />
+
+
 
 
 </LinearLayout>
