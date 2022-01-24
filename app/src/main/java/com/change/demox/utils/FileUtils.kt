@@ -7,6 +7,7 @@
 package com.change.demox.utils
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -15,26 +16,60 @@ import android.graphics.*
 import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
+import android.os.Environment
 import android.provider.MediaStore
 import android.provider.OpenableColumns
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.change.demox.R
+import com.change.demox.application.MyApplication
 import com.yalantis.ucrop.UCrop
 import com.yalantis.ucrop.util.BitmapLoadUtils
 import java.io.*
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.math.max
 
 
 object FileUtils {
 
-    /**
-     * グルプ画像のサイズ
-     */
     private const val GROUP_ICON_SIZE = 300
     const val pickRequestCode = 99
     private const val iconFileName = "destinationIcon.png"
     private const val selectedFileName = "selectedImg.png"
+    //拍照结果（照片）的图片文件
+    var imageFile: File? = null
+
+    //app调用系统相机拍照得到的照片存储的路径
+    private val outputDirectory: String by lazy {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            "${Environment.DIRECTORY_DCIM}/demox_camera/"
+        } else {
+            "${MyApplication.instance?.applicationContext?.getExternalFilesDir(Environment.DIRECTORY_DCIM)?.path}/demox_camera/"
+        }
+    }
+
+    fun getOutPutDirectory():String{
+        return  outputDirectory
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    fun createImageFile(isCrop: Boolean = false): File? {
+        return try {
+            val rootFile = File(outputDirectory)
+            if (!rootFile.exists())
+                rootFile.mkdirs()
+            val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+            val fileName = if (isCrop) "IMG_${timeStamp}_CROP.jpg" else "IMG_$timeStamp.png"
+            File(rootFile.absolutePath + File.separator + fileName).apply {
+                if (!exists())
+                    createNewFile()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
 
     /**
      * 跳转到图像选择画面
