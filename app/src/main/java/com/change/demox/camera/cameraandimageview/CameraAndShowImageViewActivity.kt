@@ -1,19 +1,23 @@
 package com.change.demox.camera.cameraandimageview
 
 import android.app.Activity
+import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.media.MediaScannerConnection
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
 import com.change.demox.application.MyApplication
 import com.change.demox.extension.getViewModelFactory
 import com.change.demox.utils.FileUtils
+
 
 /**
  *
@@ -59,6 +63,31 @@ class CameraAndShowImageViewActivity : AppCompatActivity() {
                     viewModel.updatePhoto(bitmap)
                 }
                 REQUEST_CODE_CAPTURE_RAW -> {
+                    //插入到媒体库
+                    val values = ContentValues()
+                    values.put(MediaStore.MediaColumns.DISPLAY_NAME, FileUtils.imageFile?.name)
+                    values.put(MediaStore.Images.Media.DATA, FileUtils.imageFile?.absolutePath)
+                    values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+                    MyApplication.instance?.context?.contentResolver?.insert(
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                        values
+                    )
+                    //扫描，更新媒体库
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                        MediaScannerConnection.scanFile(this,
+                            arrayOf(FileUtils.imageFile?.absolutePath),
+                            arrayOf("image/jpeg", "image/png"),
+                            object : MediaScannerConnection.OnScanCompletedListener {
+                                override fun onScanCompleted(path: String, uri: Uri) {
+                                    Log.i("ExternalStorage", "Scanned :$path")
+                                    Log.i("ExternalStorageUri", "-> uri=$uri")
+                                }
+                            })
+                    } else {
+                        val scanIntent = Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
+                        scanIntent.data = Uri.fromFile(FileUtils.imageFile)
+                        sendBroadcast(scanIntent)
+                    }
                     //直接Glide去压缩显示3MB的图太慢了，得提前压缩处理一下，先设置参数
                     val options: BitmapFactory.Options = BitmapFactory.Options()
                     val height = options.outHeight
@@ -71,7 +100,8 @@ class CameraAndShowImageViewActivity : AppCompatActivity() {
                     }
                     options.inJustDecodeBounds = false // 计算好压缩比例后，这次可以去加载原图了
                     options.inSampleSize = inSampleSize // 设置为刚才计算的压缩比例
-                    val bitmap: Bitmap = BitmapFactory.decodeFile(FileUtils.imageFile?.absolutePath,options)
+                    val bitmap: Bitmap =
+                        BitmapFactory.decodeFile(FileUtils.imageFile?.absolutePath, options)
                     viewModel.updatePhoto(bitmap)
                 }
             }
