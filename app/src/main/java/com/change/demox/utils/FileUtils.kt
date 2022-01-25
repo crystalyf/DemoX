@@ -423,7 +423,7 @@ object FileUtils {
     /**
      * 读取照片的旋转角度
      */
-    private fun readPictureDegree(path: String): Int {
+    fun readPictureDegree(path: String): Int {
         var degree = 0
         try {
             val exifInterface = ExifInterface(path)
@@ -444,7 +444,7 @@ object FileUtils {
     /**
      * 写真を回転させる
      */
-    private fun rotateBitmap(bitmap: Bitmap, rotate: Int): Bitmap? {
+     fun rotateBitmap(bitmap: Bitmap, rotate: Int): Bitmap? {
         val w = bitmap.width
         val h = bitmap.height
         val matrix = Matrix()

@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.media.ExifInterface
 import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
@@ -88,8 +89,14 @@ class CameraAndShowImageViewActivity : AppCompatActivity() {
                     }
                     options.inJustDecodeBounds = false // 计算好压缩比例后，这次可以去加载原图了
                     options.inSampleSize = inSampleSize // 设置为刚才计算的压缩比例
-                    val bitmap: Bitmap =
+                    var bitmap: Bitmap =
                         BitmapFactory.decodeFile(FileUtils.imageFile?.absolutePath, options)
+                    //判断图像读取的时候是否发生过旋转，如果有，那么转回来
+                    val rotate =
+                        FileUtils.readPictureDegree(FileUtils.imageFile?.absolutePath ?: "")
+                    if (rotate != ExifInterface.ORIENTATION_UNDEFINED) {
+                        bitmap = FileUtils.rotateBitmap(bitmap, rotate)!!
+                    }
                     viewModel.updatePhoto(bitmap)
                 }
                 REQUEST_CODE_GO_TO_ALBUM -> {
