@@ -17,6 +17,8 @@ import com.change.demox.R
 import com.change.demox.application.MyApplication
 import com.change.demox.extension.getViewModelFactory
 import com.change.demox.utils.FileUtils
+import java.io.FileNotFoundException
+
 
 
 /**
@@ -27,6 +29,7 @@ class CameraAndShowImageViewActivity : AppCompatActivity() {
     companion object {
         const val REQUEST_CODE_CAPTURE_SMALL = 99
         const val REQUEST_CODE_CAPTURE_RAW = 98
+        const val REQUEST_CODE_GO_TO_ALBUM = 97
     }
 
     private val tag = "CameraAndShowImageFragment"
@@ -72,22 +75,7 @@ class CameraAndShowImageViewActivity : AppCompatActivity() {
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                         values
                     )
-                    //扫描，更新媒体库
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                        MediaScannerConnection.scanFile(this,
-                            arrayOf(FileUtils.imageFile?.absolutePath),
-                            arrayOf("image/jpeg", "image/png"),
-                            object : MediaScannerConnection.OnScanCompletedListener {
-                                override fun onScanCompleted(path: String, uri: Uri) {
-                                    Log.i("ExternalStorage", "Scanned :$path")
-                                    Log.i("ExternalStorageUri", "-> uri=$uri")
-                                }
-                            })
-                    } else {
-                        val scanIntent = Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
-                        scanIntent.data = Uri.fromFile(FileUtils.imageFile)
-                        sendBroadcast(scanIntent)
-                    }
+                    scanMediaStore()
                     //直接Glide去压缩显示3MB的图太慢了，得提前压缩处理一下，先设置参数
                     val options: BitmapFactory.Options = BitmapFactory.Options()
                     val height = options.outHeight
@@ -104,7 +92,38 @@ class CameraAndShowImageViewActivity : AppCompatActivity() {
                         BitmapFactory.decodeFile(FileUtils.imageFile?.absolutePath, options)
                     viewModel.updatePhoto(bitmap)
                 }
+                REQUEST_CODE_GO_TO_ALBUM -> {
+                    var bitmap :Bitmap? = null
+                    try {
+                        //Uri转化为Bitmap
+                        bitmap = FileUtils.getBitmap (this,data?.data!!)
+                    } catch (e: FileNotFoundException) {
+                        e.printStackTrace()
+                    }
+                    viewModel.updatePhoto(bitmap!!)
+                }
             }
         }
     }
+
+    /**
+     * 扫描，更新媒体库
+     */
+    private fun scanMediaStore(){
+        //扫描，更新媒体库
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            MediaScannerConnection.scanFile(this,
+                arrayOf(FileUtils.imageFile?.absolutePath),
+                arrayOf("image/jpeg", "image/png"),
+                object : MediaScannerConnection.OnScanCompletedListener {
+                    override fun onScanCompleted(path: String, uri: Uri) {
+                        Log.i("ExternalStorage", "Scanned :$path")
+                        Log.i("ExternalStorageUri", "-> uri=$uri")
+                    }
+                })
+        } else {
+         //todo:
+        }
+    }
+
 }

@@ -9,6 +9,7 @@ package com.change.demox.utils
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -19,6 +20,7 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.provider.OpenableColumns
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.change.demox.R
@@ -41,22 +43,23 @@ object FileUtils {
     var imageFile: File? = null
 
     //app调用系统相机拍照得到的照片存储的路径
-    private val outputDirectory: String by lazy {
+    private val outputPhotoDirectory: String by lazy {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             "${Environment.DIRECTORY_DCIM}/demox_camera/"
         } else {
-            "${MyApplication.instance?.applicationContext?.getExternalFilesDir(Environment.DIRECTORY_DCIM)?.path}/demox_camera/"
+            "${Environment.getExternalStorageDirectory().absolutePath}/" +
+                    "${Environment.DIRECTORY_PICTURES}/demox_camera/"
         }
     }
 
     fun getOutPutDirectory():String{
-        return  outputDirectory
+        return  outputPhotoDirectory
     }
 
     @SuppressLint("SimpleDateFormat")
     fun createImageFile(isCrop: Boolean = false): File? {
         return try {
-            val rootFile = File(outputDirectory)
+            val rootFile = File(outputPhotoDirectory)
             if (!rootFile.exists())
                 rootFile.mkdirs()
             val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
@@ -199,7 +202,7 @@ object FileUtils {
      * @param imageUri
      * @return
      */
-    private fun getBitmap(context: Context, imageUri: Uri): Bitmap? {
+     fun getBitmap(context: Context, imageUri: Uri): Bitmap? {
 
         return try {
             val exifOrientation = BitmapLoadUtils.getExifOrientation(context, imageUri)
@@ -467,6 +470,37 @@ object FileUtils {
             return false
         }
         return true
+    }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    fun copyFileToDownloadDir(context: Context, oldPath: String, targetDirName:String): Uri? {
+        try {
+            val oldFile = File(oldPath)
+            //设置目标文件的信息
+            val values = ContentValues()
+            values.put(MediaStore.Images.Media.DESCRIPTION, "This is a file.")
+            values.put(MediaStore.Files.FileColumns.DISPLAY_NAME, oldFile.name)
+            values.put(MediaStore.Files.FileColumns.TITLE, oldFile.name)
+            values.put(MediaStore.Files.FileColumns.MIME_TYPE, "image/jpeg")
+            val relativePath = Environment.DIRECTORY_DOWNLOADS + File.separator + targetDirName
+            values.put(MediaStore.Images.Media.RELATIVE_PATH, relativePath)
+            val downloadUri = MediaStore.Downloads.EXTERNAL_CONTENT_URI
+            val resolver = context.contentResolver
+            val insertUri = resolver.insert(downloadUri, values)
+            if (insertUri != null) {
+                val fos = resolver.openOutputStream(insertUri)
+                if (fos != null) {
+                    val fis = FileInputStream(oldFile)
+                    fis.copyTo(fos)
+                    fis.close()
+                    fos.close()
+                    return insertUri
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return null
     }
 
 

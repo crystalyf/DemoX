@@ -12,6 +12,18 @@
         android:layout_height="wrap_content"
         android:text="照相并返回照片显示"/>
 
+    <Button
+        android:id="@+id/btn_get_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取指定照片经纬度"/>
+
+    <Button
+        android:id="@+id/btn_call_target_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开相册（指定文件夹）"/>
+
     <ImageView
         android:id="@+id/img_photo"
         android:layout_width="160dp"
