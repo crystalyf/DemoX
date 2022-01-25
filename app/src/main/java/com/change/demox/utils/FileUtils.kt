@@ -44,12 +44,9 @@ object FileUtils {
 
     //app调用系统相机拍照得到的照片存储的路径
     private val outputPhotoDirectory: String by lazy {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            "${Environment.DIRECTORY_DCIM}/demox_camera/"
-        } else {
-            "${Environment.getExternalStorageDirectory().absolutePath}/" +
-                    "${Environment.DIRECTORY_PICTURES}/demox_camera/"
-        }
+        //路径不用根据版本区分，都一样
+        "${Environment.getExternalStorageDirectory().absolutePath}/" +
+                "${Environment.DIRECTORY_PICTURES}/demox_camera/"
     }
 
     fun getOutPutDirectory():String{

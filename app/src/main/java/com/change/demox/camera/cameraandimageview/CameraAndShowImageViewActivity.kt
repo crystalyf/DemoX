@@ -93,14 +93,7 @@ class CameraAndShowImageViewActivity : AppCompatActivity() {
                     viewModel.updatePhoto(bitmap)
                 }
                 REQUEST_CODE_GO_TO_ALBUM -> {
-                    var bitmap :Bitmap? = null
-                    try {
-                        //Uri转化为Bitmap
-                        bitmap = FileUtils.getBitmap (this,data?.data!!)
-                    } catch (e: FileNotFoundException) {
-                        e.printStackTrace()
-                    }
-                    viewModel.updatePhoto(bitmap!!)
+                    viewModel.afterChoosePictureFromAlbum(this,data?.data!!)
                 }
             }
         }

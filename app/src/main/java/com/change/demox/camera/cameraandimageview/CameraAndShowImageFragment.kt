@@ -62,6 +62,9 @@ class CameraAndShowImageFragment : Fragment() {
         targetView.findViewById<Button>(R.id.btn_get_location).setOnClickListener {
             getLocationFromPhoto()
         }
+        targetView.findViewById<Button>(R.id.btn_share_image).setOnClickListener {
+            viewModel.shareImageWithFileUri()
+        }
         viewModel.photo.observe(viewLifecycleOwner, Observer {
             GlideUtils.loadBitmap(imageView, it)
         })
@@ -109,6 +112,8 @@ class CameraAndShowImageFragment : Fragment() {
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         )
 
+        //指定位置行不通，都会打开【最近】文件夹
+
 //        val intent = Intent(Intent.ACTION_VIEW)
 //        intent.data =  File(FileUtils.getOutPutDirectory()).let { Uri.fromFile(it) }
 
@@ -129,6 +134,7 @@ class CameraAndShowImageFragment : Fragment() {
 //        intent.addCategory(Intent.CATEGORY_DEFAULT)
 //        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 //        intent.setDataAndType(Uri.parse(FileUtils.getOutPutDirectory()), "file/*")
+
         activity?.startActivityForResult(intent, CameraAndShowImageViewActivity.REQUEST_CODE_GO_TO_ALBUM)
     }
 
