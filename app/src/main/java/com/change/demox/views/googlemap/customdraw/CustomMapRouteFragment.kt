@@ -1,6 +1,7 @@
 package com.change.demox.views.googlemap.customdraw
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +21,7 @@ import java.util.*
  *  自定义Google Map 轨迹
  *
  */
-class CustomMapRouteFragment : Fragment(), OnMapReadyCallback {
+class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMapReadyCallback {
 
     lateinit var targetView: View
     var googleMap: GoogleMap? = null
@@ -78,6 +79,7 @@ class CustomMapRouteFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         this.googleMap = googleMap
         with(googleMap) {
+            setOnCameraMoveListener(this@CustomMapRouteFragment)
             //第1条折线（实线）
             polyLine1 = addPolyline(PolylineOptions().apply {
                 startCap(RoundCap())
@@ -159,6 +161,11 @@ class CustomMapRouteFragment : Fragment(), OnMapReadyCallback {
         targetView.findViewById<View>(R.id.flb_right).setOnClickListener {
             Toast.makeText(activity, "右悬浮按钮点击", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onCameraMove() {
+        //当前缩放比例
+        Log.v("zoomVale:" ,this.googleMap?.cameraPosition?.zoom.toString())
     }
 
 }
