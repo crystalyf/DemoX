@@ -10,9 +10,12 @@ import android.R.color
 import android.graphics.Paint
 import com.change.demox.R
 import android.graphics.drawable.Drawable
-
-
-
+import android.os.Handler
+import android.os.HandlerThread
+import android.view.PixelCopy
+import android.view.SurfaceView
+import android.view.ViewGroup
+import io.reactivex.Single
 
 
 object ViewUtils {
@@ -70,6 +73,72 @@ object ViewUtils {
         if (bgDrawable != null) bgDrawable.draw(c) else c.drawColor(Color.WHITE)
         v.draw(c)
         return bmp
+    }
+
+    /**
+     *  遍历画面所有子view，找出其中的所有SurfaceView
+     */
+    var allSurfaceViewChildren = mutableListOf<View>()
+     fun getAllChildSurfaceView(view: View?) {
+        if (view is ViewGroup) {
+            val vp = view
+            for (i in 0 until vp.childCount) {
+                val viewChild = vp.getChildAt(i)
+                if (viewChild is SurfaceView) {
+                    allSurfaceViewChildren.add(viewChild)
+                }
+                //再次调用本身（递归）
+                getAllChildSurfaceView(viewChild)
+            }
+        }
+    }
+
+    /**
+     * SurfaceView转Bitmap
+     */
+    private fun getBitmapFromSurfaceView(surfaceView: SurfaceView) = Single.create<Bitmap> {
+        val bitmap = Bitmap.createBitmap(surfaceView.width, surfaceView.height, Bitmap.Config.ARGB_8888)
+        val listener = PixelCopy.OnPixelCopyFinishedListener { copyResult ->
+            when (copyResult) {
+                PixelCopy.SUCCESS -> {
+                    // onSuccessCallback(bitmap)
+                }
+                else -> {
+                    // onErrorCallback()
+                }
+            }
+        }
+        PixelCopy.request(surfaceView, bitmap, listener, surfaceView.handler)
+    }
+
+    /**
+     * 用Pixel类 copy SurfaceView to Bitmap
+     */
+    fun usePixelCopy(videoView: SurfaceView, callback: (Bitmap?) -> Unit) {
+        val bitmap: Bitmap = Bitmap.createBitmap(
+            videoView.width,
+            videoView.height,
+            Bitmap.Config.ARGB_8888
+        );
+        try {
+            // Create a handler thread to offload the processing of the image.
+            val handlerThread = HandlerThread("PixelCopier");
+            handlerThread.start();
+            PixelCopy.request(
+                videoView, bitmap,
+                PixelCopy.OnPixelCopyFinishedListener { copyResult ->
+                    if (copyResult == PixelCopy.SUCCESS) {
+                        callback(bitmap)
+                    }
+                    handlerThread.quitSafely();
+                },
+                Handler(handlerThread.looper)
+            )
+        } catch (e: IllegalArgumentException) {
+            callback(null)
+            // PixelCopy may throw IllegalArgumentException, make sure to handle it
+            e.printStackTrace()
+        }
     }
 
 }

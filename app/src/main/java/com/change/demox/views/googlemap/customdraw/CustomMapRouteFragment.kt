@@ -2,19 +2,16 @@ package com.change.demox.views.googlemap.customdraw
 
 import android.content.ContentValues
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.media.MediaScannerConnection
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.SurfaceView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.drawToBitmap
 import androidx.fragment.app.Fragment
 import com.change.demox.R
 import com.change.demox.application.MyApplication
@@ -25,6 +22,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import kotlinx.android.synthetic.main.activity_dialog.*
 import java.util.*
 
 /**
