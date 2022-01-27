@@ -287,7 +287,7 @@ object FileUtils {
      * @param destinationFile
      * @param bitmap
      */
-    private fun convertBitmapToFile(destinationFile: File, bitmap: Bitmap?) {
+     fun convertBitmapToFile(destinationFile: File, bitmap: Bitmap?) {
         //创建一个文件以写入位图数据
         destinationFile.createNewFile()
         //将位图转换为字节数组

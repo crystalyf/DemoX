@@ -1,13 +1,25 @@
 package com.change.demox.views.googlemap.customdraw
 
+import android.content.ContentValues
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.media.MediaScannerConnection
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.drawToBitmap
 import androidx.fragment.app.Fragment
 import com.change.demox.R
+import com.change.demox.application.MyApplication
+import com.change.demox.utils.FileUtils
+import com.change.demox.utils.ViewUtils
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -151,6 +163,11 @@ class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMap
             })
             //移动到指定经纬度
             moveCamera(CameraUpdateFactory.newLatLngZoom(targetLocation, ZOOM_LEVEL))
+            /**
+             * 下面两个函数是测试附加功能的
+             */
+            //getScreenshot()
+           // startActivity(Intent(this@CustomMapRouteFragment.activity, CoverActivity::class.java))
         }
     }
 
@@ -167,5 +184,37 @@ class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMap
         //当前缩放比例
         Log.v("zoomVale:" ,this.googleMap?.cameraPosition?.zoom.toString())
     }
+
+    /**
+     * 根据view生成图片
+     */
+    private fun getScreenshot() {
+        //view转bitmap （inflate系列）
+        val bm = ViewUtils.saveBitmapFromLayout2(targetView, targetView.width, targetView.height)
+        //将位图保存到指定公共文件路径
+        FileUtils.imageFile = FileUtils.createImageFile()
+        FileUtils.convertBitmapToFile(FileUtils.imageFile!!, bm)
+        //插入到媒体库
+        val values = ContentValues()
+        values.put(MediaStore.MediaColumns.DISPLAY_NAME, FileUtils.imageFile?.name)
+        values.put(MediaStore.Images.Media.DATA, FileUtils.imageFile?.absolutePath)
+        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+        MyApplication.instance?.context?.contentResolver?.insert(
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+            values
+        )
+        //扫描，更新媒体库
+        MediaScannerConnection.scanFile(activity,
+            arrayOf(FileUtils.imageFile?.absolutePath),
+            arrayOf("image/jpeg", "image/png"),
+            object : MediaScannerConnection.OnScanCompletedListener {
+                override fun onScanCompleted(path: String, uri: Uri) {
+                    Log.v("ExternalStorage", "Scanned :$path")
+                    Log.v("ExternalStorageUri", "-> uri=$uri")
+                }
+            })
+    }
+
+
 
 }

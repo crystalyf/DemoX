@@ -6,11 +6,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
     <fragment
         android:id="@+id/google_map"
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示字符串测试"
+        android:textSize="20sp"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
 
     <LinearLayout
         android:layout_width="match_parent"
