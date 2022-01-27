@@ -121,4 +121,19 @@
 
     </LinearLayout>
 
+    <!-- Switch 选择开关 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_vertical">
+        <Switch
+            android:id="@+id/sw_state"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:thumb="@drawable/shape_switch_thumb"
+            android:track="@drawable/selector_switch_track"
+            android:gravity="center"/>
+    </LinearLayout>
+
 </LinearLayout>

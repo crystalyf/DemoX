@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- switch 开关 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <size
+        android:width="30dp"
+        android:height="30dp">
+    </size>
+    <solid
+        android:color="@android:color/white">
+    </solid>
+
+</shape>
