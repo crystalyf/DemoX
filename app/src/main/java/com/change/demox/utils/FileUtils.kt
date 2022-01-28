@@ -76,7 +76,7 @@ object FileUtils {
     }
 
     //为了ffmpeg图片命名用的
-    var index = 1
+    var index = 0
     @SuppressLint("SimpleDateFormat")
     fun createImageFile(isCrop: Boolean = false): File? {
         return try {
@@ -85,7 +85,7 @@ object FileUtils {
                 rootFile.mkdirs()
 //            val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
 //            val fileName = if (isCrop) "IMG_${timeStamp}_CROP.jpg" else "IMG_$timeStamp.jpg"
-            var tempName = "image000" + index.toString()
+            var tempName = "image" + index.toString()
             val fileName = if (isCrop) "$tempName.jpg" else "$tempName.jpg"
             index++
             File(rootFile.absolutePath + File.separator + fileName).apply {

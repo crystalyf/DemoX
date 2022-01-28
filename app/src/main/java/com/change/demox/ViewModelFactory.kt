@@ -14,6 +14,7 @@ import com.change.demox.views.bottomsheet.BottomSheetViewModel
 import com.change.demox.views.firebase.auth.FirebaseAuthViewModel
 import com.change.demox.views.firebase.dynamiclink.FirebaseDynamicViewModel
 import com.change.demox.views.flexboxlayout.TopicDetailViewModel
+import com.change.demox.views.imageview.imagetovideo.rxffmpeg.ImageToVideoViewModel
 import com.change.demox.views.recyclerview.figillustration.FigViewModel
 import com.change.demox.views.recyclerview.paging.delete.PagingDeleteViewModel
 import com.change.demox.views.recyclerview.paging.delete.usecase.GetBooksUseCase
@@ -57,7 +58,8 @@ class ViewModelFactory constructor(
                         CameraAndShowViewModel()
                     isAssignableFrom(CameraAndShowImageViewModel::class.java) ->
                         CameraAndShowImageViewModel()
-
+                    isAssignableFrom(ImageToVideoViewModel::class.java) ->
+                        ImageToVideoViewModel()
                     else ->
                         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }

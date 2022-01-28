@@ -3,23 +3,27 @@ package com.change.demox.views.imageview.imagetovideo.rxffmpeg
 import android.util.Log
 import io.microshow.rxffmpeg.RxFFmpegSubscriber
 
-/** Created by Fenrir-xingjunchao on 2022/1/28. **/
-class MyRxFFmpegSubscriber() :
+/**
+ *  RxFFmpeg 的观察者
+ */
+class MyRxFFmpegSubscriber( private var viewModel: ImageToVideoViewModel) :
     RxFFmpegSubscriber() {
+
     override fun onFinish() {
-        Log.v("ffmpeg", "处理完成")
+        Log.v("ffmpegLog", "处理完成")
+        viewModel.afterTempVideo()
     }
 
     override fun onProgress(progress: Int, progressTime: Long) {
-        Log.v("ffmpeg", "过程中onProgress")
+        Log.v("ffmpegLog", "过程中onProgress")
     }
 
     override fun onCancel() {
-        Log.v("ffmpeg", "已取消")
+        Log.v("ffmpegLog", "已取消")
     }
 
     override fun onError(message: String) {
-        Log.v("ffmpeg", "出错了:"+message)
+        Log.v("ffmpegLog", "出错了:"+message)
     }
 
 }
