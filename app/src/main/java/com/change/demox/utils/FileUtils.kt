@@ -49,18 +49,45 @@ object FileUtils {
                 "${Environment.DIRECTORY_PICTURES}/demox_camera/"
     }
 
+    //项目Video存储的root路径
+    private val outputMovieDirectory: String by lazy {
+        //路径不用根据版本区分，都一样
+        "${Environment.getExternalStorageDirectory().absolutePath}/" +
+                "${Environment.DIRECTORY_MOVIES}/demox_camera/"
+    }
+
+    //music存储的root路径
+    private val outputMusicDirectory: String by lazy {
+        //路径不用根据版本区分，都一样
+        "${Environment.getExternalStorageDirectory().absolutePath}/" +
+                "${Environment.DIRECTORY_MUSIC}/"
+    }
+
     fun getOutPutDirectory():String{
         return  outputPhotoDirectory
     }
 
+    fun getOutPutMovieDirectory():String{
+        return  outputMovieDirectory
+    }
+
+    fun getOutPutMusicDirectory():String{
+        return  outputMusicDirectory
+    }
+
+    //为了ffmpeg图片命名用的
+    var index = 1
     @SuppressLint("SimpleDateFormat")
     fun createImageFile(isCrop: Boolean = false): File? {
         return try {
             val rootFile = File(outputPhotoDirectory)
             if (!rootFile.exists())
                 rootFile.mkdirs()
-            val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-            val fileName = if (isCrop) "IMG_${timeStamp}_CROP.jpg" else "IMG_$timeStamp.jpg"
+//            val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+//            val fileName = if (isCrop) "IMG_${timeStamp}_CROP.jpg" else "IMG_$timeStamp.jpg"
+            var tempName = "image000" + index.toString()
+            val fileName = if (isCrop) "$tempName.jpg" else "$tempName.jpg"
+            index++
             File(rootFile.absolutePath + File.separator + fileName).apply {
                 if (!exists())
                     createNewFile()

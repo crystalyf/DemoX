@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.change.demox.R
 import com.change.demox.views.imageview.imageshow.ImageViewShowActivity
+import com.change.demox.views.imageview.imagetovideo.ImageToVideoActivity
 import com.change.demox.views.imageview.viewTag.ViewTagActivity
 import kotlinx.android.synthetic.main.activity_image_view.*
 
@@ -29,6 +30,11 @@ class ImageViewActivity : AppCompatActivity() {
         btn_image_show.setOnClickListener {
             //图片显示
             val intent = Intent(this, ImageViewShowActivity::class.java)
+            startActivity(intent)
+        }
+        btn_image_to_video.setOnClickListener {
+            //图片显示
+            val intent = Intent(this, ImageToVideoActivity::class.java)
             startActivity(intent)
         }
     }

@@ -27,6 +27,10 @@ android {
         manifestPlaceholders = [
                 GOOGLEMAP_APIKEY:"AIzaSyCxkieAQ81xbxMmHZXYgFYPmeZN5NKvJYA"
         ]
+        ndk {
+            //目前已支持 "armeabi-v7a","arm64-v8a","x86","x86_64" 平台架构
+            abiFilters "armeabi-v7a","arm64-v8a","x86","x86_64"
+        }
     }
 
     buildTypes {
@@ -149,6 +153,8 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:1.1.0-alpha06"
     // MpChart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    //完整版
+    implementation 'com.github.microshow:RxFFmpeg:4.9.0'
 
 }
 repositories {

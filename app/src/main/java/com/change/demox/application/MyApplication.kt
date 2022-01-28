@@ -14,6 +14,7 @@ import com.change.demox.views.recyclerview.paging.delete.usecase.repository.Sear
 import com.change.demox.views.recyclerview.paging.onlyshow.usecase.repository.DataRepositoryImpl
 import com.change.demox.views.recyclerview.paging.onlyshow.usecase.repository.IDataRepository
 import com.squareup.leakcanary.RefWatcher
+import io.microshow.rxffmpeg.RxFFmpegInvoke
 
 /**
  * Created by xingjunchao on 2020/08/24.
@@ -43,6 +44,8 @@ class MyApplication : Application(), Application.ActivityLifecycleCallbacks {
         instance = this
         context = applicationContext
         registerActivityLifecycleCallbacks(this)
+        //开启/关闭 debug 模式，建议在 Application 初始化调用
+        RxFFmpegInvoke.getInstance().setDebug(true)
     }
 
     companion object {
