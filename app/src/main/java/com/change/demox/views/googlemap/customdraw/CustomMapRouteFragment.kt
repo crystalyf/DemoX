@@ -59,8 +59,7 @@ class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMap
     private val point9 = LatLng(38.847645, 121.517221)
 
     //屏幕迁移的经纬度List
-    //val moveMap = mutableMapOf(targetLocation to false, point4 to false, point6 to false)
-    val moveList = mutableListOf(targetLocation, point4 , point6 )
+    val moveMap = mutableMapOf(targetLocation to false, point4 to false, point6 to false)
 
     //折线
     private var polyLine1: Polyline? = null
@@ -179,12 +178,10 @@ class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMap
                         color(resources.getColor(R.color.colorBlue))
                         geodesic(true)
                     })
-                    //移动到指定经纬度
-                    this?.moveCamera(CameraUpdateFactory.newLatLngZoom(targetLocation, ZOOM_LEVEL))
                     /**
                      * 下面两个函数是测试附加功能的，定位到某个经纬度然后截屏
                      */
-                    testFunction(googleMap!!)
+                    testFunction(this)
                 }
             }
         }
@@ -239,52 +236,38 @@ class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMap
     /**
      * 测试函数，迁移到指定经纬度，截屏（持续3次）
      */
-    private fun testFunction(map: GoogleMap) {
-       // shotSelf(map)
-        moveList.forEach {
-            GlobalScope.launch {
-                shotEveryPic(it,map)
-            }
-        }
+    private fun testFunction(map: GoogleMap?) {
+        shotSelf(map)
     }
 
-    private suspend fun shotEveryPic(latLng: LatLng, map: GoogleMap) =
-        suspendCancellableCoroutine<Boolean> {
-            GlobalScope.launch {
-                withContext(Dispatchers.Main){
-                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
-                    map.setOnMapLoadedCallback {
-                        GlobalScope.launch {
-                            getScreenshot()
-                            it.resume(false, {})
+    /**
+     * 递归调用自己，依次定位到一个经纬度，然后截张图 （多次）
+     */
+    private fun shotSelf(map: GoogleMap?) {
+        val target = moveMap.filter { it.value == false }
+        if (!target.isEmpty()) {
+            var mapValue = target.entries.firstOrNull()
+            if (mapValue == null) {
+                return
+            } else {
+                GlobalScope.launch {
+                    withContext(Dispatchers.Main) {
+                        moveMap[mapValue.key] = true
+                        //移动显示到一个指定经纬度
+                        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(mapValue.key, 16f))
+                        //地图加载完成的回调
+                        map?.setOnMapLoadedCallback {
+                            GlobalScope.launch {
+                                //截图以及存储
+                                getScreenshot()
+                                shotSelf(map)
+                            }
                         }
                     }
                 }
             }
         }
-
-    /**
-     * 递归调用自己，依次截3张图
-     */
-//    private fun shotSelf(map: GoogleMap) {
-//        val mapValue = moveMap.filterValues { it == false }.iterator().next()
-//        if (mapValue == null) {
-//            return
-//        } else {
-//            GlobalScope.launch {
-//                withContext(Dispatchers.Main) {
-//                    moveMap[mapValue.key] = true
-//                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(mapValue.key, 10f))
-//                map.setOnMapLoadedCallback {
-//                    GlobalScope.launch {
-//                        getScreenshot()
-//                        shotSelf(map)
-//                    }
-//                }
-//                }
-//            }
-//        }
-//    }
+    }
 
 
 }
