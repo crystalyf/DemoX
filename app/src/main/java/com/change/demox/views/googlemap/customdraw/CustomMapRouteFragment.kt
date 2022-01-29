@@ -24,6 +24,13 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import kotlinx.android.synthetic.main.activity_dialog.*
 import java.util.*
+import android.graphics.Bitmap
+
+import com.google.android.gms.maps.GoogleMap.SnapshotReadyCallback
+import kotlinx.coroutines.*
+import kotlin.collections.LinkedHashMap
+import kotlin.coroutines.CoroutineContext
+
 
 /**
  * Created by Fenrir-xingjunchao on 2022/1/19.
@@ -31,7 +38,8 @@ import java.util.*
  *  自定义Google Map 轨迹
  *
  */
-class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMapReadyCallback {
+class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMapReadyCallback,
+    GoogleMap.OnMapLoadedCallback {
 
     lateinit var targetView: View
     var googleMap: GoogleMap? = null
@@ -49,6 +57,10 @@ class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMap
     private val point7 = LatLng(38.848398, 121.529065)
     private val point8 = LatLng(38.849952, 121.518541)
     private val point9 = LatLng(38.847645, 121.517221)
+
+    //屏幕迁移的经纬度List
+    //val moveMap = mutableMapOf(targetLocation to false, point4 to false, point6 to false)
+    val moveList = mutableListOf(targetLocation, point4 , point6 )
 
     //折线
     private var polyLine1: Polyline? = null
@@ -87,85 +99,94 @@ class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMap
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
+        googleMap.setOnMapLoadedCallback(this)
         this.googleMap = googleMap
         with(googleMap) {
             setOnCameraMoveListener(this@CustomMapRouteFragment)
-            //第1条折线（实线）
-            polyLine1 = addPolyline(PolylineOptions().apply {
-                startCap(RoundCap())
-                endCap(RoundCap())
-                jointType(JointType.ROUND)
-                add(point1, point2,point3)
-                width(STROKE_WIDTH_PX.toFloat())
-                color(resources.getColor(R.color.colorThemeOrange))
-                geodesic(true)
-            })
-            polyLine1_1 = addPolyline(PolylineOptions().apply {
-                startCap(RoundCap())
-                endCap(RoundCap())
-                jointType(JointType.ROUND)
-                add(point3, point4)
-                width(STROKE_WIDTH_PX.toFloat())
-                color(resources.getColor(R.color.colorBlue))
-                geodesic(true)
-            })
-            polyLine1_2 = addPolyline(PolylineOptions().apply {
-                startCap(RoundCap())
-                endCap(RoundCap())
-                jointType(JointType.ROUND)
-                add(point4, point5)
-                width(STROKE_WIDTH_PX.toFloat())
-                color(resources.getColor(R.color.colorGray))
-                geodesic(true)
-            })
-            //第2条折线（圆点线）
-            polyLine2 = addPolyline(PolylineOptions().apply {
-                startCap(RoundCap())
-                endCap(RoundCap())
-                jointType(JointType.ROUND)
-                add(point5, point6)
-                width(30.toFloat())
-                color(resources.getColor(R.color.colorGreen))
-                pattern(patternDotted)
-                geodesic(true)
-            })
-            //第3条折线(实线)
-            polyLine3 = addPolyline(PolylineOptions().apply {
-                startCap(RoundCap())
-                endCap(RoundCap())
-                jointType(JointType.ROUND)
-                add(point6, point7)
-                width(STROKE_WIDTH_PX.toFloat())
-                color(resources.getColor(R.color.colorBlue))
-                geodesic(true)
-            })
-            //第4条折线（虚线）
-            polyLine4 = addPolyline(PolylineOptions().apply {
-                //开始位置圆角
-                startCap(RoundCap())
-                endCap(RoundCap())
-                add(point7, point8)
-                width(STROKE_WIDTH_PX.toFloat())
-                color(resources.getColor(R.color.colorRed))
-                pattern(patternDashed)
-                geodesic(true)
-            })
-            //第5条折线(实线)
-            polyLine5 = addPolyline(PolylineOptions().apply {
-                startCap(RoundCap())
-                endCap(RoundCap())
-                add(point8, point9)
-                width(STROKE_WIDTH_PX.toFloat())
-                color(resources.getColor(R.color.colorBlue))
-                geodesic(true)
-            })
-            //移动到指定经纬度
-            moveCamera(CameraUpdateFactory.newLatLngZoom(targetLocation, ZOOM_LEVEL))
-            /**
-             * 下面两个函数是测试附加功能的
-             */
-            //getScreenshot()
-           // startActivity(Intent(this@CustomMapRouteFragment.activity, CoverActivity::class.java))
+        }
+    }
+
+    override fun onMapLoaded() {
+        GlobalScope.launch {
+            withContext(Dispatchers.Main) {
+                with(googleMap) {
+                    //第1条折线（实线）
+                    polyLine1 = this?.addPolyline(PolylineOptions().apply {
+                        startCap(RoundCap())
+                        endCap(RoundCap())
+                        jointType(JointType.ROUND)
+                        add(point1, point2, point3)
+                        width(STROKE_WIDTH_PX.toFloat())
+                        color(resources.getColor(R.color.colorThemeOrange))
+                        geodesic(true)
+                    })
+                    polyLine1_1 = this?.addPolyline(PolylineOptions().apply {
+                        startCap(RoundCap())
+                        endCap(RoundCap())
+                        jointType(JointType.ROUND)
+                        add(point3, point4)
+                        width(STROKE_WIDTH_PX.toFloat())
+                        color(resources.getColor(R.color.colorBlue))
+                        geodesic(true)
+                    })
+                    polyLine1_2 = this?.addPolyline(PolylineOptions().apply {
+                        startCap(RoundCap())
+                        endCap(RoundCap())
+                        jointType(JointType.ROUND)
+                        add(point4, point5)
+                        width(STROKE_WIDTH_PX.toFloat())
+                        color(resources.getColor(R.color.colorGray))
+                        geodesic(true)
+                    })
+                    //第2条折线（圆点线）
+                    polyLine2 = this?.addPolyline(PolylineOptions().apply {
+                        startCap(RoundCap())
+                        endCap(RoundCap())
+                        jointType(JointType.ROUND)
+                        add(point5, point6)
+                        width(30.toFloat())
+                        color(resources.getColor(R.color.colorGreen))
+                        pattern(patternDotted)
+                        geodesic(true)
+                    })
+                    //第3条折线(实线)
+                    polyLine3 = this?.addPolyline(PolylineOptions().apply {
+                        startCap(RoundCap())
+                        endCap(RoundCap())
+                        jointType(JointType.ROUND)
+                        add(point6, point7)
+                        width(STROKE_WIDTH_PX.toFloat())
+                        color(resources.getColor(R.color.colorBlue))
+                        geodesic(true)
+                    })
+                    //第4条折线（虚线）
+                    polyLine4 = this?.addPolyline(PolylineOptions().apply {
+                        //开始位置圆角
+                        startCap(RoundCap())
+                        endCap(RoundCap())
+                        add(point7, point8)
+                        width(STROKE_WIDTH_PX.toFloat())
+                        color(resources.getColor(R.color.colorRed))
+                        pattern(patternDashed)
+                        geodesic(true)
+                    })
+                    //第5条折线(实线)
+                    polyLine5 = this?.addPolyline(PolylineOptions().apply {
+                        startCap(RoundCap())
+                        endCap(RoundCap())
+                        add(point8, point9)
+                        width(STROKE_WIDTH_PX.toFloat())
+                        color(resources.getColor(R.color.colorBlue))
+                        geodesic(true)
+                    })
+                    //移动到指定经纬度
+                    this?.moveCamera(CameraUpdateFactory.newLatLngZoom(targetLocation, ZOOM_LEVEL))
+                    /**
+                     * 下面两个函数是测试附加功能的，定位到某个经纬度然后截屏
+                     */
+                    testFunction(googleMap!!)
+                }
+            }
         }
     }
 
@@ -180,39 +201,90 @@ class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMap
 
     override fun onCameraMove() {
         //当前缩放比例
-        Log.v("zoomVale:" ,this.googleMap?.cameraPosition?.zoom.toString())
+        Log.v("zoomVale:", this.googleMap?.cameraPosition?.zoom.toString())
     }
 
     /**
-     * 根据view生成图片
+     * 调用google map 截图生成图片
      */
-    private fun getScreenshot() {
-        //view转bitmap （inflate系列）
-        val bm = ViewUtils.saveBitmapFromLayout2(targetView, targetView.width, targetView.height)
-        //将位图保存到指定公共文件路径
-        FileUtils.imageFile = FileUtils.createImageFile()
-        FileUtils.convertBitmapToFile(FileUtils.imageFile!!, bm)
-        //插入到媒体库
-        val values = ContentValues()
-        values.put(MediaStore.MediaColumns.DISPLAY_NAME, FileUtils.imageFile?.name)
-        values.put(MediaStore.Images.Media.DATA, FileUtils.imageFile?.absolutePath)
-        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
-        MyApplication.instance?.context?.contentResolver?.insert(
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-            values
-        )
-        //扫描，更新媒体库
-        MediaScannerConnection.scanFile(activity,
-            arrayOf(FileUtils.imageFile?.absolutePath),
-            arrayOf("image/jpeg", "image/png"),
-            object : MediaScannerConnection.OnScanCompletedListener {
-                override fun onScanCompleted(path: String, uri: Uri) {
-                    Log.v("ExternalStorage", "Scanned :$path")
-                    Log.v("ExternalStorageUri", "-> uri=$uri")
-                }
-            })
+    private suspend fun getScreenshot() = suspendCancellableCoroutine<Boolean> {
+        googleMap?.snapshot { _bitmap ->
+            //将位图保存到指定公共文件路径
+            FileUtils.imageFile = FileUtils.createImageFile()
+            FileUtils.convertBitmapToFile(FileUtils.imageFile!!, _bitmap)
+            //插入到媒体库
+            val values = ContentValues()
+            values.put(MediaStore.MediaColumns.DISPLAY_NAME, FileUtils.imageFile?.name)
+            values.put(MediaStore.Images.Media.DATA, FileUtils.imageFile?.absolutePath)
+            values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+            MyApplication.instance?.context?.contentResolver?.insert(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                values
+            )
+            //扫描，更新媒体库
+            MediaScannerConnection.scanFile(activity,
+                arrayOf(FileUtils.imageFile?.absolutePath),
+                arrayOf("image/jpeg", "image/png"),
+                object : MediaScannerConnection.OnScanCompletedListener {
+                    override fun onScanCompleted(path: String, uri: Uri) {
+                        //恢复挂起的协程
+                        it.resume(true, {})
+                        Log.v("ExternalStorage", "Scanned :$path")
+                        Log.v("ExternalStorageUri", "-> uri=$uri")
+                    }
+                })
+        }
     }
 
+    /**
+     * 测试函数，迁移到指定经纬度，截屏（持续3次）
+     */
+    private fun testFunction(map: GoogleMap) {
+       // shotSelf(map)
+        moveList.forEach {
+            GlobalScope.launch {
+                shotEveryPic(it,map)
+            }
+        }
+    }
+
+    private suspend fun shotEveryPic(latLng: LatLng, map: GoogleMap) =
+        suspendCancellableCoroutine<Boolean> {
+            GlobalScope.launch {
+                withContext(Dispatchers.Main){
+                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
+                    map.setOnMapLoadedCallback {
+                        GlobalScope.launch {
+                            getScreenshot()
+                            it.resume(false, {})
+                        }
+                    }
+                }
+            }
+        }
+
+    /**
+     * 递归调用自己，依次截3张图
+     */
+//    private fun shotSelf(map: GoogleMap) {
+//        val mapValue = moveMap.filterValues { it == false }.iterator().next()
+//        if (mapValue == null) {
+//            return
+//        } else {
+//            GlobalScope.launch {
+//                withContext(Dispatchers.Main) {
+//                    moveMap[mapValue.key] = true
+//                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(mapValue.key, 10f))
+//                map.setOnMapLoadedCallback {
+//                    GlobalScope.launch {
+//                        getScreenshot()
+//                        shotSelf(map)
+//                    }
+//                }
+//                }
+//            }
+//        }
+//    }
 
 
 }
