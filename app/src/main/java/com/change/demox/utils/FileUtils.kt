@@ -20,6 +20,7 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.provider.OpenableColumns
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -42,12 +43,19 @@ object FileUtils {
     //拍照结果（照片）的图片文件
     var imageFile: File? = null
 
-    //app调用系统相机拍照得到的照片存储的路径
-    private val outputPhotoDirectory: String by lazy {
+    //app调用系统相机拍照得到的照片存储的路径: /storage/emulated/0/Pictures/demox_camera
+    //因为Environment.getExternalStorageDirectory()在SDK29之后废弃了，故改成下面的写法
+//    private val outputPhotoDirectory: String by lazy {
+//        //路径不用根据版本区分，都一样
+//        "${Environment.getExternalStorageDirectory().absolutePath}/" +
+//                "${Environment.DIRECTORY_PICTURES}/demox_camera/"
+//    }
+
+    //app调用系统相机拍照得到的照片存储的路径: /storage/emulated/0/Android/data/com.change.demox/files/Pictures/demox_camera
+    private val outputPhotoDirectory =
         //路径不用根据版本区分，都一样
-        "${Environment.getExternalStorageDirectory().absolutePath}/" +
-                "${Environment.DIRECTORY_PICTURES}/demox_camera/"
-    }
+       MyApplication.instance?.context?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)?.absolutePath+"/demox_camera/"
+
 
     //项目Video存储的root路径
     private val outputMovieDirectory: String by lazy {
@@ -81,6 +89,7 @@ object FileUtils {
     fun createImageFile(isCrop: Boolean = false): File? {
         return try {
             val rootFile = File(outputPhotoDirectory)
+            Log.v("filePathLog",rootFile.absolutePath)
             if (!rootFile.exists())
                 rootFile.mkdirs()
 //            val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
@@ -527,5 +536,11 @@ object FileUtils {
         return null
     }
 
+    fun deleteFile(filePath: String?): Boolean {
+        val file = File(filePath)
+        return if (file.isFile && file.exists()) {
+            file.delete()
+        } else false
+    }
 
 }

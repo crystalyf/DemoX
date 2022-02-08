@@ -100,7 +100,7 @@ abstract class CameraBaseFragment<B : ViewBinding>() : Fragment() {
 
 
     /**
-     * 获取媒体文件（AndroidQ 以上版本）
+     * 获取手机中的所有媒体文件，并过滤获取某一目录下的媒体文件（AndroidQ 以上版本）
      */
     private fun getMediaQPlus(): List<Media> {
         val items = mutableListOf<Media>()
@@ -164,7 +164,7 @@ abstract class CameraBaseFragment<B : ViewBinding>() : Fragment() {
     }
 
     /**
-     * 获取媒体文件（AndroidQ 以下版本）
+     * 获取手机中的所有媒体文件，并过滤获取某一目录下的媒体文件（AndroidQ 以下版本）
      */
     private fun getMediaQMinus(): List<Media> {
         val items = mutableListOf<Media>()

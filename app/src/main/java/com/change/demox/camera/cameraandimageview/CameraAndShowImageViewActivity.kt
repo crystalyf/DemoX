@@ -103,6 +103,13 @@ class CameraAndShowImageViewActivity : AppCompatActivity() {
                     viewModel.afterChoosePictureFromAlbum(this,data?.data!!)
                 }
             }
+        }else if(resultCode == Activity.RESULT_CANCELED){
+            when (requestCode) {
+                REQUEST_CODE_CAPTURE_RAW -> {
+                    //删除文件夹中的空文件
+                    FileUtils.deleteFile(FileUtils.imageFile?.absolutePath)
+                }
+            }
         }
     }
 
