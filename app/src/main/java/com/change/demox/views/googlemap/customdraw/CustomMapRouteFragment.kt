@@ -59,7 +59,7 @@ class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMap
     private val point9 = LatLng(38.847645, 121.517221)
 
     //屏幕迁移的经纬度List
-    val moveMap = mutableMapOf(targetLocation to false, point4 to false, point6 to false)
+    var moveMap = mutableMapOf(targetLocation to false, point4 to false, point6 to false)
 
     //折线
     private var polyLine1: Polyline? = null
@@ -100,6 +100,8 @@ class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMap
     override fun onMapReady(googleMap: GoogleMap) {
         googleMap.setOnMapLoadedCallback(this)
         this.googleMap = googleMap
+        //可选，卫星图像的地图
+        this.googleMap?.mapType = GoogleMap.MAP_TYPE_HYBRID
         with(googleMap) {
             setOnCameraMoveListener(this@CustomMapRouteFragment)
         }
