@@ -98,6 +98,13 @@ class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMap
         //可选，卫星图像的地图
         this.googleMap?.mapType = GoogleMap.MAP_TYPE_HYBRID
         with(googleMap) {
+            //添加marker
+            googleMap.addMarker(
+                MarkerOptions()
+                    .position(targetLocation)
+                    .title("Marker in 火炬路")
+                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.map_marker))  //也可以自定义view当marker，跟高德地图原理一致
+            )
             setOnCameraMoveListener(this@CustomMapRouteFragment)
         }
     }
