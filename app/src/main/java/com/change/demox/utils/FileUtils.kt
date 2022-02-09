@@ -60,15 +60,13 @@ object FileUtils {
     //项目Video存储的root路径
     private val outputMovieDirectory: String by lazy {
         //路径不用根据版本区分，都一样
-        "${Environment.getExternalStorageDirectory().absolutePath}/" +
-                "${Environment.DIRECTORY_MOVIES}/demox_camera/"
+        MyApplication.instance?.context?.getExternalFilesDir(Environment.DIRECTORY_MOVIES)?.absolutePath+"/demox_camera/"
     }
 
     //music存储的root路径
     private val outputMusicDirectory: String by lazy {
         //路径不用根据版本区分，都一样
-        "${Environment.getExternalStorageDirectory().absolutePath}/" +
-                "${Environment.DIRECTORY_MUSIC}/"
+        MyApplication.instance?.context?.getExternalFilesDir(Environment.DIRECTORY_MUSIC)?.absolutePath+"/demox_camera/"
     }
 
     fun getOutPutDirectory():String{
@@ -95,7 +93,7 @@ object FileUtils {
 //            val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
 //            val fileName = if (isCrop) "IMG_${timeStamp}_CROP.jpg" else "IMG_$timeStamp.jpg"
             var tempName = "image" + index.toString()
-            val fileName = if (isCrop) "$tempName.jpg" else "$tempName.jpg"
+            val fileName = if (isCrop) "$tempName.png" else "$tempName.png"
             index++
             File(rootFile.absolutePath + File.separator + fileName).apply {
                 if (!exists())

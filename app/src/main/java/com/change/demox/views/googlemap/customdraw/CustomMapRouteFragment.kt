@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment
 import com.change.demox.R
 import com.change.demox.application.MyApplication
 import com.change.demox.utils.FileUtils
-import com.change.demox.utils.ViewUtils
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -24,12 +23,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import kotlinx.android.synthetic.main.activity_dialog.*
 import java.util.*
-import android.graphics.Bitmap
-
-import com.google.android.gms.maps.GoogleMap.SnapshotReadyCallback
 import kotlinx.coroutines.*
-import kotlin.collections.LinkedHashMap
-import kotlin.coroutines.CoroutineContext
 
 
 /**
@@ -59,7 +53,8 @@ class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMap
     private val point9 = LatLng(38.847645, 121.517221)
 
     //屏幕迁移的经纬度List
-    var moveMap = mutableMapOf(targetLocation to false, point4 to false, point6 to false)
+    var moveMap =
+        mutableMapOf(targetLocation to false, point4 to false, point6 to false, point9 to false)
 
     //折线
     private var polyLine1: Polyline? = null

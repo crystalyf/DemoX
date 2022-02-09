@@ -1,26 +1,28 @@
 package com.change.demox.views.imageview.imagetovideo
 
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProviders
 import com.change.base.BaseActivity
 import com.change.demox.R
 import com.change.demox.utils.EventObserver
 import com.change.demox.utils.FileUtils.getOutPutMovieDirectory
 import com.change.demox.utils.FileUtils.getOutPutMusicDirectory
-import com.change.demox.views.dialog.bottomsheetdialog.BottomSheetDialogViewModel
 import com.change.demox.views.imageview.imagetovideo.rxffmpeg.ImageToVideoViewModel
-import com.change.demox.views.imageview.imagetovideo.rxffmpeg.MyRxFFmpegSubscriber
 import io.microshow.rxffmpeg.RxFFmpegInvoke
 import kotlinx.android.synthetic.main.activity_image_to_video.*
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+import io.microshow.rxffmpeg.RxFFmpegSubscriber
+
+
+
 
 
 class ImageToVideoActivity : BaseActivity() {
 
     private lateinit var viewModel: ImageToVideoViewModel
-    lateinit var myRxFFmpegSubscriber : MyRxFFmpegSubscriber
     //是否成功生成临时的合成视频（无声音）
     var hasTempVideo = false
 
@@ -30,6 +32,9 @@ class ImageToVideoActivity : BaseActivity() {
     var targetMusicFilePath:String? = null
     lateinit var ffmpegInVoke :RxFFmpegInvoke
 
+    var mp3Name = "audio.mp3"
+    //var mp3Name = "00_02_04.mp3"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_to_video)
@@ -38,7 +43,6 @@ class ImageToVideoActivity : BaseActivity() {
     }
 
     private fun initView() {
-        myRxFFmpegSubscriber = MyRxFFmpegSubscriber(viewModel)
         viewModel.afterTempVideo.observe(this, EventObserver {
             afterFirstTransfer()
         })
@@ -69,29 +73,28 @@ class ImageToVideoActivity : BaseActivity() {
         val videoDir = File(com.change.demox.utils.FileUtils.getOutPutMovieDirectory())
         if (!videoDir.exists())
             videoDir.mkdirs()
+        val musicDir = File(com.change.demox.utils.FileUtils.getOutPutMusicDirectory())
+        if (!musicDir.exists())
+            musicDir.mkdirs()
         if(!com.change.demox.utils.FileUtils.fileIsExist(tempVideoFilePath)){
             File(tempVideoFilePath).createNewFile()
         }
         if(!com.change.demox.utils.FileUtils.fileIsExist(targetVideoFilePath)){
             File(targetVideoFilePath).createNewFile()
         }
-        targetMusicFilePath =  getOutPutMusicDirectory() + "audio.mp3"
-        val targetPicFilePath = com.change.demox.utils.FileUtils.getOutPutDirectory()  + "image%d.jpg"
+        targetMusicFilePath =  getOutPutMusicDirectory() + mp3Name
+        val targetPicFilePath = com.change.demox.utils.FileUtils.getOutPutDirectory()  + "image%d.png"
         //循环取所有图片转成视频（无声音），好使
-        val text = "ffmpeg -y -loop 1 -r 25 -i $targetPicFilePath -vf zoompan=z=1.1:x='if(eq(x,0),100,x-1)':s='960*540' -t 10 -pix_fmt yuv420p $tempVideoFilePath"
+        //s='960*1540',是视频的宽*高
+        val text = "ffmpeg -y -loop 1 -r 25 -i $targetPicFilePath -vf zoompan=z=1.1:x='if(eq(x,0),100,x-1)':s='960*1540' -t 10 -pix_fmt yuv420p $tempVideoFilePath"
         val commands = text.split(" ".toRegex()).toTypedArray()
         //开始执行FFmpeg命令
-        ffmpegInVoke = RxFFmpegInvoke.getInstance()
-        ffmpegInVoke.runCommandRxJava(commands)
-            .subscribe(myRxFFmpegSubscriber)
+        runCommands(commands)
     }
 
 
     override fun onDestroy() {
         super.onDestroy()
-        if (myRxFFmpegSubscriber != null) {
-            myRxFFmpegSubscriber.dispose()
-        }
     }
 
     /**
@@ -104,8 +107,33 @@ class ImageToVideoActivity : BaseActivity() {
             val text = "ffmpeg -i $targetMusicFilePath -i $tempVideoFilePath $targetVideoFilePath"
             val commands = text.split(" ".toRegex()).toTypedArray()
             //开始执行FFmpeg命令
-            RxFFmpegInvoke.getInstance().runCommand(commands, null);
+            runCommands(commands)
         }
+    }
+
+    /**
+     * 执行FFmpeg命令
+     */
+    fun runCommands(commands:  Array<String>){
+        RxFFmpegInvoke.getInstance().runCommandRxJava(commands)
+            .subscribe(object : RxFFmpegSubscriber() {
+                override fun onFinish() {
+                    Log.v("ffmpegLog", "处理完成")
+                    viewModel.afterTempVideo()
+                }
+
+                override fun onProgress(progress: Int, progressTime: Long) {
+                    Log.v("ffmpegLog", "过程中onProgress")
+                }
+
+                override fun onCancel() {
+                    Log.v("ffmpegLog", "已取消")
+                }
+
+                override fun onError(message: String) {
+                    Log.v("ffmpegLog", "出错了:"+message)
+                }
+            })
     }
 
 }
