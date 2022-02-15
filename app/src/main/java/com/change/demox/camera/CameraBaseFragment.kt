@@ -37,48 +37,57 @@ abstract class CameraBaseFragment<B : ViewBinding>() : Fragment() {
 
     // 应用程序camera正常运行所需的权限
     private val permissions = mutableListOf(
-            Manifest.permission.CAMERA,
-            Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.CAMERA,
+        Manifest.permission.READ_EXTERNAL_STORAGE,
     )
 
-    private val permissionRequest = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions())
-    { permission ->
-        if (permission.all { it.value }) {
-            onPermissionGranted()
-        } else {
-            if (permission.containsKey("android.permission.CAMERA")) {
-                if (permission["android.permission.CAMERA"] == false) {
-                    view?.let { v ->
-                        Snackbar.make(v, "app wants access to the camera", Snackbar.LENGTH_INDEFINITE)
+    private val permissionRequest =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions())
+        { permission ->
+            if (permission.all { it.value }) {
+                onPermissionGranted()
+            } else {
+                if (permission.containsKey("android.permission.CAMERA")) {
+                    if (permission["android.permission.CAMERA"] == false) {
+                        view?.let { v ->
+                            Snackbar.make(
+                                v,
+                                "app wants access to the camera",
+                                Snackbar.LENGTH_INDEFINITE
+                            )
                                 .setAction("OK") { getAppDetailSettingIntent(context) }
                                 .show()
+                        }
                     }
-                }
-            } else if (permission.containsKey("android.permission.READ_EXTERNAL_STORAGE")) {
-                if (permission["android.permission.READ_EXTERNAL_STORAGE"] == false) {
-                    view?.let { v ->
-                        Snackbar.make(v, "app wants access to the album", Snackbar.LENGTH_INDEFINITE)
+                } else if (permission.containsKey("android.permission.READ_EXTERNAL_STORAGE")) {
+                    if (permission["android.permission.READ_EXTERNAL_STORAGE"] == false) {
+                        view?.let { v ->
+                            Snackbar.make(
+                                v,
+                                "app wants access to the album",
+                                Snackbar.LENGTH_INDEFINITE
+                            )
                                 .setAction("OK") { getAppDetailSettingIntent(context) }
                                 .show()
+                        }
                     }
                 }
             }
         }
-    }
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Adding an option to handle the back press in fragment
         requireActivity().onBackPressedDispatcher.addCallback(
-                viewLifecycleOwner,
-                object : OnBackPressedCallback(true) {
-                    override fun handleOnBackPressed() {
-                        onBackPressed()
-                    }
-                })
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    onBackPressed()
+                }
+            })
 
         return binding.root
     }
@@ -99,24 +108,37 @@ abstract class CameraBaseFragment<B : ViewBinding>() : Fragment() {
     }.reversed()
 
 
-    /**
+    /**  !!!!!公共目录（非私有存储），才能用这个写法
      * 获取手机中的所有媒体文件，并过滤获取某一目录下的媒体文件（AndroidQ 以上版本）
+     *
+     * 这套方法是针对公共存储的，不适用于私有存储 /storage/emulated/0/Pictures/XXXX的
      */
     private fun getMediaQPlus(): List<Media> {
         val items = mutableListOf<Media>()
         val contentResolver = requireContext().applicationContext.contentResolver
 
         //使用MediaStore查询外部存储里的Video文件, EXTERNAL_CONTENT_URI代表外部存储器，该值不变
+        /**
+         * MediaStore.Video.Media.RELATIVE_PATH
+         *
+         * 相对路径
+         *
+         *
+         * MediaStore.Files.FileColumns.DATA 文件路径
+         *
+         *   int pathColumn = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.DATA)
+         *    String path = cursor.getString(pathColumn)  //获取文件的路径，如/storage/emulated/0/Pictures/y_camera/1.image.png
+         */
         contentResolver.query(
-                MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
-                arrayOf(
-                        MediaStore.Video.Media._ID,
-                        MediaStore.Video.Media.RELATIVE_PATH,   //RELATIVE_PATH是相对路径不是绝对路径
-                        MediaStore.Video.Media.DATE_TAKEN,
-                ),
-                null,
-                null,
-                "${MediaStore.Video.Media.DISPLAY_NAME} ASC"
+            MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+            arrayOf(
+                MediaStore.Video.Media._ID,
+                MediaStore.Video.Media.RELATIVE_PATH,   //RELATIVE_PATH是相对路径不是绝对路径
+                MediaStore.Video.Media.DATE_TAKEN,
+            ),
+            null,
+            null,
+            "${MediaStore.Video.Media.DISPLAY_NAME} ASC"
         )?.use { cursor ->
             val idColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media._ID)
             val pathColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.RELATIVE_PATH)
@@ -126,7 +148,8 @@ abstract class CameraBaseFragment<B : ViewBinding>() : Fragment() {
                 val id = cursor.getLong(idColumn)
                 val path = cursor.getString(pathColumn)
                 val date = cursor.getLong(dateColumn)
-                val contentUri: Uri = ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, id)
+                val contentUri: Uri =
+                    ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, id)
                 if (path == outputDirectory) {
                     items.add(Media(contentUri.toString(), true, date))
                 }
@@ -135,15 +158,15 @@ abstract class CameraBaseFragment<B : ViewBinding>() : Fragment() {
 
         //使用MediaStore查询外部存储里的Images文件, EXTERNAL_CONTENT_URI代表外部存储器，该值不变
         contentResolver.query(
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                arrayOf(
-                        MediaStore.Images.Media._ID,
-                        MediaStore.Images.Media.RELATIVE_PATH,
-                        MediaStore.Images.Media.DATE_TAKEN,
-                ),
-                null,
-                null,
-                "${MediaStore.Images.Media.DISPLAY_NAME} ASC"
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+            arrayOf(
+                MediaStore.Images.Media._ID,
+                MediaStore.Images.Media.RELATIVE_PATH,
+                MediaStore.Images.Media.DATE_TAKEN,
+            ),
+            null,
+            null,
+            "${MediaStore.Images.Media.DISPLAY_NAME} ASC"
         )?.use { cursor ->
             val idColumn = cursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID)
             val pathColumn = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.RELATIVE_PATH)
@@ -153,7 +176,8 @@ abstract class CameraBaseFragment<B : ViewBinding>() : Fragment() {
                 val path = cursor.getString(pathColumn)
                 val date = cursor.getLong(dateColumn)
                 //这个方法负责把id和contentUri连接成一个新的Uri，用于为路径加上ID部分
-                val contentUri: Uri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id)
+                val contentUri: Uri =
+                    ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id)
                 if (path == outputDirectory) {
                     //造入数据源供列表显示照片
                     items.add(Media(contentUri.toString(), false, date))
