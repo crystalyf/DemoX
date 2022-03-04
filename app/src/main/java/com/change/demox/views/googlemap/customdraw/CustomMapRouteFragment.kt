@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment
 import com.change.demox.R
 import com.change.demox.application.MyApplication
 import com.change.demox.utils.FileUtils
+import com.change.demox.utils.ViewUtils
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -113,6 +114,7 @@ class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMap
         GlobalScope.launch {
             withContext(Dispatchers.Main) {
                 with(googleMap) {
+                    googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(targetLocation, 16f))
                     //第1条折线（实线）
                     polyLine1 = this?.addPolyline(PolylineOptions().apply {
                         startCap(RoundCap())
@@ -138,7 +140,7 @@ class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMap
                         jointType(JointType.ROUND)
                         add(point4, point5)
                         width(STROKE_WIDTH_PX.toFloat())
-                        color(resources.getColor(R.color.colorGray))
+                        color(resources.getColor(R.color.colorPrimaryDark))
                         geodesic(true)
                     })
                     //第2条折线（圆点线）
@@ -182,10 +184,12 @@ class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMap
                         color(resources.getColor(R.color.colorBlue))
                         geodesic(true)
                     })
+
+                    customMarkerDraw(googleMap)
                     /**
                      * 下面两个函数是测试附加功能的，定位到某个经纬度然后截屏
                      */
-                    testFunction(this)
+//                    testFunction(this)
                 }
             }
         }
@@ -270,6 +274,31 @@ class CustomMapRouteFragment : Fragment(), GoogleMap.OnCameraMoveListener, OnMap
                     }
                 }
             }
+        }
+    }
+
+    /**
+     * 画自定义google map的marker
+     */
+    private fun customMarkerDraw(map: GoogleMap?){
+        var list  = mutableListOf<LatLng>()
+        list.add(point1)
+        list.add(point2)
+        list.add(point3)
+        list.add(point4)
+        list.add(point5)
+        list.add(point6)
+        list.add(point7)
+        list.add(point8)
+        list.add(point9)
+
+        list.forEach {
+            val view = View.inflate(requireContext(), R.layout.item_google_map_marker, null)
+            googleMap?.addMarker(
+                MarkerOptions()
+                    .position(it)
+                    .icon(BitmapDescriptorFactory.fromBitmap(ViewUtils.getBitmapFromView(view,50)))  //也可以自定义view当marker，跟高德地图原理一致
+            )
         }
     }
 

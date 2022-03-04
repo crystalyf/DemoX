@@ -4,8 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../../layout/custom_preview.xml" value="0.29010416666666666" />
+        <entry key="app/src/main/res/drawable/bg_round.xml" value="0.16875" />
+        <entry key="app/src/main/res/drawable/bg_shadow_shape.xml" value="0.21993127147766323" />
         <entry key="app/src/main/res/drawable/bg_switch_track.xml" value="0.1579861111111111" />
+        <entry key="app/src/main/res/drawable/ic_right_row.xml" value="0.21993127147766323" />
+        <entry key="app/src/main/res/drawable/selector_primary_text.xml" value="0.21993127147766323" />
+        <entry key="app/src/main/res/drawable/selector_switch_track.xml" value="0.21993127147766323" />
+        <entry key="app/src/main/res/drawable/shape_dialog_round.xml" value="0.21993127147766323" />
         <entry key="app/src/main/res/drawable/shape_pop_bg.xml" value="0.18645833333333334" />
+        <entry key="app/src/main/res/drawable/shape_round_two.xml" value="0.21993127147766323" />
         <entry key="app/src/main/res/drawable/shape_switch_thumb.xml" value="0.1579861111111111" />
         <entry key="app/src/main/res/drawable/shape_track_off.xml" value="0.1579861111111111" />
         <entry key="app/src/main/res/drawable/shape_track_on.xml" value="0.1579861111111111" />
@@ -17,7 +24,7 @@
         <entry key="app/src/main/res/layout/activity_googlemap_start.xml" value="0.10378323108384459" />
         <entry key="app/src/main/res/layout/activity_image_to_video.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/activity_image_view.xml" value="0.10378323108384459" />
-        <entry key="app/src/main/res/layout/activity_layout.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_layout.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_line_chart_view.xml" value="0.17569444444444443" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10378323108384459" />
         <entry key="app/src/main/res/layout/activity_qrcode.xml" value="0.10378323108384459" />
@@ -28,6 +35,9 @@
         <entry key="app/src/main/res/layout/fragment_custom_map_route.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.10378323108384459" />
         <entry key="app/src/main/res/layout/fragment_image.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_google_map_marker.xml" value="0.19433060109289618" />
+        <entry key="app/src/main/res/layout/item_wireless_list.xml" value="0.10378323108384459" />
+        <entry key="app/src/main/res/layout/notification_webview_dialog.xml" value="0.10378323108384459" />
       </map>
     </option>
   </component>

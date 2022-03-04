@@ -141,4 +141,21 @@ object ViewUtils {
         }
     }
 
+    /**
+     * view转bitmap
+     */
+    fun getBitmapFromView(view: View, size: Int): Bitmap {
+        val measuredWidth = View.MeasureSpec.makeMeasureSpec(size, View.MeasureSpec.EXACTLY)
+        val measuredHeight = View.MeasureSpec.makeMeasureSpec(size, View.MeasureSpec.EXACTLY)
+        view.measure(measuredWidth, measuredHeight)
+        val w = view.measuredWidth
+        val h = view.measuredHeight
+        val bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bmp)
+        canvas.drawColor(Color.TRANSPARENT) //如果不设置canvas画布为白色，则生成透明
+        view.layout(0, 0, w, h)
+        view.draw(canvas)
+        return bmp
+    }
+
 }
