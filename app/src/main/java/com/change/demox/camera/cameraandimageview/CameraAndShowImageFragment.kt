@@ -145,25 +145,25 @@ class CameraAndShowImageFragment : Fragment() {
     private fun getLocationFromPhoto() {
         var lat = 0.0f
         var lng = 0.0f
-        try {
-            val exifInterface = ExifInterface(FileUtils.imageFile?.absolutePath)
-            val datetime: String = exifInterface.getAttribute(ExifInterface.TAG_DATETIME) // 拍摄时间
-            val deviceName: String = exifInterface.getAttribute(ExifInterface.TAG_MAKE) // 设备品牌
-            val deviceModel: String = exifInterface.getAttribute(ExifInterface.TAG_MODEL) // 设备型号
-            val latValue: String = exifInterface.getAttribute(ExifInterface.TAG_GPS_LATITUDE)
-            val lngValue: String = exifInterface.getAttribute(ExifInterface.TAG_GPS_LONGITUDE)
-            val latRef: String = exifInterface.getAttribute(ExifInterface.TAG_GPS_LATITUDE_REF)
-            val lngRef: String = exifInterface.getAttribute(ExifInterface.TAG_GPS_LONGITUDE_REF)
-            if (latValue != null && latRef != null && lngValue != null && lngRef != null) {
-                lat = convertRationalLatLonToFloat(latValue, latRef)
-                lng = convertRationalLatLonToFloat(lngValue, lngRef)
-            }
-            Log.v("location", datetime+";"+lat.toString() + ";" + lng.toString())
-        } catch (e: IllegalArgumentException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
+//        try {
+//            val exifInterface = ExifInterface(FileUtils.imageFile?.absolutePath!!)
+//            val datetime: String = exifInterface.getAttribute(ExifInterface.TAG_DATETIME) // 拍摄时间
+//            val deviceName: String = exifInterface.getAttribute(ExifInterface.TAG_MAKE) // 设备品牌
+//            val deviceModel: String = exifInterface.getAttribute(ExifInterface.TAG_MODEL) // 设备型号
+//            val latValue: String = exifInterface.getAttribute(ExifInterface.TAG_GPS_LATITUDE)
+//            val lngValue: String = exifInterface.getAttribute(ExifInterface.TAG_GPS_LONGITUDE)
+//            val latRef: String = exifInterface.getAttribute(ExifInterface.TAG_GPS_LATITUDE_REF)
+//            val lngRef: String = exifInterface.getAttribute(ExifInterface.TAG_GPS_LONGITUDE_REF)
+//            if (latValue != null && latRef != null && lngValue != null && lngRef != null) {
+//                lat = convertRationalLatLonToFloat(latValue, latRef)
+//                lng = convertRationalLatLonToFloat(lngValue, lngRef)
+//            }
+//            Log.v("location", datetime+";"+lat.toString() + ";" + lng.toString())
+//        } catch (e: IllegalArgumentException) {
+//            e.printStackTrace()
+//        } catch (e: IOException) {
+//            e.printStackTrace()
+//        }
     }
 
     /**

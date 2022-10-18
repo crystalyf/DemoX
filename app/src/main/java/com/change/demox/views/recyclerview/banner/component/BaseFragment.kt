@@ -82,7 +82,7 @@ abstract class BaseFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        activity?.let { MyApplication.getRefWatcher(it)?.watch(activity) }
+      //  activity?.let { MyApplication.getRefWatcher(it)?.watch(activity) }
     }
 
 }

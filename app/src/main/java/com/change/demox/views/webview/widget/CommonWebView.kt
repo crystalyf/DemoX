@@ -126,8 +126,8 @@ class CommonWebView @JvmOverloads constructor(
      */
     fun releaseWebView() {
         stopLoading()
-        settings.builtInZoomControls = false
-        webViewClient = null
+//        settings.builtInZoomControls = false
+     //   webViewClient = null
         webChromeClient = null
         clearCache(true)
         clearSslPreferences()

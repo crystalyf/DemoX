@@ -405,7 +405,7 @@ class TakePhotoFragment : CameraBaseFragment<FragmentTakePhotoBinding>() {
 
     private fun showPictureUrl(uri: String?) {
         Toast.makeText(activity, "拍照成功保存路径：" + uri, Toast.LENGTH_SHORT).show()
-        Log.v("ImageUrlStr:", uri)
+        Log.v("ImageUrlStr:", uri!!)
     }
 
     private fun setLastPictureThumbnail() = binding.btnGallery.post {

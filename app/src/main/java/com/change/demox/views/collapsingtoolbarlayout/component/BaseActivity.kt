@@ -77,7 +77,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        MyApplication.getRefWatcher(this)?.watch(this)
+     //   MyApplication.getRefWatcher(this)?.watch(this)
     }
 
 }

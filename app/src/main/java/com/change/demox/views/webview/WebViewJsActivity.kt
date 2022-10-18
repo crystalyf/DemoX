@@ -113,7 +113,7 @@ class WebViewJsActivity : AppCompatActivity() {
 
         override fun onPageFinished(view: WebView?, url: String?) {
             super.onPageFinished(view, url)
-            Log.v("url:", url)
+            Log.v("url:", url!!)
         }
     }
 
